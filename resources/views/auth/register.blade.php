@@ -20,6 +20,17 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="role" value="{{ __('Status') }}" />
+                <select id="role" class="form-select rounded-md shadow-sm mt-1 block w-full" type="role" name="role"  required >
+                    <option value="">Select status</option>
+                    <option value="lecturer">Lecturer</option>
+                    <option value="student">Student</option>
+                    <!-- <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option> -->
+                </select>
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
