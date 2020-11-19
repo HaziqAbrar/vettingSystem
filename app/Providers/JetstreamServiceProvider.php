@@ -28,6 +28,7 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+       
     }
 
     /**
@@ -46,4 +47,5 @@ class JetstreamServiceProvider extends ServiceProvider
             'delete',
         ]);
     }
+
 }
