@@ -16,11 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['middleware'=>['auth:sanctum','verified']], function(){
-    
-    Route::get('/dashboard',function() {
-        return view('dashboard');
-    })->name('dashboard');
+Route::group(['middleware'=>['auth:sanctum','verified']], function()
+{
+    //yai punyo
+    Route::group(['middleware'=>['checkrole:lecturer']], function()
+    {
+        Route::get('/dashboard1',function() {
+            return view('dashboard');
+        })->name('dashboard');
+        
+    });
+    //ammar punyo
+    // Route::group(['middleware'=>['checkrole:student']], function()
+    // {
+    //     Route::get('/dashboard',function() {
+    //         return view('dashboard1');
+    //     })->name('dashboard');
+    // });
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
