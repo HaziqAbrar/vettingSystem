@@ -21,10 +21,10 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
     //yai punyo
     Route::group(['middleware'=>['checkrole:lecturer']], function()
     {
-        Route::get('/dashboard1',function() {
+        Route::get('/dashboard',function() {
             return view('dashboard');
         })->name('dashboard');
-        
+
     });
     //ammar punyo
     // Route::group(['middleware'=>['checkrole:student']], function()
