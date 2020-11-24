@@ -16,25 +16,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
+    Route::get('/dashboard','App\Http\Controllers\test@index')->name('dashboard');
+    
     //yai punyo
     Route::group(['middleware'=>['checkrole:lecturer']], function()
     {
-        Route::get('/dashboard1',function() {
-            return view('dashboard');
-        })->name('dashboard');
+        // Route::get('/dashboard',function() {
         
     });
     //ammar punyo
-    // Route::group(['middleware'=>['checkrole:student']], function()
-    // {
-    //     Route::get('/dashboard',function() {
-    //         return view('dashboard1');
-    //     })->name('dashboard');
-    // });
+    Route::group(['middleware'=>['checkrole:student']], function()
+    {
+        // Route::get('/home',function() {
+        //     return view('dashboard1');
+        // })->name('home');
+    
+    });
 });
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+
