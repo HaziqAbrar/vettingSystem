@@ -25,7 +25,6 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
     Route::group(['middleware'=>['checkrole:lecturer']], function()
     {
         // Route::get('/dashboard',function() {
-        
     });
     //ammar punyo
     Route::group(['middleware'=>['checkrole:student']], function()
