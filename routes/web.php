@@ -24,7 +24,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
     //yai punyo
     Route::group(['middleware'=>['checkrole:lecturer']], function()
     {
-        // Route::get('/dashboard',function() {
+        // Route::get('/home',function() {
+        //     return view('dashboard1');
+        // })->name('home');
     });
     //ammar punyo
     Route::group(['middleware'=>['checkrole:student']], function()
