@@ -15,11 +15,19 @@ class test extends Controller
         {
             return view ('dashboard');
         }
+        if ($role=='coordinator')
+        {
+            return view ('dashboard');
+        }
+        if ($role=='panel')
+        {
+            return view ('dashboard');
+        }
         if ($role=='student')
         {
             return view ('dashboard1');
         }
     }
-  
-   
+
+
 }
