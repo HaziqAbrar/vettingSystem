@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
-    Route::get('/dashboard','App\Http\Controllers\test@index')->name('dashboard');
+    Route::get('/dashboard','App\Http\Controllers\RedirectController@index')->name('dashboard');
     
     //yai punyo
     Route::group(['middleware'=>['checkrole:lecturer']], function()

@@ -6,26 +6,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
-class test extends Controller
+class RedirectController extends Controller
 {
     public function index(){
         $role = (Auth::user()->getAttribute('role'));
         // dd ($role);
         if ($role=='lecturer')
         {
-            return view ('dashboard');
+            return view ('yai\dashboard');
         }
         if ($role=='coordinator')
         {
-            return view ('dashboard');
+            return view ('yai\dashboard');
         }
         if ($role=='panel')
         {
-            return view ('dashboard');
+            return view ('yai\dashboard');
         }
         if ($role=='student')
         {
-            return view ('dashboard1');
+            return view ('ammar\dashboard');
         }
     }
 
