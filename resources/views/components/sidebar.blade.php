@@ -40,10 +40,10 @@
                     <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                    <a href="#">Home</a>
+                    <a href="dashboard">Home</a>
                     </li>
                     <li>
-                    <a href="#">Profile</a>
+                    <a href="/profile">Profile</a>
                     </li>
                 <!-- <li class="active">
                     <a href="#profileSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
@@ -125,8 +125,8 @@
                 </div> -->
                 
                 <!-- Settings Dropdown -->
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <x-jet-dropdown align="right" width="48">
+                <div class="hidden sm:flex sm:items-center sm:ml-4">
+                    <x-jet-dropdown align="right" width="36">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
@@ -147,13 +147,13 @@
 
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
+                            <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
-                            </div>
+                            </div> -->
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                            <!-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
-                            </x-jet-dropdown-link>
+                            </x-jet-dropdown-link> -->
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -195,14 +195,15 @@
                             @endif
 
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('logout') }}" >
                                 @csrf
-
+                           
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 this.closest('form').submit();">
                                     {{ __('Logout') }}
                                 </x-jet-dropdown-link>
+                                
                             </form>
                         </x-slot>
                     </x-jet-dropdown>

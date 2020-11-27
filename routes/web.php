@@ -31,9 +31,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
     //ammar punyo
     Route::group(['middleware'=>['checkrole:student']], function()
     {
-        // Route::get('/home',function() {
-        //     return view('dashboard1');
-        // })->name('home');
+        Route::get('/profile',function() {
+            return view('/ammar/profile');
+        })->name('profile');
     
     });
 });
