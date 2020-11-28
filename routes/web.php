@@ -20,22 +20,38 @@ Route::get('/', function () {
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
     Route::get('/dashboard','App\Http\Controllers\RedirectController@index')->name('dashboard');
-    
-    //yai punyo
+
+
+    //Coordinators
     Route::group(['middleware'=>['checkrole:lecturer']], function()
     {
-        // Route::get('/home',function() {
-        //     return view('dashboard1');
-        // })->name('home');
+      Route::get('/profileCoordinator',function() {
+          return view('/coordinator/profileCoordinator');
+      })->name('profile');
     });
+
+    // Supervisors
+    Route::group(['middleware'=>['checkrole:supervisor']], function()
+    {
+      Route::get('/profileSupervisor',function() {
+          return view('/supervisor/profileSupervisor');
+      })->name('profile');
+    });
+
+    // Panels
+    Route::group(['middleware'=>['checkrole:panel']], function()
+    {
+      Route::get('/profilePanel',function() {
+          return view('/panel/profilePanel');
+      })->name('profile');
+    });
+
     //ammar punyo
     Route::group(['middleware'=>['checkrole:student']], function()
     {
         Route::get('/profile',function() {
             return view('/ammar/profile');
         })->name('profile');
-    
+
     });
 });
-
-

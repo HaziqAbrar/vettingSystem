@@ -8191,7 +8191,7 @@ h1, h2, h3, h4, h5,
 .navbar {
   padding: 15px 10px;
   background: #392f5a;
-  
+
   border: none;
   border-radius: 0;
   margin-bottom: 40px;
@@ -8211,14 +8211,13 @@ h1, h2, h3, h4, h5,
   margin: 40px 0; }
 
 .wrapper {
-  
+
   width: 100%; }
 
 #sidebar {
   min-width: 300px;
   max-width: 300px;
-  background: #392f5a;
-  color: #392f5a;
+  background: #200426;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s; }

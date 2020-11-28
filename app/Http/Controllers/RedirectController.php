@@ -11,17 +11,17 @@ class RedirectController extends Controller
     public function index(){
         $role = (Auth::user()->getAttribute('role'));
         // dd ($role);
-        if ($role=='lecturer')
+        if ($role=='supervisor')
         {
-            return view ('yai\dashboard');
+            return view ('supervisor.supervisorIndex');
         }
         if ($role=='coordinator')
         {
-            return view ('yai\dashboard');
+            return view ('coordinator.coordinatorIndex');
         }
         if ($role=='panel')
         {
-            return view ('yai\dashboard');
+            return view ('panel.panelIndex');
         }
         if ($role=='student')
         {

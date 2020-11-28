@@ -23,7 +23,9 @@
                 <x-jet-label for="role" value="{{ __('Status') }}" />
                 <select id="role" class="form-select rounded-md shadow-sm mt-1 block w-full" type="role" name="role"  required >
                     <option value="">Select status</option>
-                    <option value="lecturer">Lecturer</option>
+                    <option value="supervisor">Supervisor</option>
+                    <option value="coordinator">Coordinator</option>
+                    <option value="panel">Panel</option>
                     <option value="student">Student</option>
                     <!-- <option value="fiat">Fiat</option>
                     <option value="audi">Audi</option> -->
