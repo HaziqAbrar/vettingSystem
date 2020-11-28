@@ -58,7 +58,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/panel', [PanelController::class, 'index']);
       Route::get('/panel/alltitle', [PanelController::class, 'alltitle']);
-      // Route::get('/titleinfos/{titleinfo}', 'coordinatorController@show');
+      Route::get('/titleinfos/{titleinfo}', [PanelController::class, 'show']);
       // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
       // Route::patch('/titleinfos/{titleinfo}', 'coordinatorController@update');
       // Route::put('/coordinatoraccept/{titleinfo}', 'coordinatorController@acceptbtn');
