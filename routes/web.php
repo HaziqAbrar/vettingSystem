@@ -46,12 +46,14 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       })->name('profile');
     });
 
-    //ammar punyo
+    //Student
     Route::group(['middleware'=>['checkrole:student']], function()
     {
         Route::get('/profile',function() {
-            return view('/ammar/profile');
+            return view('/student/profile');
         })->name('profile');
+      
+        Route::get('/title','App\Http\Controllers\TitlesController@index')->name('title');
 
     });
 });

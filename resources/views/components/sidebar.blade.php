@@ -60,7 +60,7 @@
                     </ul>
                 </li> -->
                 <li>
-                    <a href="#">About</a>
+                    <a href="/title">Title</a>
                 </li>
                 <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>

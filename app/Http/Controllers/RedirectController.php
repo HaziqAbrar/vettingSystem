@@ -25,7 +25,7 @@ class RedirectController extends Controller
         }
         if ($role=='student')
         {
-            return view ('ammar\dashboard');
+            return view ('student\dashboard');
         }
     }
 
