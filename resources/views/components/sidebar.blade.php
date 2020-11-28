@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
@@ -28,13 +28,13 @@
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-dropdown')
 
-           
+
 
             <!-- Page Content -->
             <main>
-                
-                    <div class="wrapper d-flex align-items-stretch" style="background:#e7e4f1" >
-                
+
+                    <div class="wrapper d-flex align-items-stretch" style="background:#fffbfc" >
+
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
                     <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
@@ -123,7 +123,7 @@
                     </li>
                 </ul>
                 </div> -->
-                
+
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-4">
                     <x-jet-dropdown align="right" width="36">
@@ -197,13 +197,13 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" >
                                 @csrf
-                           
+
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 this.closest('form').submit();">
                                     {{ __('Logout') }}
                                 </x-jet-dropdown-link>
-                                
+
                             </form>
                         </x-slot>
                     </x-jet-dropdown>
@@ -213,7 +213,7 @@
 
             {{ $slot }}
             <!-- <h2 class="mb-4">Sidebar #01</h2> -->
-            
+
         </div>
 
             </div>

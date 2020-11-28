@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoordinatorController;
+use App\Http\Controllers\PanelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +25,20 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
 
     //Coordinators
-    Route::group(['middleware'=>['checkrole:lecturer']], function()
+    Route::group(['middleware'=>['checkrole:coordinator']], function()
     {
       Route::get('/profileCoordinator',function() {
           return view('/coordinator/profileCoordinator');
       })->name('profile');
+
+
+      // Route::get('/coordinator', [CoordinatorController::class, 'index']);
+      // Route::get('/coordinator/alltitle', [CoordinatorController::class, 'alltitle']);
+      // Route::get('/titleinfos/{titleinfo}', 'coordinatorController@show');
+      // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
+      // Route::patch('/titleinfos/{titleinfo}', 'coordinatorController@update');
+      // Route::put('/coordinatoraccept/{titleinfo}', 'coordinatorController@acceptbtn');
+      // Route::put('/coordinatorreject/{titleinfo}', 'coordinatorController@rejectbtn');
     });
 
     // Supervisors
@@ -44,6 +55,14 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::get('/profilePanel',function() {
           return view('/panel/profilePanel');
       })->name('profile');
+
+      Route::get('/panel', [PanelController::class, 'index']);
+      Route::get('/panel/alltitle', [PanelController::class, 'alltitle']);
+      // Route::get('/titleinfos/{titleinfo}', 'coordinatorController@show');
+      // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
+      // Route::patch('/titleinfos/{titleinfo}', 'coordinatorController@update');
+      // Route::put('/coordinatoraccept/{titleinfo}', 'coordinatorController@acceptbtn');
+      // Route::put('/coordinatorreject/{titleinfo}', 'coordinatorController@rejectbtn');
     });
 
     //Student
