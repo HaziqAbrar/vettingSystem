@@ -73,6 +73,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
         })->name('profile');
       
         Route::get('/title','App\Http\Controllers\TitlesController@index')->name('title');
+        Route::get('/title/{title}','App\Http\Controllers\TitlesController@show');
 
     });
 });

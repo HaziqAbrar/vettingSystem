@@ -1,6 +1,6 @@
 <x-sidebarPanel>
 
-
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
           <h2>  Panel! </h2>
 
           <div class="container mt-5" style="border:solid; padding-bottom: 30px;">

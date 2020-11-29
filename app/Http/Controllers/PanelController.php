@@ -15,15 +15,19 @@ class PanelController extends Controller
     public function index()
     {
       //
+
       $titleinfos = titleinfo::all();
+    //   return view('panel.panelIndex', compact('titleinfos'));
       return view('panel.panelIndex', compact('titleinfos'));
+    
+    // dd($titleinfos);
     }
 
     public function alltitle()
     {
       //
       $titleinfos = titleinfo::all();
-      return view('panel.alltitle', compact('titleinfos'));
+      return view('panel.test', compact('titleinfos'));
     }
 
     /**

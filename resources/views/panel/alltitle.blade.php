@@ -1,6 +1,6 @@
-<x-sidebarPanel>
+<x-sidebar>
 
-
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
           <h2>  Panel! </h2>
 
           <div class="container mt-5" style="border:solid; padding-bottom: 30px;">
@@ -33,6 +33,6 @@
               </div>
             </div>
           </div>
+		  
 
-
-</x-sidebarPanel>
+</x-sidebar>

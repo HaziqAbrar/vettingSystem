@@ -16,7 +16,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="/css/style.css">
 
         @livewireStyles
 
@@ -37,7 +37,7 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
                     <a href="dashboard">Home</a>
@@ -96,7 +96,7 @@
             <!-- Page Content  -->
         <div id="content" class="p-4 p-md-4">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light " style="margin-bottom:0">
             <div class="container-fluid">
 
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -218,10 +218,10 @@
 
             </div>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
 
             </main>
         </div>

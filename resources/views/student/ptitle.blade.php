@@ -1,47 +1,15 @@
 <x-sidebar>
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    
-    <!-- W3 Schools -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    
-    <!-- Styles
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-    
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Scripts
-    <script src="{{ asset('js/app.js') }}" defer></script> -->
 
-    <title>@yield('title')</title>
-<style>
-    .card {
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
-          }
-    .card-1 {
-      
-    }
-    .my-custom-scrollbar {
-        position: relative;
-        height: 400px;
-        overflow: auto;
-        }
-        .table-wrapper-scroll-y {
-        display: block;
-        }
-</style>
+
+
+
 
 <div >
   <div class="row">
     <div class="col">
-      <h1 >Postgraduate</h1>
+      <h1 >FYP TITLE</h1>
     </div>
   </div>
   <div class="row">
@@ -50,15 +18,37 @@
       <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Code</th>
-      <th scope="col">Title</th>
-      <th scope="col">Supervisor</th>
-      <th scope="col">WaitingList</th>
+      <th scope="col" class="text-center">Code</th>
+      <th scope="col" class="text-center">Title</th>
+      <th scope="col" class="text-center">Supervisor</th>
+      <th scope="col" class="text-center">WaitingList</th>
       
     </tr>
   </thead>
   <tbody>
+ 
+  @foreach ($titleinfos as $ttl)
+    <tr>
+      <th scope="row" class="text-center">{{$ttl->id}}</th>
+      <td class="text-center">
+      <h5><a href="/title/{{$ttl->id}}"><b>
+      <u >{{$ttl->title}}</u></b></a></h5>
+      </td>
+      <td class="text-center">{{$ttl->name}}</td>
+      <?php 
+     
+       
+     
+       $count1 = DB::table('applications')->where('first choice',$ttl->id)->count('first choice');
+       $count2 = DB::table('applications')->where('second choice',$ttl->id)->count('second choice');
+       $count3 = DB::table('applications')->where('third choice',$ttl->id)->count('third choice');
+      $total = $count1 + $count2 + $count3;
+      ?>
+      <td class="text-center">{{$total}}</td>
   
+    </tr>
+    
+    @endforeach
   
   </tbody>
 </table>

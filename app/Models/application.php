@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class application extends Model
 {
-    use HasFactory;
+    protected $table = 'applications';
+    protected $fillable =['first choice','second choice','third choice','email'];
 }
