@@ -22,6 +22,7 @@ class CreateTitleinfosTable extends Migration
           $table->string('comment')->nullable($value = true);
           $table->enum('status',['Accepted','Rejected','Pending']);
           $table->enum('level',['Postgraduate','Undergraduate']);
+          $table->enum('session',['1','2']);
           $table->timestamps();
       });
     }

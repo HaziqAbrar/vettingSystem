@@ -22,6 +22,7 @@
           								<div class="w3-col m5 l6">{{ $titleinfo->title }}</div>
           								<div class="w3-col m3 l3">{{ $titleinfo->name }}</div>
           								<div class="w3-col m3 l2">{{ $titleinfo->created_at->format('d F Y') }}</div>
+
           								<div class="w3-col m1 l1">
           									<a href="/titleinfos/{{ $titleinfo->id}}" class="w3-button w3-blue w3-round-large" style="padding: 5px;">Details</a>
           								</div>

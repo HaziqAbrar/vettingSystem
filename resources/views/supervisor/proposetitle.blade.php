@@ -20,6 +20,14 @@
           </div>
 
           <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name='email' placeholder="Write email here" value="{{old('email')}}">
+            @error('email')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+          </div>
+
+          <div class="form-group">
             <label for="title">Title</label>
               <input type="text" class="form-control @error('title') is-invalid @enderror" name='title' placeholder="Write title here" value="{{old('title')}}">
               @error('title')
@@ -27,13 +35,42 @@
               @enderror
           </div>
 
+
           <div class="form-group">
-            <label for="email">Email</label>
-              <input type="email" class="form-control @error('email') is-invalid @enderror" name='email' placeholder="Write email here" value="{{old('email')}}">
-              @error('email')
+            <label for="level">Level of Study</label>
+            <select v-model="selected" class="form-control @error('level') is-invalid @enderror" name='level'>
+              <!-- This slot appears above the options from 'options' prop -->
+
+              <option :value=null :disabled>-- Please select an option --</option>
+
+              <!-- These options will appear after the ones from 'options' prop -->
+              <option value="Postgraduate" name='level'>Postgraduate</option>
+              <option value="Undergraduate" name='level'>Undergraduate</option>
+            </select>
+              <!-- <input type="text" class="form-control @error('level') is-invalid @enderror" name='level' placeholder="Write level here" value="{{old('level')}}"> -->
+              @error('level')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
           </div>
+
+
+          <div class="form-group">
+            <label for="level">Session</label>
+            <select v-model="selected" class="form-control @error('session') is-invalid @enderror" name='session'>
+              <!-- This slot appears above the options from 'options' prop -->
+
+              <option :value=null :disabled>-- Please select an option --</option>
+
+              <!-- These options will appear after the ones from 'options' prop -->
+              <option value="1" name='session'>1</option>
+              <option value="2" name='session'>2</option>
+            </select>
+              <!-- <input type="text" class="form-control @error('level') is-invalid @enderror" name='level' placeholder="Write level here" value="{{old('level')}}"> -->
+              @error('level')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+          </div>
+
 
           <div class="form-group">
             <label for="description">Description</label>

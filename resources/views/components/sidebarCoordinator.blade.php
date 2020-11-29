@@ -16,12 +16,18 @@
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+
+        <style type="text/css">
+      		
+      	</style>
     </head>
 
     <body class="font-sans antialiased">
@@ -37,13 +43,10 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                    <a href="\coordinator">Home</a>
-                    </li>
-                    <li>
-                    <a href="/profileCoordinator">Profile</a>
+                    <a href="/panel">Home</a>
                     </li>
                 <!-- <li class="active">
                     <a href="#profileSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
@@ -77,11 +80,9 @@
                 </ul>
                 </li>
                 <li>
-                <a href="#">Portfolio</a>
+                <a href="/profilePanel">Profile</a>
                 </li>
-                <li>
-                <a href="#">Contact</a>
-                </li>
+
                 </ul>
 
                 <div class="footer">
@@ -218,10 +219,10 @@
 
             </div>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
 
             </main>
         </div>
@@ -229,5 +230,5 @@
         @stack('modals')
 
         @livewireScripts
-    </body>
+
 </html>
