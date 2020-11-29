@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class titleinfo extends Model
 {
 
-    protected $fillable = ['name','comment','status','email','title','description'];
+    protected $fillable = ['name','comment','status','email','title','description','level','session'];
     protected $dates = ['created_at'];
 }

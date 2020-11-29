@@ -39,19 +39,23 @@ class SupervisorController extends Controller
      public function store(Request $request)
      {
          //
-         // dd($request->status);
+         // dd($request->level);
          $request->validate([
              'name' => 'required',
-             'title' => 'required',
              'email' => 'email:rfc,dns',
+             'title' => 'required',
+             'level' => 'required',
+             'session' => 'required',
              'description' => 'required'
          ]);
 
 
          titleinfo::create([
              'name' => $request->name,
-             'title' => $request->title,
              'email' => $request->email,
+             'title' => $request->title,
+             'level' => $request->level,
+             'session' => $request->session,
              'description' => $request->description,
 
          ]);

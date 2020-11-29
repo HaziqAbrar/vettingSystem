@@ -31,7 +31,20 @@
   				    <tr class="w3-border">
   				    	<td class="counterCell"></td>
   				      	<td>{{ $titleinfo->title }}</td>
-  				      	<td>Session 2 of 2019/2020</td>
+  				      	<td>Session {{ $titleinfo->session }} of <span id="{{ $titleinfo->id }}">{{ $titleinfo->created_at->format('Y') }}</span>/<span id="nani{{$titleinfo->id }}"></span></td>
+                  <script>
+
+                        var tahun1 =parseInt(document.getElementById("{{ $titleinfo->id }}").innerHTML);
+                        var tahun2;
+                        if ({{ $titleinfo->session }}==1) {
+                           tahun2 = tahun1 + 1;
+                        } else {
+                          tahun2 = tahun1;
+                          tahun1 = tahun1 - 1;
+                        }
+                        document.getElementById("{{  $titleinfo->id }}").innerHTML = tahun1;
+                        document.getElementById("nani{{  $titleinfo->id }}").innerHTML = tahun2;
+                  </script>
   				      	<td>
   				      		@if (empty($titleinfo->comment))
   				      			<p>Not Available</p>
@@ -68,6 +81,8 @@
 
   <script>
     $(document).ready(function(){
+
+
 
       $.ajaxSetup({
         headers: {
