@@ -89,6 +89,9 @@
                     </ul>
                 </li> -->
                 <li>
+                    <a href="/supervisor/teams">My Teams</a>
+                </li>
+                <li>
                     <a href="#">About</a>
                 </li>
                 <li>

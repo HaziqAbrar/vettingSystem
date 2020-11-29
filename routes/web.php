@@ -50,6 +50,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       })->name('profile');
 
       Route::get('/supervisor', [SupervisorController::class, 'index']);
+      Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
       Route::get('/supervisor/create', [SupervisorController::class, 'create']);
       Route::post('/supervisor', [SupervisorController::class, 'store']);
       Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
