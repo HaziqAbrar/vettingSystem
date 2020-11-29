@@ -1,6 +1,6 @@
 <x-sidebarPanel>
 
-    <h2>  Coordinator! </h2>
+
 
     <div class="container mt-5" style="border:solid; padding-bottom: 30px;">
 
