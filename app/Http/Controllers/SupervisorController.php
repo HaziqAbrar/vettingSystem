@@ -6,6 +6,7 @@ use App\Models\titleinfo;
 use App\Models\application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class SupervisorController extends Controller
@@ -25,9 +26,19 @@ class SupervisorController extends Controller
      public function teams()
      {
          //
-         
+         $email = (Auth::user()->getAttribute('email'));
+         $titleinfos = titleinfo::all();
          $teams = application::all();
-         return view('supervisor/teams', compact('teams'));
+         $myteam = titleinfo::all()->where('email',$email);
+        // dd($myteam);
+         return view('supervisor/teams', compact('myteam'),compact('titleinfos'));
+     }
+
+     public function application(titleinfo $title) 
+     {
+         $apps= application::all()->where('first choice',$title->id);
+        //   dd($app);
+        return view ('supervisor/application',compact('apps'),compact('title'));
      }
 
      /**
