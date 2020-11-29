@@ -23,7 +23,8 @@ Route::get('/', function () {
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
     Route::get('/dashboard','App\Http\Controllers\RedirectController@index')->name('dashboard');
-
+   
+    Route::post('/upload','App\Http\Controllers\UploadController@index');
 
     //Coordinators
     Route::group(['middleware'=>['checkrole:coordinator']], function()
@@ -81,6 +82,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
+        Route::get('/portfolio',function() {
+            return view('/student/portfolio');
+        })->name('portfolio');
 
         //display title list
         Route::get('/title','App\Http\Controllers\TitlesController@index')->name('title');

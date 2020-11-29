@@ -37,7 +37,20 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/logo.jpg);"></a>
+                    <!-- <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <img class="img logo rounded-circle mb-5" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                </button> -->
+                    <?php $filename=auth()->user()->getAttribute('avatar')?>
+                   
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/storage/images/{{$filename}});"></a>
+                    
+                    <!--  SHOW UPLOADED IMAGE -->
+                    <!-- <p class="font-italic text-white text-center">
+                    The image uploaded will be rendered inside the box below.
+                    </p> -->
+                    <div class=""><img id="imageResult" src="#" alt="" class="img logo rounded-circle mb-5"></div>
+                    
+                
                 <ul class="list-unstyled components mb-5">
                     <li>
                     <a href="dashboard">Home</a>
@@ -77,7 +90,7 @@
                 </ul>
                 </li>
                 <li>
-                <a href="#">Portfolio</a>
+                <a href="/portfolio">Portfolio</a>
                 </li>
                 <li>
                 <a href="#">Contact</a>
