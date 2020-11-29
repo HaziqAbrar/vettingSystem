@@ -31,7 +31,7 @@ class PanelController extends Controller
     {
       //
       $titleinfos = titleinfo::all();
-      return view('panel.test', compact('titleinfos'));
+      return view('panel.alltitle', compact('titleinfos'));
     }
 
     /**
