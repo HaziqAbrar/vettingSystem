@@ -18,11 +18,11 @@ class RedirectController extends Controller
         $titleinfos = titleinfo::all();
         if ($role=='supervisor')
         {
-            return view ('supervisor.supervisorIndex');
+            return view ('supervisor.supervisorIndex',compact('titleinfos'));
         }
         elseif ($role=='coordinator')
         {
-            return view ('coordinator.coordinatorIndex');
+            return view ('coordinator.coordinatorIndex',compact('titleinfos'));
         }
         elseif ($role=='panel')
         {

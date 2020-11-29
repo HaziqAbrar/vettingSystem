@@ -79,9 +79,15 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
-      
+
+        //display title list
         Route::get('/title','App\Http\Controllers\TitlesController@index')->name('title');
+
+        //display title details
         Route::get('/title/{title}','App\Http\Controllers\TitlesController@show');
+
+        //apply title
+        Route::post('/title','App\Http\Controllers\TitlesController@store');
 
     });
 });
