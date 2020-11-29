@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\PanelController;
+use App\Http\Controllers\SupervisorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,14 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::get('/profileSupervisor',function() {
           return view('/supervisor/profileSupervisor');
       })->name('profile');
+
+      Route::get('/supervisor', [SupervisorController::class, 'index']);
+      Route::get('/supervisor/create', [SupervisorController::class, 'create']);
+      Route::post('/supervisor', [SupervisorController::class, 'store']);
+      Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
+      Route::delete('/supervisor/{titleinfo}', [SupervisorController::class, 'destroy']);
+      Route::get('/titleinfosv/{titleinfo}/edit', [SupervisorController::class, 'edit']);
+      Route::patch('/supervisor/{titleinfo}', [SupervisorController::class, 'update']);
     });
 
     // Panels
@@ -58,11 +67,10 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/panel', [PanelController::class, 'index']);
       Route::get('/panel/alltitle', [PanelController::class, 'alltitle']);
-      // Route::get('/titleinfos/{titleinfo}', 'coordinatorController@show');
-      // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
-      // Route::patch('/titleinfos/{titleinfo}', 'coordinatorController@update');
-      // Route::put('/coordinatoraccept/{titleinfo}', 'coordinatorController@acceptbtn');
-      // Route::put('/coordinatorreject/{titleinfo}', 'coordinatorController@rejectbtn');
+      Route::get('/titleinfos/{titleinfo}', [PanelController::class, 'show']);
+      Route::patch('/titleinfos/{titleinfo}', [PanelController::class, 'update']);
+      Route::put('/coordinatoraccept/{titleinfo}', [PanelController::class, 'acceptbtn']);
+      Route::put('/coordinatorreject/{titleinfo}', [PanelController::class, 'rejectbtn']);
     });
 
     //Student
