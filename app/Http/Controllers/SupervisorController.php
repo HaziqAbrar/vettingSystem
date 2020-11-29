@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\titleinfo;
+use App\Models\application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class SupervisorController extends Controller
 {
@@ -17,6 +20,14 @@ class SupervisorController extends Controller
          //
          $titleinfos = titleinfo::all();
          return view('supervisor.supervisorIndex', compact('titleinfos'));
+     }
+
+     public function teams()
+     {
+         //
+         
+         $teams = application::all();
+         return view('supervisor/teams', compact('teams'));
      }
 
      /**
