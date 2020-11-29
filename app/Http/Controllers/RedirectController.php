@@ -18,7 +18,7 @@ class RedirectController extends Controller
         $titleinfos = titleinfo::all();
         if ($role=='supervisor')
         {
-            return view ('supervisor.supervisorIndex');
+            return view ('supervisor.supervisorIndex',compact('titleinfos'));
         }
         elseif ($role=='coordinator')
         {

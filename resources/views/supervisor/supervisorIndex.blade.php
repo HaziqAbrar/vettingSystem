@@ -35,38 +35,29 @@
   				      	<td>
   				      		@if (empty($titleinfo->comment))
   				      			<p>Not Available</p>
-  							@else
-  								<p>Available</p>
+  							    @else
+  								    <p>Available</p>
   				      		@endif
   				      	</td>
-  				     	<td>{{ $titleinfo->status }}</td>
-  				     	<td class="text-center">
-  				     		<form action="/titleinfosv/{{ $titleinfo->id }}" method="get">
-  				    		{{csrf_field()}}
-  				    			<div >
-  						   			<input type="hidden" name="Details" value="Details"></input>
-  						   			<button type="submit" class="btn btn-info">Details</button>
-  				   				</div>
-  							</form>
+  				     	   <td>{{ $titleinfo->status }}</td>
+    				     	 <td class="text-center">
+    				     	   <form action="/titleinfosv/{{ $titleinfo->id }}" method="get">
+    				    		 {{csrf_field()}}
+    				    			<div >
+    						   			<input type="hidden" name="Details" value="Details"></input>
+    						   			<button type="submit" class="btn btn-info">Details</button>
+    				   				</div>
+    							   </form>
 
-                <form>
-                  <div class="mt-3">
-                    {{csrf_field()}}
-                    <input type="hidden" class="deleteservice" value="{{ $titleinfo->id }}"></input>
-                    <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                    <button type="button" class="btn btn-danger servideletebtn">Delete</button>
-                  </div>
-                </form>
-
-  							<!-- <form action="/supervisor/{{ $titleinfo->id }}" method="post">
-  				    		{{csrf_field()}}
-  				    			<div class="mt-3">
-  				    				<input type="hidden" class="deleteservice" value="{{ $titleinfo->id }}"></input>
-  						   			<input type="hidden" name="Delete" value="Delete"></input>
-  						   			 <button type="button" class="btn btn-danger deletebuton">Delete</button>
-  				   				</div>
-  							</form> -->
-  						</td>
+                      <form>
+                        <div class="mt-3">
+                          {{csrf_field()}}
+                          <input type="hidden" class="deleteservice" value="{{ $titleinfo->id }}"></input>
+                          <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
+                          <button type="button" class="btn btn-danger servideletebtn">Delete</button>
+                        </div>
+                      </form>
+  						     </td>
   				    </tr>
   				@endforeach
 
@@ -92,7 +83,7 @@
 
         swal({
           title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this imaginary file!",
+          text: "Once deleted, you will not be able to recover this data!",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -107,7 +98,7 @@
 
             $.ajax({
               type: "DELETE",
-              url: '/supervisor'+delete_id,
+              url: '/supervisor/'+delete_id,
               data: data,
               success: function(response){
                 swal(response.status, {
