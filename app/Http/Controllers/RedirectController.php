@@ -15,15 +15,15 @@ class RedirectController extends Controller
         {
             return view ('supervisor.supervisorIndex');
         }
-        if ($role=='coordinator')
+        elseif ($role=='coordinator')
         {
             return view ('coordinator.coordinatorIndex');
         }
-        if ($role=='panel')
+        elseif ($role=='panel')
         {
             return view ('panel.panelIndex');
         }
-        if ($role=='student')
+        elseif ($role=='student')
         {
             return view ('ammar\dashboard');
         }

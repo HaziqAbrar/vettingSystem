@@ -20,18 +20,40 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
+
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
 
         <style type="text/css">
+      		table {
+          		counter-reset: tableCount;
+      		}
+      		.counterCell:before {
+          		content: counter(tableCount);
+          		counter-increment: tableCount;
+      		}
+
+
       		.btnstyle a{
       			padding: 10px;
       			margin: 5px;"
       		}
 
-      	</style>
+      		.box{
+      			border: solid;
+      			padding: 0 5px;
+      		}
+
+        </style>
     </head>
 
     <body class="font-sans antialiased">
@@ -224,9 +246,11 @@
             </div>
 
         <script src="/js/jquery.min.js"></script>
-        <script src="/js/popper.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
+        <!-- <script src="/js/popper.js"></script>
+        <script src="/js/bootstrap.min.js"></script> -->
         <script src="/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
             </main>
         </div>
