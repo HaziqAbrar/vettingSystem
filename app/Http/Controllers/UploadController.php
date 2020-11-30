@@ -21,7 +21,7 @@ class UploadController extends Controller
             if ($request->hasFile('image'))
             {
             $filename =$request->image->getClientOriginalName();
-            $request->image->storeAs('images', $filename, 'public');
+            $request->image->storeAs('images', $filename, 'uploads');
             
             user::where('email', Auth::user()->getAttribute('email'))
                      ->update([
@@ -32,7 +32,7 @@ class UploadController extends Controller
           
             
             // dd($filename);
-            return 'uploadeddd';    
+            return redirect ('/profile');    
             }
     }
 }

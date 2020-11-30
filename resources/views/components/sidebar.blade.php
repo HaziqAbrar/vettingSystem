@@ -42,13 +42,13 @@
                                 </button> -->
                     <?php $filename=auth()->user()->getAttribute('avatar')?>
                    
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/storage/images/{{$filename}});"></a>
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/{{$filename}});"></a>
                     
                     <!--  SHOW UPLOADED IMAGE -->
                     <!-- <p class="font-italic text-white text-center">
                     The image uploaded will be rendered inside the box below.
                     </p> -->
-                    <div class=""><img id="imageResult" src="#" alt="" class="img logo rounded-circle mb-5"></div>
+                    <!-- <div class=""><img id="imageResult" src="#" alt="" class="img logo rounded-circle mb-5"></div> -->
                     
                 
                 <ul class="list-unstyled components mb-5">
