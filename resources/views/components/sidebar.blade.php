@@ -17,11 +17,34 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+        <style type="text/css">
+      		table {
+          		counter-reset: tableCount;
+      		}
+      		.counterCell:before {
+          		content: counter(tableCount);
+          		counter-increment: tableCount;
+      		}
+
+
+      		.btnstyle a{
+      			padding: 10px;
+      			margin: 5px;"
+      		}
+
+      		.box{
+      			border: solid;
+      			padding: 0 5px;
+      		}
+
+        </style>
     </head>
 
     <body class="font-sans antialiased">
