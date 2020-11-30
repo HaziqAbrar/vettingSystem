@@ -24,6 +24,11 @@
             <input class="w3-margin btn btn-dark"type="submit" value="Upload" />
             <!-- <a class="w3-margin btn btn-dark" type="submit" role="button">Upload</a> -->
             </form>
+            @if (session('status'))
+          <div class=" alert alert-success">
+            {{ session('status') }}
+          </div>
+        @endif
         </div>
         </div>
         

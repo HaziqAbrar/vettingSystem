@@ -34,20 +34,23 @@
   				      
   				     	  
     				     	 <td class="text-center">
-    				     	   <form action="" method="get">
-    				    		 {{csrf_field()}}
+    				     	   <form action="/supervisor/teams/title/student" method="post">
+    				    		 @csrf
     				    			<div >
-    						   			<input type="hidden" name="Details" value="Details"></input>
-    						   			<button type="submit" class="btn btn-info">Details</button>
+    						   			<input type="hidden" name="email" value="{{$app->email}}"></input>
+    						   			<button type="submit"  class="btn btn-info">Details</button>
+                         <!-- <a  type="submit"  class="btn btn-info">View</button> -->
     				   				</div>
     							   </form>
-
+                 
                       <form>
                         <div class="mt-3">
                           {{csrf_field()}}
                           <input type="hidden" class="deleteservice" value=""></input>
                           <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
                           <button type="button" class="btn btn-danger servideletebtn">Reject</button>
+                       
+
                         </div>
                       </form>
   						     </td>
@@ -59,7 +62,8 @@
         </div> 
   		</div>
           <div align="right" class="w3-margin">
-        <a class="w3-margin btn btn-dark " href="/supervisor/teams" role="button">Back</a>
+        <!-- <a class="w3-margin btn btn-dark " href="/supervisor/teams" role="button">Back</a> -->
+       
         </div>
   	</div>
   </div>

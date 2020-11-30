@@ -43,7 +43,7 @@
                       
                            
                             <td class="text-center">
-                            <a  href="/supervisor/teams/{{$ttl->id}}"  class="btn btn-info">View</button>
+                            <a  href="/title/{{$ttl->id}}"  class="btn btn-info">View</button>
                             </td>
                     </tr>
                 @endforeach
@@ -105,9 +105,7 @@
             </div>
       </div> 
         </div>
-        <div align="right" class="w3-margin">
-      <a class="w3-margin btn btn-dark " href="/supervisor/teams" role="button">Back</a>
-      </div>
+      
     </div>
 </div>
 

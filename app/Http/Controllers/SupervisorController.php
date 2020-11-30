@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\titleinfo;
 use App\Models\application;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,15 @@ class SupervisorController extends Controller
          $apps= application::all()->where('first choice',$title->id);
         //   dd($app);
         return view ('supervisor/application',compact('apps'),compact('title'));
+     }
+     public function applicationindex(request $request) 
+     {
+        $email = $request->email;
+        // dd($email);
+        $student= user::where('email',$email)->first();
+      
+        // dd($student->avatar);
+        return view ('supervisor/student',compact('student'));
      }
 
      /**

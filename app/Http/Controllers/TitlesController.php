@@ -32,7 +32,12 @@ class TitlesController extends Controller
 
     public function store(Request $request)
     {
-       
+       $email= auth()->user()->getAttribute('email');
+       $test= DB::table('applications')->where('email',$email)->value('email');
+    //    dd($test);
+        if ($email==$test){
+            return redirect('/title')->with('status','You have submitted already');
+        }
         $request->validate([
             'first_choice'=>'required|numeric|different:second_choice,third_choice',
             'second_choice'=>'required|numeric|different:third_choice,first_choice',

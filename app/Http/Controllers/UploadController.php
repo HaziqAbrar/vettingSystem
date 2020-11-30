@@ -32,7 +32,7 @@ class UploadController extends Controller
           
             
             // dd($filename);
-            return redirect ('/profile');    
-            }
+            return redirect ('/profile')->with ('status','Profile Updated!');
     }
+}
 }
