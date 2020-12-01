@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\student;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
@@ -24,6 +25,11 @@ class UploadController extends Controller
             $request->image->storeAs('images', $filename, 'uploads');
             
             user::where('email', Auth::user()->getAttribute('email'))
+                     ->update([
+                         'avatar'=> $filename,
+                        
+                     ]);
+            student::where('email', Auth::user()->getAttribute('email'))
                      ->update([
                          'avatar'=> $filename,
                         

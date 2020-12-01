@@ -50,66 +50,60 @@
 
             </table>
             </div>
-            <div class="col">
-           
-            <div class="card w3-hover-shadow ">
-          <div class="w3-margin">
-        <form method="post" action="/title">
-        @csrf
-        <div class="form-group">
-        <label for="first choice"><b>First Choice</b></label>
-        <input autocomplete="off" type="text" class="form-control @error ('first_choice') is-invalid @enderror"
-           id="first choice" placeholder="Enter Title Code" name="first choice">
-        @error('first_choice')
-        <div class="invalid-feedback">{{$message}}</div>
-        @enderror
-        </div>
+          @if ($data==false)
+                  <div class="col">
+                    
+                      <div class="card w3-hover-shadow ">
+                    <div class="w3-margin">
+                  <form method="post" action="/title">
+                  @csrf
+                  <div class="form-group">
+                  <label for="first choice"><b>First Choice</b></label>
+                  <input autocomplete="off" type="text" class="form-control @error ('first_choice') is-invalid @enderror"
+                    id="first choice" placeholder="Enter Title Code" name="first choice">
+                  @error('first_choice')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
+                  </div>
 
-        <form method="post" action="/title">
-        <div class="form-group">
-        <label for="second choice"><b>Second Choice</b></label>
-        <input autocomplete="off" type="text" class="form-control @error ('second_choice') is-invalid @enderror" 
-        id="second choice" placeholder="Enter Title Code" name="second choice">
-        @error('second_choice')
-        <div class="invalid-feedback">{{$message}}</div>
-        @enderror
-        </div>
+                  <form method="post" action="/title">
+                  <div class="form-group">
+                  <label for="second choice"><b>Second Choice</b></label>
+                  <input autocomplete="off" type="text" class="form-control @error ('second_choice') is-invalid @enderror" 
+                  id="second choice" placeholder="Enter Title Code" name="second choice">
+                  @error('second_choice')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
+                  </div>
 
-        <form method="post" action="/title">
-        <div class="form-group">
-        <label for="third choice"><b>Third Choice</b></label>
-        <input autocomplete="off" type="text" class="form-control @error ('third_choice') is-invalid @enderror" 
-        id="third choice" placeholder="Enter Title Code" name="third choice">
-        @error('third_choice')
-        <div class="invalid-feedback">{{$message}}</div>
-        @enderror
-        </div>
-        <button type="submit" class="
-         btn btn-primary" style= "width: 14.7rem; float:right;">Apply!</button>
-         
-        </form>
-        </div>
-        </div>
+                  <form method="post" action="/title">
+                  <div class="form-group">
+                  <label for="third choice"><b>Third Choice</b></label>
+                  <input autocomplete="off" type="text" class="form-control @error ('third_choice') is-invalid @enderror" 
+                  id="third choice" placeholder="Enter Title Code" name="third choice">
+                  @error('third_choice')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
+                  </div>
+                  <button type="submit" class="
+                  btn btn-primary" style= "width: 14.7rem; float:right;">Apply!</button>
+                  
+                  </form>
+                  </div>
+                  </div>
 
-        @if (session('status'))
-          <div class="mt-3 alert alert-success">
-            {{ session('status') }}
-          </div>
-        @endif
-
-    </div>
-  </div>
-            </div>
-            
-            </div>
-            </div>
-      </div> 
-        </div>
-      
-    </div>
+                  @if (session('status'))
+                    <div class="mt-3 alert alert-success">
+                      {{ session('status') }}
+                    </div>
+                  @endif
+   
 </div>
+          @else
+          <h1> dah ada</h1>
+          @endif
 
-</div>
+
 
 
 

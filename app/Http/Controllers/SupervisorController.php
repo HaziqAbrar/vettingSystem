@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\titleinfo;
 use App\Models\application;
 use App\Models\user;
+use App\Models\student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,7 @@ class SupervisorController extends Controller
      {
         $email = $request->email;
         // dd($email);
-        $student= user::where('email',$email)->first();
+        $student= student::where('email',$email)->first();
       
         // dd($student->avatar);
         return view ('supervisor/student',compact('student'));

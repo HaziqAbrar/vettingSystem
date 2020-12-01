@@ -132,31 +132,32 @@ svg {
 <div class="center">
     <div class="card">
     <div class="card-avatar">
-    <div class="ml-3">
-        <img src="/images/{{$student->avatar}}" alt="Avatar" style="width:70%">
+    <div class="ml-5">
+        <img src="/images/{{$student->avatar}}" alt="Avatar" style="width:80%">
         </div>
         
     </div>
     <div class="card-details">
         <div class="name">{{$student->name}}</div>
-        <div class="occupation">Hero</div>
+        <div class="occupation">Department of {{$student->department}}</div>
         
         <div class="card-about">
             <div class="item">
-                <span class="value">25</span>
-                <span class="label">Age</span>
+                <span class="value">Year</span>
+                <span class="label">{{$student->year}}</span>
             </div>
             <div class="item">
-                <span class="value">70 kg </span>
-                <span class="label">Weight</span>
+                <span class="value">CGPA</span>
+                <span class="label">{{$student->cgpa}}</span>
             </div>
             <div class="item">
-                <span class="value">175 cm</span>
-                <span class="label">Height</span>
+                <!-- <span class="value">175 cm</span>
+                <span class="label">Height</span> -->
             </div>
         </div>
         <div class="skills">
-            <span class="value">Immeasurable Physical Prowess, Supernatural Reflexes and Senses, Invulnerability, Indomitable Will, Enhanced Fighting Skill</span>
+            <span class="value">Skills</span>
+            <span class="value">{{$student->skills}}</span>
         </div>
     </div>
     </div>

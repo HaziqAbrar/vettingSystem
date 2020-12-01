@@ -21,6 +21,7 @@ class Students extends Migration
             $table->string('cgpa');
             $table->string('skills');
             $table->string('email')->unique();
+            $table->string('avatar');
             // $table->timestamp('email_verified_at')->nullable();
             // $table->string('password');
             // $table->string('avatar');

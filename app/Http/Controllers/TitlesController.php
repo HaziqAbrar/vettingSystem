@@ -16,12 +16,19 @@ use App\Models\application;
 class TitlesController extends Controller
 {
     public function index(){
-        $role = (Auth::user()->getAttribute('role'));
+        $email = (Auth::user()->getAttribute('email'));
         // dd ($role);
-      
+        $test= DB::table('applications')->where('email',$email)->value('email');
+        
+        if($test==null){
+            $data=false; }
+            else {
+                $data=true;
+            }
+            // dd($data);
          $titleinfos = titleinfo::all();
         // dd($titleinfos);
-            return view ('student/title',compact('titleinfos'));
+            return view ('student/title',compact('titleinfos','email','data'));
     }
 
     public function show(titleinfo $title)
