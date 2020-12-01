@@ -22,11 +22,7 @@ class RedirectController extends Controller
         }
         elseif ($role=='coordinator')
         {
-<<<<<<< HEAD
             return view ('coordinator.coordinatorIndex', compact('titleinfos'));
-=======
-            return view ('coordinator.coordinatorIndex',compact('titleinfos'));
->>>>>>> e68f618c1d5db621a66a88729500bd59864548e3
         }
         elseif ($role=='panel')
         {
