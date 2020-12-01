@@ -55,7 +55,7 @@ class CoordinatorController extends Controller
     public function show(titleinfo $titleinfo)
     {
         //
-        return view('coordinator.titledetail', compact('titleinfo'));
+        return view('coordinator.info', compact('titleinfo'));
     }
 
     /**

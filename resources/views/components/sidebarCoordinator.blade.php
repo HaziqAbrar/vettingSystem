@@ -6,27 +6,46 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Coordinator') }}</title>
+        <title>Coordinator</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="/css/style.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" >
 
         @livewireStyles
 
         <!-- Scripts -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" defer></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js" defer></script>
+
+
         <style type="text/css">
-      		
+        table {
+          counter-reset: tableCount;
+        }
+        .counterCell:before {
+            content: counter(tableCount);
+            counter-increment: tableCount;
+        }
+
       	</style>
     </head>
 
@@ -46,7 +65,7 @@
                     <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                    <a href="/panel">Home</a>
+                    <a href="/coordinator">Home</a>
                     </li>
                 <!-- <li class="active">
                     <a href="#profileSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
@@ -69,7 +88,7 @@
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="#">anjing 1</a>
                     </li>
                     <li>
                         <a href="#">Page 2</a>
@@ -219,10 +238,13 @@
 
             </div>
 
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/popper.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/main.js"></script>
+            <script src="/js/jquery.min.js"></script>
+            <!-- <script src="/js/dataTables.bootstrap4.min.js"></script> -->
+            <script src="/js/jquery-3.5.1.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 
             </main>
         </div>
