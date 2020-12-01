@@ -17,11 +17,34 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+        <style type="text/css">
+      		table {
+          		counter-reset: tableCount;
+      		}
+      		.counterCell:before {
+          		content: counter(tableCount);
+          		counter-increment: tableCount;
+      		}
+
+
+      		.btnstyle a{
+      			padding: 10px;
+      			margin: 5px;"
+      		}
+
+      		.box{
+      			border: solid;
+      			padding: 0 5px;
+      		}
+
+        </style>
     </head>
 
     <body class="font-sans antialiased">
@@ -37,7 +60,20 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/logo.jpg);"></a>
+                    <!-- <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <img class="img logo rounded-circle mb-5" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                </button> -->
+                    <?php $filename=auth()->user()->getAttribute('avatar')?>
+                   
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/{{$filename}});"></a>
+                    
+                    <!--  SHOW UPLOADED IMAGE -->
+                    <!-- <p class="font-italic text-white text-center">
+                    The image uploaded will be rendered inside the box below.
+                    </p> -->
+                    <!-- <div class=""><img id="imageResult" src="#" alt="" class="img logo rounded-circle mb-5"></div> -->
+                    
+                
                 <ul class="list-unstyled components mb-5">
                     <li>
                     <a href="dashboard">Home</a>
@@ -77,7 +113,7 @@
                 </ul>
                 </li>
                 <li>
-                <a href="#">Portfolio</a>
+                <a href="/portfolio">Portfolio</a>
                 </li>
                 <li>
                 <a href="#">Contact</a>

@@ -1,65 +1,59 @@
+
+<!-- testttt -->
+
 <x-sidebar>
 
 
 
-
-
-
-
 <div >
-  <div class="row">
-    <div class="col">
-      <h1 >FYP TITLE</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-8">
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-      <table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" class="text-center">Code</th>
-      <th scope="col" class="text-center">Title</th>
-      <th scope="col" class="text-center">Supervisor</th>
-      <th scope="col" class="text-center">Waiting List</th>
-      
-      
-    </tr>
-  </thead>
-  <tbody>
- 
-  @foreach ($titleinfos as $ttl)
-    <tr>
-      <th scope="row" class="text-center">{{$ttl->id}}</th>
-      <td class="text-center"  >
-      
-      <h5><a href="/title/{{$ttl->id}}"><b>
-      <u >{{$ttl->title}}</u></b></a></h5>
-      </td>
-      
+        <div class=row>
+        <h1 class="mt-5 ml-5 text-center">
+            FYP TITLE
+            </h1>
+          </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12">
+            <div class="row">
+            <div class="col-9">
+            <table class="w3-table w3-hoverable mt-3">
+                <thead>
+                      <tr class="w3-grey w3-border">
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Supervisor</th>
+                        <th class="text-center">Waiting List</th>
+                        <th class="text-center">Details</th>
+                        
+                        
+                       
+                      </tr>
+                </thead>
+                @foreach ($titleinfos as $ttl)
+                    <tr class="w3-border">
+                        
+                          <td> {{$ttl->id}}</td>
+                          <td> {{$ttl->title}}</td>
+                          <td> {{$ttl->name}}</td>
 
-      <td class="text-center">{{$ttl->name}}</td>
-      <?php 
-     $count = DB::table('applications')->where('first choice',$ttl->id)->count('first choice');
-     ?>
-      <td class="text-center">{{$count}}</td>
-     
-      
-    
+                          <?php 
+                           $count = DB::table('applications')->where('first choice',$ttl->id)->count('first choice');
+                          ?>
+                        <td class="text-center">{{$count}}</td>
+                          
+                      
+                           
+                            <td class="text-center">
+                            <a  href="/title/{{$ttl->id}}"  class="btn btn-info">View</button>
+                            </td>
+                    </tr>
+                @endforeach
 
-  
-    </tr>
-    
-    @endforeach
-  
-  </tbody>
-</table>
-    </div>
-    </div>
-
-    <div class="col">
-    <div class="card w3-hover-shadow ">
-    <div class="w3-margin">
+            </table>
+            </div>
+            <div class="col">
+           
+            <div class="card w3-hover-shadow ">
+          <div class="w3-margin">
         <form method="post" action="/title">
         @csrf
         <div class="form-group">
@@ -105,11 +99,18 @@
 
     </div>
   </div>
+            </div>
+            
+            </div>
+            </div>
+      </div> 
+        </div>
+      
+    </div>
 </div>
 
-    
+</div>
 
-   
 
 
 </x-sidebar>

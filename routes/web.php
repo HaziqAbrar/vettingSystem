@@ -23,7 +23,8 @@ Route::get('/', function () {
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
     Route::get('/dashboard','App\Http\Controllers\RedirectController@index')->name('dashboard');
-
+   
+    Route::post('/upload','App\Http\Controllers\UploadController@index');
 
     //Coordinators
     Route::group(['middleware'=>['checkrole:coordinator']], function()
@@ -51,6 +52,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/supervisor', [SupervisorController::class, 'index']);
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
+      Route::get('/supervisor/teams/{title}',[SupervisorController::class, 'application']);
+
+      Route::post('/supervisor/teams/title/student',[SupervisorController::class, 'applicationindex']);
       Route::get('/supervisor/create', [SupervisorController::class, 'create']);
       Route::post('/supervisor', [SupervisorController::class, 'store']);
       Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
@@ -80,6 +84,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
+        Route::get('/portfolio',function() {
+            return view('/student/portfolio');
+        })->name('portfolio');
 
         //display title list
         Route::get('/title','App\Http\Controllers\TitlesController@index')->name('title');
