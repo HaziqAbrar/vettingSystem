@@ -78,9 +78,7 @@
                     <li>
                     <a href="dashboard">Home</a>
                     </li>
-                    <li>
-                    <a href="/profile">Profile</a>
-                    </li>
+                   
                 <!-- <li class="active">
                     <a href="#profileSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
                     <ul class="collapse list-unstyled" id="profileSubmenu">
@@ -98,7 +96,7 @@
                 <li>
                     <a href="/title">Title</a>
                 </li>
-                <li>
+                <!-- <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
@@ -111,13 +109,16 @@
                         <a href="#">Page 3</a>
                     </li>
                 </ul>
-                </li>
+                </li> -->
                 <li>
                 <a href="/portfolio">Portfolio</a>
                 </li>
                 <li>
+                    <a href="/profile">Account</a>
+                    </li>
+                <!-- <li>
                 <a href="#">Contact</a>
-                </li>
+                </li> -->
                 </ul>
 
                 <div class="footer">
