@@ -84,9 +84,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
-        Route::get('/portfolio',function() {
-            return view('/student/portfolio');
-        })->name('portfolio');
+        Route::get('/portfolio','App\Http\Controllers\StudentController@index');
+        Route::post('/portfolio','App\Http\Controllers\StudentController@update');
+
 
         //display title list
         Route::get('/title','App\Http\Controllers\TitlesController@index')->name('title');

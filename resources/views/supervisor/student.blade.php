@@ -130,6 +130,7 @@ svg {
 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500" rel="stylesheet">
 <div class="center">
+
     <div class="card">
     <div class="card-avatar">
     <div class="ml-5">
@@ -161,7 +162,10 @@ svg {
         </div>
     </div>
     </div>
-</div>
+   <div  class="w3-margin">
+      <a class="w3-margin btn btn-dark " href="/supervisor/teams" role="button">Back</a>
+   </div>
+  
 </body>
 </html> 
 </x-sidebarSupervisor>

@@ -62,7 +62,8 @@
         </div> 
   		</div>
           <div align="right" class="w3-margin">
-        <!-- <a class="w3-margin btn btn-dark " href="/supervisor/teams" role="button">Back</a> -->
+        <a class="w3-margin btn btn-dark " href="/supervisor/teams" role="button">Back</a>
+       
        
         </div>
   	</div>
