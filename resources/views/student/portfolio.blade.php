@@ -1,4 +1,4 @@
-<x-sidebar>
+<x-sidebarStudent>
 <style>
 input[type=text], select {
   width: 100%;
@@ -65,4 +65,4 @@ input[type=submit]:hover {
 
 <x-jet-section-border />
 
-</x-sidebar>
+</x-sidebarStudent>

@@ -1,4 +1,4 @@
-<x-sidebar>
+<x-sidebarStudent>
 
 <div class="w3-container ">
  
@@ -28,4 +28,4 @@
 </body>
 </html>
 
-</x-sidebar>
+</x-sidebarStudent>

@@ -60,18 +60,14 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <!-- <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                                    <img class="img logo rounded-circle mb-5" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                </button> -->
-                    <?php $filename=auth()->user()->getAttribute('avatar')?>
+                  
+                    <?php $filename=auth()->user()->getAttribute('avatar');
+                    $name=auth()->user()->getAttribute('name');?>
                    
                     <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/{{$filename}});"></a>
+                    <h3 class="text-light"><a >{{$name}}</a></h3>
                     
-                    <!--  SHOW UPLOADED IMAGE -->
-                    <!-- <p class="font-italic text-white text-center">
-                    The image uploaded will be rendered inside the box below.
-                    </p> -->
-                    <!-- <div class=""><img id="imageResult" src="#" alt="" class="img logo rounded-circle mb-5"></div> -->
+              
                     
                 
                 <ul class="list-unstyled components mb-5">
@@ -79,46 +75,18 @@
                     <a href="dashboard">Home</a>
                     </li>
                    
-                <!-- <li class="active">
-                    <a href="#profileSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
-                    <ul class="collapse list-unstyled" id="profileSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                    </ul>
-                </li> -->
+
                 <li>
                     <a href="/title">Title</a>
                 </li>
-                <!-- <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-                </li> -->
+            
                 <li>
-                <a href="/portfolio">Portfolio</a>
+                <a href="/portfolio">About</a>
                 </li>
                 <li>
                     <a href="/profile">Account</a>
                     </li>
-                <!-- <li>
-                <a href="#">Contact</a>
-                </li> -->
+              
                 </ul>
 
                 <div class="footer">
@@ -144,22 +112,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-                </div> -->
+          
 
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-4">
@@ -183,14 +136,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <!-- Account Management -->
-                            <!-- <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
-                            </div> -->
-
-                            <!-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
-                            </x-jet-dropdown-link> -->
+                        
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -200,36 +146,7 @@
 
                             <div class="border-t border-gray-100"></div>
 
-                            <!-- Team Management -->
-                            @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Team') }}
-                                </div>
-
-                                <!-- Team Settings -->
-                                <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                    {{ __('Team Settings') }}
-                                </x-jet-dropdown-link>
-
-                                @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                    <x-jet-dropdown-link href="{{ route('teams.create') }}">
-                                        {{ __('Create New Team') }}
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                <div class="border-t border-gray-100"></div>
-
-                                <!-- Team Switcher -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Switch Teams') }}
-                                </div>
-
-                                @foreach (Auth::user()->allTeams() as $team)
-                                    <x-jet-switchable-team :team="$team" />
-                                @endforeach
-
-                                <div class="border-t border-gray-100"></div>
-                            @endif
+                            
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" >

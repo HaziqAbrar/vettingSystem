@@ -21,7 +21,7 @@ class StudentController extends Controller
         // dd ($role);
         $student= student::where('email',$email)->first();
 
-        return view('/student/portfolio',compact('student'));
+        return view('/student/test',compact('student'));
         
     }
 
