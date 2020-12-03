@@ -29,11 +29,13 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
         if ($input['role']=='student'){
         student::create([
-            'name' => null,
-            'department' => null,
-            'year' => null,
-            'cgpa' => null,
-            'skills' => null,
+            'name' => 'Your Full Name',
+            'department' => $input['department'],
+            'level' => $input['level'],
+            'year' => '3',
+            'cgpa' => 'Your CGPA',
+            'skills' => 'Your Skills',
+            'about' => 'About Yourself',
             'email' => $input['email'],
             'avatar'=>'default-avatar.png',
 
@@ -43,6 +45,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'role' => $input['role'],
+            'level' => $input['level'],
             'department' => $input['department'],
             'password' => Hash::make($input['password']),
             'avatar'=>'default-avatar.png',

@@ -30,36 +30,96 @@
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Level:</strong> Undergraduate</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Level:</strong> {{$student->level}}</li>
                   <li><i class="icofont-rounded-right"></i> <strong>CGPA:</strong> {{$student->cgpa}}</li>
                   <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> {{$student->email}}</li>
                 </ul>
               </div>
             </div>
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+              {{$student->about}}
             </p>
           </div>
         </div>
 
       </div>
     </section><!-- End About Section -->
-
+    <div class="mr-5" align="center">
+    <a class="w3-margin btn btn-dark message" href="#edit" role="button">Edit</a>
+    <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+    </div>
    
+    <!-- <a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a> -->
 
-    <!-- ======= Skills Section ======= -->
-    
+    <!-- ======= Contact Section ======= -->
+    <section id="edit" class="edit">
+      <div class="container">
 
-    
+        <div class="section-title">
+          <h2>Update</h2>
+          
+        </div>
 
-   
-    
+        
 
-    
+          <div class="">
+            <form action="/portfolio" method="post" role="form" >
+            @csrf
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" class="form-control" name="name" id="name" value="{{$student->name}}" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validate"></div>
+            </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="department">Department</label>
+                  <input type="text" name="department" class="form-control" id="department" value="{{$student->department}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="level">Level</label>
+                  <input type="text" class="form-control" name="level" id="level" value="{{$student->level}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="cgpa">CGPA</label>
+                  <input type="text" class="form-control" name="cgpa" id="cgpa" value="{{$student->cgpa}}" data-rule="minlen:1" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="year">Year</label>
+                  <input type="text" class="form-control" name="year" id="year" value="{{$student->year}}" data-rule="minlen:1" data-msg="Please enter at least 1 chars" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="skills">Skills</label>
+                  <input type="text" class="form-control" name="skills" id="skills" value="{{$student->skills}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label for="about">About Yourself</label>
+                <textarea type="text" class="form-control" name="about" id="about" rows="10" value="{{$student->about}}" data-rule="required" data-msg="Please write something for us">{{$student->about}}</textarea>
+                <div class="validate"></div>
+              </div>
+             
+              <div class="text-center"><button class="w3-margin btn btn-dark message" type="submit" >Update</button>
+              <!-- <input type="submit" value="Update"> -->
+              </div>
+              <!-- <div class="mr-5" align="center">
+              <a class="w3-margin btn btn-dark message" type="submit"  role="button">Update</a>
+              </div> -->
+            </form>
+          </div>
 
-    
+        </div>
 
- 
+      </div>
+      @if (session('status'))
+          <div class=" alert alert-success">
+            {{ session('status') }}
+          </div>
+        @endif
+    </section><!-- End Contact Section -->
 
 </x-sidebarStudent>

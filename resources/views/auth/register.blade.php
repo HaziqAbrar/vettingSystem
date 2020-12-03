@@ -41,8 +41,15 @@
                     <option value="AI">AI</option>
                     <option value="MM">MM</option>
                     <option value="STK">STK</option>
-                    <!-- <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option> -->
+                </select>
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="level" value="{{ __('Level') }}" />
+                <select id="level" class="form-select rounded-md shadow-sm mt-1 block w-full" type="level" name="level"  required >
+                    <option value="">Select Level</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Undergraduate">Undergraduate</option>
+                   
                 </select>
             </div>
 

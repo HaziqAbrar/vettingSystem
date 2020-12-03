@@ -27,15 +27,20 @@ class StudentController extends Controller
 
     public function update(request $request){
         // dd($request->email);
+        // dd($request);
         student::where('email', Auth::user()->getAttribute('email'))
         ->update([
             'name'=> $request->name,
             'department'=> $request->department,
             'year'=> $request->year,
             'cgpa'=> $request->cgpa,
+            'level'=> $request->level,
             'skills'=> $request->skills,
+            'about'=> $request->about,
            
         ]);
+        // dd($request);
+        
         return redirect ('/portfolio')->with ('status','Updated!');
 
     }
