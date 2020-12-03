@@ -2,27 +2,7 @@
 <!-- testttt -->
 
 <x-sidebarStudent>
-<head>
-	<title>Table V01</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/table/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/table/css/main.css">
-<!--===============================================================================================-->
-</head>
+
 
 
 <div class="container-table100">
@@ -38,7 +18,7 @@
         <div class="limiter">
 			    <div class="wrap-table100">
 				    <div class="table100">
-              <table class="w3-table w3-hoverable mt-3">
+              <table class="w3-table w3-hoverable mt-3 ">
                 <thead>
                   <tr class="table100-head">
                     <th>Code</th>
@@ -141,7 +121,7 @@
           </div>
   
         @else
-        <h1> dah ada</h1>
+        <h1></h1>
         @endif
       
   </div>

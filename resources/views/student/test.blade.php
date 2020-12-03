@@ -1,6 +1,7 @@
 <x-sidebarStudent>
 
-
+<div class="container-table100">
+  
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
@@ -20,43 +21,60 @@
             <p class="font-italic">
             
             </p>
-            <div class="row"> 
-              <div class="col-lg-6">
+            <div class="row mt-2"> 
+              <div class="col-lg-5">
                 <ul>
+                  <li> <strong></strong> </li>
+                  <li> <strong></strong> </li>
                   <li><i class="icofont-rounded-right"></i> <strong>Department:</strong> {{$student->department}}</li>
+                  <li> <strong></strong> </li>
                   <li><i class="icofont-rounded-right"></i> <strong>Year:</strong> {{$student->year}}</li>
+                  <li> <strong></strong> </li>
                   <li><i class="icofont-rounded-right"></i> <strong>Skills:</strong> {{$student->skills}}</li>
+                  
+                  
+            
                 </ul>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-5">
                 <ul>
+                  <li> <strong></strong> </li>
+                  <li> <strong></strong> </li>
                   <li><i class="icofont-rounded-right"></i> <strong>Level:</strong> {{$student->level}}</li>
+                  <li> <strong></strong> </li>
                   <li><i class="icofont-rounded-right"></i> <strong>CGPA:</strong> {{$student->cgpa}}</li>
+                  <li> <strong></strong> </li>
                   <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> {{$student->email}}</li>
                 </ul>
               </div>
             </div>
-            <p>
-              {{$student->about}}
-            </p>
+            <div class="row">
+              <div class="col-lg">
+              <ul>
+              <li> <strong></strong> </li>
+              <li><i class="icofont-rounded-right"></i><strong> About me: </strong>{{$student->about}}</li>
+              </ul>
+              </div>
+            </div>
+           
           </div>
         </div>
 
       </div>
-    </section><!-- End About Section -->
     <div class="mr-5" align="center">
     <a class="w3-margin btn btn-dark message" href="#edit" role="button">Edit</a>
     <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
     </div>
+    </section><!-- End About Section -->
    
     <!-- <a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a> -->
 
     <!-- ======= Contact Section ======= -->
     <section id="edit" class="edit">
-      <div class="container">
+      <div class="container" style="margin-top:80px">
 
         <div class="section-title">
-          <h2>Update</h2>
+          <h1></h1>
           
         </div>
 
@@ -121,5 +139,5 @@
           </div>
         @endif
     </section><!-- End Contact Section -->
-
+</div>
 </x-sidebarStudent>

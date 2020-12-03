@@ -18,7 +18,7 @@ class CreateTitleinfosTable extends Migration
           $table->string('name');
           $table->string('email');
           $table->string('title')->unique();
-          $table->string('description');
+          $table->text('description');
           $table->string('comment')->nullable($value = true);
           $table->enum('status',['Accepted','Rejected','Pending']);
           $table->enum('level',['Postgraduate','Undergraduate']);

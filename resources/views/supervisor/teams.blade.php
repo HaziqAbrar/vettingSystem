@@ -7,7 +7,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-12">
             <h1 class="mt-5 text-center">
-            My Teams
+            My Titles
             </h1>
           
             

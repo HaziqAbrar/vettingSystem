@@ -45,11 +45,12 @@ class SupervisorController extends Controller
      public function applicationindex(request $request) 
      {
         $email = $request->email;
-        // dd($email);
+        $first= application::where('email',$email)->first();
+        // dd($first['first choice']);
         $student= student::where('email',$email)->first();
       
         // dd($student->avatar);
-        return view ('supervisor/student',compact('student'));
+        return view ('supervisor/student',compact('student','first'));
      }
 
      /**

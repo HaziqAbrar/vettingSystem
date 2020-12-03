@@ -89,7 +89,7 @@
                     </ul>
                 </li> -->
                 <li>
-                    <a href="/supervisor/teams">My Teams</a>
+                    <a href="/supervisor/teams">My Titles</a>
                 </li>
                 <li>
                     <a href="#">About</a>
