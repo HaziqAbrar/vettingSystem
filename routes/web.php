@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
     Route::get('/dashboard','App\Http\Controllers\RedirectController@index')->name('dashboard');
-   
+
     Route::post('/upload','App\Http\Controllers\UploadController@index');
 
     //Coordinators

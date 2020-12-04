@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\titleinfo;
+use App\Models\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CoordinatorController extends Controller
 {
@@ -15,6 +18,7 @@ class CoordinatorController extends Controller
     public function index()
     {
       $titleinfos = titleinfo::all();
+      dd($titleinfos);
       return view('coordinator.coordinatorIndex', compact('titleinfos'));
     }
 
@@ -54,6 +58,7 @@ class CoordinatorController extends Controller
      */
     public function show(titleinfo $titleinfo)
     {
+      // dd($titleinfo);
         //
         return view('coordinator.info', compact('titleinfo'));
     }
