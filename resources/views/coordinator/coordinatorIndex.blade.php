@@ -103,9 +103,9 @@
                                               </div>
                                           <div class="modal-body">
                                               <center>
-                                              <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                                              <h3 class="media-heading">Joe Sixpack <small>USA</small></h3>
-                                              <span><strong>Skills: </strong></span>
+                                              <img src="" alt="gambar supervisor" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                                              <h3 class="media-heading"> {{ $titleinfo->session }} <small> {{ $titleinfo->name }} </small></h3>
+                                              <span><strong>Tools needed: </strong></span>
                                                   <span class="label label-warning">HTML5/CSS</span>
                                                   <span class="label label-info">Adobe CS 5.5</span>
                                                   <span class="label label-info">Microsoft Office</span>
@@ -127,8 +127,9 @@
                                                     <button type="button" class="btn btn-danger serviassignbtn">Assign</button>
                                                   </div>
                                                 </form>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+                                                <div class="mt-3">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
                                           </div>
                                       </div>
                                   </div>
