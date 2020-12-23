@@ -33,14 +33,14 @@ class SupervisorController extends Controller
          $teams = application::all();
          $myteam = titleinfo::all()->where('email',$email);
         // dd($myteam);
-         return view('supervisor/teams', compact('myteam'),compact('titleinfos'));
+         return view('supervisor/teamManagement/teams', compact('myteam'),compact('titleinfos'));
      }
 
      public function application(titleinfo $title) 
      {
          $apps= application::all()->where('first choice',$title->id);
         //   dd($app);
-        return view ('supervisor/application',compact('apps'),compact('title'));
+        return view ('supervisor/teamManagement/application',compact('apps'),compact('title'));
      }
      public function applicationindex(request $request) 
      {
@@ -50,7 +50,7 @@ class SupervisorController extends Controller
         $student= student::where('email',$email)->first();
       
         // dd($student->avatar);
-        return view ('supervisor/student',compact('student','first'));
+        return view ('supervisor/teamManagement/student',compact('student','first'));
      }
 
      /**
