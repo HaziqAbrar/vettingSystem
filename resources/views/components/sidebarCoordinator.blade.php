@@ -99,7 +99,7 @@
                 </ul>
                 </li>
                 <li>
-                <a href="/profilePanel">Profile</a>
+                <a href="/profileCoordinator">Profile</a>
                 </li>
 
                 </ul>
