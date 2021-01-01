@@ -34,7 +34,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       })->name('profile');
 
 
-      // Route::get('/coordinator', [CoordinatorController::class, 'index']);
+      Route::get('/coordinator', [CoordinatorController::class, 'index']);
       // Route::get('/coordinator/alltitle', [CoordinatorController::class, 'alltitle']);
       Route::get('/info/{titleinfo}', [CoordinatorController::class, 'show']);
       // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
