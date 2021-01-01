@@ -7,7 +7,7 @@
           Code {{$title->id}} : {{$title->title}}
     </h1>
     <div class="text-center mt-3">
-  				<a href="/supervisor/teams/meeting"><button type="button" class="btn btn-primary">Arrange Meeting</button></a>
+  				<a href="/supervisor/teams/meeting"><button type="button" class="btn btn-primary">Notify Meeting</button></a>
   			</div>
   </div>
 </div>
@@ -52,7 +52,7 @@
 
 
             						     </td>
-                             <td>
+                             <td class="text-center">
                              <form>
                               <div class="">
                                 {{csrf_field()}}

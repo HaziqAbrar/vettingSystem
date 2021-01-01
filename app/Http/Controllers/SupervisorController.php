@@ -73,6 +73,32 @@ class SupervisorController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
+     public function notify(Request $request)
+     {
+         //
+         // dd($request->level);
+         $request->validate([
+             'platform' => 'required',
+            //  'email' => 'email:rfc,dns',
+             'notice' => 'required',
+            //  'level' => 'required',
+            //  'session' => 'required',
+            //  'description' => 'required'
+         ]);
+
+
+         titleinfo::create([
+             'name' => $request->name,
+             'email' => $request->email,
+             'title' => $request->title,
+             'level' => $request->level,
+             'session' => $request->session,
+             'description' => $request->description,
+
+         ]);
+
+         return redirect('/supervisor')->with('status','Title Proposed!');
+     }
      public function store(Request $request)
      {
          //

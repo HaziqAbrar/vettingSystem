@@ -7,9 +7,9 @@
     Notify Student Meeting
     </h1>
     <div class="text-center">
-    <a >Here is for you to notify the preferred students to propose a meeting with you.</a> 
+    <a >Here is for you to notify the students to propose a meeting with you. Students who got the notification will then propose a meeting with you and provide the link for the meeting.</a> 
     </div>
-    <form method="post" action="/supervisor">
+    <form method="post" action="/supervisor/teams/meeting">
       @csrf
 
       <!-- <div class="form-group mt-3">
@@ -34,10 +34,10 @@
               @enderror
         </div> -->
       <div class="form-group mt-3">
-        <label for="name">Link</label>
-          <input type="text" class="form-control @error('Link') is-invalid @enderror" name="Link" >
+        <label for="platform">Platform you prefer</label>
+          <input type="text" class="form-control @error('platform') is-invalid @enderror" name="platform" >
           <!-- <input type="datetime-local" id="birthdaytime" name="birthdaytime"> -->
-          @error('Link')
+          @error('platform')
             <div class="invalid-feedback">{{ $message }}</div>
           @enderror
       </div>
@@ -53,26 +53,18 @@
 
 
       <div class="form-group">
-        <label for="description">Description</label>
-        <textarea rows="10" class="form-control @error('description') is-invalid @enderror" name="description"  id="demo" >{{old('description')}}</textarea>
-        @error('description')
+        <label for="notice">Notice</label>
+        <textarea rows="10" class="form-control @error('notice') is-invalid @enderror" name="notice"  placeholder="(Your available time and date)" >{{old('description')}}</textarea>
+        @error('notice')
             <div class="invalid-feedback">{{ $message }}</div>
           @enderror
       </div>
 
-      <button onclick="myFunction()">Try it</button>
 
 
 
-<script>
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
-document.getElementById("demo").innerHTML = fruits;
 
-function myFunction() {
-  fruits.push("Kiwi");
-  document.getElementById("demo").innerHTML = fruits;
-}
-</script>
+
 
       <div class="text-left mt-3">
         <button type="submit" class="btn btn-primary">Send</button>
@@ -80,7 +72,7 @@ function myFunction() {
 
 
     </form>
-    <button onclick="myFunction()">Try it</button>
+
   </div>
 </div>
 </div>
