@@ -168,8 +168,9 @@
                             <p class="text-center">Don't have an account? <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></p>
                         @endif
                     @endif
+                  @endif
                 </div>
-            @endif
+
 
 
 
@@ -198,10 +199,10 @@
      </div>
  </div>
 </div>
-</div>
-</section>
 
-<!-- <section class="ftco-section">
+</section>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<section class="ftco-section">
    <div class="container">
       <div class="row justify-content-center pb-4">
           <div class="col-md-12 heading-section text-center ftco-animate">
@@ -263,7 +264,9 @@
 </div>
 </div>
 </div>
-</section> -->
+</section>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <!-- <section class="ftco-section bg-light">
    <div class="container">
@@ -276,7 +279,7 @@
     <div class="row">
        <div class="col-md-4 ftco-animate">
           <div class="project-wrap">
-             <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
+             <a href="#" class="img" style="background-image: url({{ asset('images/try.jpg') }});">
                 <span class="price">Software</span>
             </a>
             <div class="text p-4">
@@ -291,7 +294,7 @@
    </div>
    <div class="col-md-4 ftco-animate">
       <div class="project-wrap">
-         <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
+         <a href="#" class="img" style="background-image: url({{ asset('images/try.jpg') }});">
             <span class="price">Software</span>
         </a>
         <div class="text p-4">
@@ -306,7 +309,7 @@
 </div>
 <div class="col-md-4 ftco-animate">
   <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
+     <a href="#" class="img" >
         <span class="price">Software</span>
     </a>
     <div class="text p-4">
@@ -322,7 +325,7 @@
 
 <div class="col-md-4 ftco-animate">
   <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
+     <a href="#" class="img" style="background-image: url({{ asset('images/try.jpg') }});">
         <span class="price">Software</span>
     </a>
     <div class="text p-4">
@@ -337,7 +340,7 @@
 </div>
 <div class="col-md-4 ftco-animate">
   <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
+     <a href="#" class="img" style="background-image: url({{ asset('images/try.jpg') }});">
         <span class="price">Software</span>
     </a>
     <div class="text p-4">
@@ -352,7 +355,7 @@
 </div>
 <div class="col-md-4 ftco-animate">
   <div class="project-wrap">
-     <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
+     <a href="#" class="img" style="background-image: url({{ asset('images/try.jpg') }});">
         <span class="price">Software</span>
     </a>
     <div class="text p-4">
@@ -369,7 +372,9 @@
 </div>
 </section> -->
 
-<!-- <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);">
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({{ asset('images/BG.png') }});">
  <div class="overlay"></div>
  <div class="container">
     <div class="row">
@@ -411,18 +416,22 @@
 </div>
 </div>
 </div>
-</section> -->
+</section>
 
-<!-- <section class="ftco-section ftco-about img">
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<section class="ftco-section ftco-about img">
    <div class="container">
       <div class="row d-flex">
          <div class="col-md-12 about-intro">
             <div class="row">
                <div class="col-md-6 d-flex">
                   <div class="d-flex about-wrap">
-                     <div class="img d-flex align-items-center justify-content-center" style="background-image:url(images/about-1.jpg);">
+                     <div class="img d-flex align-items-center justify-content-center" style="background-image:url({{ asset('images/BG.png') }});">
                      </div>
-                     <div class="img-2 d-flex align-items-center justify-content-center" style="background-image:url(images/about.jpg);">
+                     <div class="img-2 d-flex align-items-center justify-content-center" style="background-image:url({{ asset('images/BG.png') }});">
                      </div>
                  </div>
              </div>
@@ -440,8 +449,9 @@
  </div>
 </div>
 </div>
-</section> -->
+</section>
 
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <!-- <section class="ftco-section testimony-section bg-light">
    <div class="overlay" style="background-image: url(images/bg_2.jpg);"></div>
