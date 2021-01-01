@@ -39,12 +39,15 @@ class SupervisorController extends Controller
      public function application(titleinfo $title) 
      {
          $apps= application::all()->where('first choice',$title->id);
-        //   dd($app);
-        return view ('supervisor/teamManagement/application',compact('apps'),compact('title'));
+        $student=student::all();
+       
+        // return view ('supervisor/teamManagement/application',compact('apps','title'));
+        return view ('supervisor/teamManagement/test',compact('apps','title','student'));
      }
-     public function applicationindex(request $request) 
+     public function applicationindex(application $student) 
      {
-        $email = $request->email;
+         
+        $email = $student->email;
         $first= application::where('email',$email)->first();
         // dd($first['first choice']);
         $student= student::where('email',$email)->first();
@@ -95,6 +98,14 @@ class SupervisorController extends Controller
          ]);
 
          return redirect('/supervisor')->with('status','Title Proposed!');
+     }
+     public function test (){
+        $titleinfos = titleinfo::all();
+        return view('/supervisor/teamManagement/test', compact('titleinfos'));
+     }
+     public function meet (){
+        $titleinfos = titleinfo::all();
+        return view('/supervisor/teamManagement/meet', compact('titleinfos'));
      }
 
      /**
@@ -153,8 +164,18 @@ class SupervisorController extends Controller
      public function destroy(titleinfo $titleinfo)
      {
          //
+         
          titleinfo::destroy($titleinfo->id);
          // return redirect('/supervisor')->with('status','Title Deleted!');
          return response()->json(['status'=>'Title Deleted!']);
+     }
+
+     public function reject(application $app)
+     {
+         //
+         
+         application::destroy($app->id);
+         // return redirect('/supervisor')->with('status','Title Deleted!');
+         return response()->json(['status'=>'Student Rejected!']);
      }
 }

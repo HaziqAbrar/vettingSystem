@@ -52,13 +52,16 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/supervisor', [SupervisorController::class, 'index']);
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
+      Route::get('/supervisor/teams/meeting', [SupervisorController::class, 'meet']);
+      Route::get('/supervisor/test', [SupervisorController::class, 'test']);
       Route::get('/supervisor/teams/{title}',[SupervisorController::class, 'application']);
 
-      Route::post('/supervisor/teams/title/student',[SupervisorController::class, 'applicationindex']);
+      Route::get('/supervisor/teams/title/{student}',[SupervisorController::class, 'applicationindex']);
       Route::get('/supervisor/create', [SupervisorController::class, 'create']);
       Route::post('/supervisor', [SupervisorController::class, 'store']);
       Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
       Route::delete('/supervisor/{titleinfo}', [SupervisorController::class, 'destroy']);
+      Route::delete('/supervisor/teamManagement/{app}', [SupervisorController::class, 'reject']);
       Route::get('/titleinfosv/{titleinfo}/edit', [SupervisorController::class, 'edit']);
       Route::patch('/supervisor/{titleinfo}', [SupervisorController::class, 'update']);
     });

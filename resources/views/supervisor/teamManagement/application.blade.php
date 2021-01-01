@@ -24,6 +24,7 @@
   			        	
   			        	
   			        	<th class="text-center">Details</th>
+  			        	<th class="text-center">Action</th>
   			      	</tr>
   			    </thead>
   			    @foreach($apps as $app)
@@ -43,17 +44,30 @@
     				   				</div>
     							   </form>
                  
-                      <form>
+                     
+  						     </td>
+                   <td> 
+                   <form>
                         <div class="mt-3">
                           {{csrf_field()}}
-                          <input type="hidden" class="deleteservice" value=""></input>
+                          <input type="hidden" class="deleteservice" value="{{$app->id}}"></input>
+                          <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
+                          <button type="button" class="btn btn-success servideletebtn">Accept</button>
+                       
+
+                        </div>
+                      </form>
+                   <form>
+                        <div class="mt-3">
+                          {{csrf_field()}}
+                          <input type="hidden" class="deleteservice" value="{{$app->id}}"></input>
                           <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
                           <button type="button" class="btn btn-danger servideletebtn">Reject</button>
                        
 
                         </div>
                       </form>
-  						     </td>
+                    </td>
   				    </tr>
   				@endforeach
 
@@ -101,7 +115,7 @@
 
             $.ajax({
               type: "DELETE",
-              url: '/supervisor/'+delete_id,
+              url: '/supervisor/teamManagement/'+delete_id,
               data: data,
               success: function(response){
                 swal(response.status, {

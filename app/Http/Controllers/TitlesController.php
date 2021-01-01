@@ -9,6 +9,9 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
 use App\Models\application;
+use App\Models\first;
+use App\Models\second;
+use App\Models\third;
 
 
 
@@ -58,6 +61,24 @@ class TitlesController extends Controller
             'first choice'=> $request->first_choice,
             'second choice'=> $request->second_choice,
             'third choice'=> $request->third_choice
+        ]);
+        first::create([
+            
+            'email'=> auth()->user()->email,
+            'title'=> $request->first_choice,
+    
+        ]);
+        second::create([
+            
+            'email'=> auth()->user()->email,
+            'title'=> $request->second_choice,
+    
+        ]);
+        third::create([
+            
+            'email'=> auth()->user()->email,
+            'title'=> $request->third_choice,
+    
         ]);
 
        // tak boleh all sbb first array request ialah token
