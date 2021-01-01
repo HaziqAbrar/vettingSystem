@@ -19,7 +19,7 @@
 	    <link rel="stylesheet" href="/css/style.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" >
       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
 
@@ -32,7 +32,9 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" defer></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js" defer></script>
         <style type="text/css">
       		table {
           		counter-reset: tableCount;
@@ -89,7 +91,7 @@
                     </ul>
                 </li> -->
                 <li>
-                    <a href="/supervisor/teams">My Titles</a>
+                    <a href="/supervisor/teams">Teams</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -98,7 +100,7 @@
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="/supervisor/test">Page 1</a>
                     </li>
                     <li>
                         <a href="#">Page 2</a>
@@ -247,6 +249,9 @@
         </div>
 
             </div>
+              <!-- End  Footer -->
+
+        <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
         <script src="/js/jquery.min.js"></script>
         <script src="/js/jquery-3.5.1.js"></script>
