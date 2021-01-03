@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\titleinfo;
 use App\Models\application;
+use App\Models\notification;
 use App\Models\user;
 use App\Models\student;
+use App\Mail\notify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class SupervisorController extends Controller
@@ -38,6 +41,7 @@ class SupervisorController extends Controller
 
      public function application(titleinfo $title) 
      {
+        //  dd($title);
          $apps= application::all()->where('first choice',$title->id);
         $student=student::all();
        
@@ -46,7 +50,7 @@ class SupervisorController extends Controller
      }
      public function applicationindex(application $student) 
      {
-         
+        //  dd($student);
         $email = $student->email;
         $first= application::where('email',$email)->first();
         // dd($first['first choice']);
@@ -75,29 +79,40 @@ class SupervisorController extends Controller
       */
      public function notify(Request $request)
      {
-         //
-         // dd($request->level);
+      
+        $email = (Auth::user()->getAttribute('email'));
          $request->validate([
              'platform' => 'required',
-            //  'email' => 'email:rfc,dns',
              'notice' => 'required',
-            //  'level' => 'required',
-            //  'session' => 'required',
-            //  'description' => 'required'
+        
          ]);
-
-
-         titleinfo::create([
-             'name' => $request->name,
-             'email' => $request->email,
-             'title' => $request->title,
-             'level' => $request->level,
-             'session' => $request->session,
-             'description' => $request->description,
+         $receivers=application::where('first choice',$request->title)->get('email');
+         $data = [];
+        //  foreach($receivers as $receivers){
+        //      $data []= [
+        //          'email'=>$receivers->email
+        //      ];
+        //  }
+        //  dd($data);
+        foreach($receivers as $data){
+        //    dd($data->email);
+         notification::create([
+             'platform' => $request->platform,
+             'notice' => $request->notice,
+             'sender' => $email,
+             'receivers' => $data->email,
+             'title'=> $request->title
 
          ]);
+        }
+        $notification = notification::all()->where('title',$request->title);
+        // dd($notification);
+        foreach ($notification as $noti){
+        $email=$noti->receivers;
+        Mail::to($email)->send(new notify($noti));
+    }
 
-         return redirect('/supervisor')->with('status','Title Proposed!');
+        return "done";
      }
      public function store(Request $request)
      {
@@ -129,9 +144,11 @@ class SupervisorController extends Controller
         $titleinfos = titleinfo::all();
         return view('/supervisor/teamManagement/test', compact('titleinfos'));
      }
-     public function meet (){
-        $titleinfos = titleinfo::all();
-        return view('/supervisor/teamManagement/meet', compact('titleinfos'));
+     public function meet (titleinfo $title){
+        // $titleinfos = titleinfo::all();
+        // dd($title);
+        
+        return view('/supervisor/teamManagement/meet', compact('title'));
      }
 
      /**

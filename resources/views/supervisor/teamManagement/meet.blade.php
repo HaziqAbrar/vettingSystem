@@ -36,6 +36,7 @@
       <div class="form-group mt-3">
         <label for="platform">Platform you prefer</label>
           <input type="text" class="form-control @error('platform') is-invalid @enderror" name="platform" >
+          <input type="hidden" id="title" name="title" value="{{$title->id}}">
           <!-- <input type="datetime-local" id="birthdaytime" name="birthdaytime"> -->
           @error('platform')
             <div class="invalid-feedback">{{ $message }}</div>

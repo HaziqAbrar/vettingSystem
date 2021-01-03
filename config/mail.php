@@ -34,6 +34,7 @@ return [
     */
 
     'mailers' => [
+        
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
@@ -43,6 +44,7 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
+           
         ],
 
         'ses' => [
@@ -98,6 +100,7 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
+
 
     'markdown' => [
         'theme' => 'default',

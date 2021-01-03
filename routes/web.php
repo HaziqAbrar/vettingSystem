@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\SupervisorController;
+use App\Mail\notify;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,14 @@ use App\Http\Controllers\SupervisorController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/email', function () {
+    // Mail::to('email@email.com')->send(new notify());
+
+
+
+
+    return new notify();
 });
 
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
@@ -52,7 +62,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/supervisor', [SupervisorController::class, 'index']);
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
-      Route::get('/supervisor/teams/meeting', [SupervisorController::class, 'meet']);
+      Route::get('/supervisor/teams/meeting/{title}', [SupervisorController::class, 'meet']);
       Route::post('/supervisor/teams/meeting', [SupervisorController::class, 'notify']);
       Route::get('/supervisor/test', [SupervisorController::class, 'test']);
       Route::get('/supervisor/teams/{title}',[SupervisorController::class, 'application']);

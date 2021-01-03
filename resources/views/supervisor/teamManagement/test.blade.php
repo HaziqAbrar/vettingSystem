@@ -7,7 +7,7 @@
           Code {{$title->id}} : {{$title->title}}
     </h1>
     <div class="text-center mt-3">
-  				<a href="/supervisor/teams/meeting"><button type="button" class="btn btn-primary">Notify Meeting</button></a>
+  				<a href="/supervisor/teams/meeting/{{$title->id}}"><button type="submit" class="btn btn-primary">Notify Meeting</button></a>
   			</div>
   </div>
 </div>
