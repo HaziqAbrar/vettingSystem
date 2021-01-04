@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\titleinfo;
 use App\Models\application;
+use App\Models\notification;
 use App\Models\user;
 use App\Models\student;
+use App\Models\first;
+use App\Models\second;
+use App\Models\third;
+use App\Mail\notify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class SupervisorController extends Controller
@@ -41,11 +47,20 @@ class SupervisorController extends Controller
 
      public function application(titleinfo $title)
      {
-         $apps= application::all()->where('first choice',$title->id);
+        //  dd($title);
+        //  $apps1= application::all()->where('first choice',$title->id)->where('status1','pending');
+        //  $apps2= application::all()->where('second choice',$title->id)->where('status2','pending');
+        //  $apps3= application::all()->where('third choice',$title->id)->where('status3','pending');
+         $apps1= first::all()->where('title',$title->id)->where('status','pending');
+         $apps2= second::all()->where('title',$title->id)->where('status','pending');
+         $apps3= third::all()->where('title',$title->id)->where('status','pending');
+        //  $apps = $apps1->merge($apps2)->merge($apps3);
+        //  $apps=$test->where('status','pending');
+        //  dd($test);
         $student=student::all();
 
         // return view ('supervisor/teamManagement/application',compact('apps','title'));
-        return view ('supervisor/teamManagement/test',compact('apps','title','student'));
+        return view ('supervisor/teamManagement/application',compact('apps1','apps2','apps3','title','student'));
      }
      public function applicationindex(application $student)
      {
@@ -76,6 +91,43 @@ class SupervisorController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
+     public function notify(Request $request)
+     {
+
+        $email = (Auth::user()->getAttribute('email'));
+         $request->validate([
+             'platform' => 'required',
+             'notice' => 'required',
+
+         ]);
+         $receivers=application::where('first choice',$request->title)->get('email');
+         $data = [];
+        //  foreach($receivers as $receivers){
+        //      $data []= [
+        //          'email'=>$receivers->email
+        //      ];
+        //  }
+        //  dd($data);
+        foreach($receivers as $data){
+        //    dd($data->email);
+         notification::create([
+             'platform' => $request->platform,
+             'notice' => $request->notice,
+             'sender' => $email,
+             'receivers' => $data->email,
+             'title'=> $request->title
+
+         ]);
+        }
+        $notification = notification::all()->where('title',$request->title);
+        // dd($notification);
+        foreach ($notification as $noti){
+        $email=$noti->receivers;
+        Mail::to($email)->send(new notify($noti));
+    }
+
+        return "done";
+     }
      public function store(Request $request)
      {
          //
@@ -104,11 +156,13 @@ class SupervisorController extends Controller
      }
      public function test (){
         $titleinfos = titleinfo::all();
-        return view('/supervisor/teamManagement/test', compact('titleinfos'));
+        return view('/supervisor/teamManagement/application', compact('titleinfos'));
      }
-     public function meet (){
-        $titleinfos = titleinfo::all();
-        return view('/supervisor/teamManagement/meet', compact('titleinfos'));
+     public function meet (titleinfo $title){
+        // $titleinfos = titleinfo::all();
+        // dd($title);
+
+        return view('/supervisor/teamManagement/meet', compact('title'));
      }
 
      /**
@@ -173,12 +227,40 @@ class SupervisorController extends Controller
          return response()->json(['status'=>'Title Deleted!']);
      }
 
-     public function reject(application $app)
+     public function reject1(first $app)
      {
-         //
 
-         application::destroy($app->id);
-         // return redirect('/supervisor')->with('status','Title Deleted!');
+         first::where('title',$app->title)->where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
+
          return response()->json(['status'=>'Student Rejected!']);
+
+
+     }
+     public function reject2(second $app)
+     {
+
+         second::where('title',$app->title)->where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
+
+         return response()->json(['status'=>'Student Rejected!']);
+
+
+     }
+     public function reject3(third $app)
+     {
+
+         third::where('title',$app->title)->where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
+
+         return response()->json(['status'=>'Student Rejected!']);
+
+
      }
 }

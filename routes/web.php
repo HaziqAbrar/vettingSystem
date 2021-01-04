@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\SupervisorController;
+use App\Mail\notify;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,14 @@ use App\Http\Controllers\SupervisorController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/email', function () {
+    // Mail::to('email@email.com')->send(new notify());
+
+
+
+
+    return new notify();
 });
 
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
@@ -52,7 +62,8 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/supervisor', [SupervisorController::class, 'index']);
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
-      Route::get('/supervisor/teams/meeting', [SupervisorController::class, 'meet']);
+      Route::get('/supervisor/teams/meeting/{title}', [SupervisorController::class, 'meet']);
+      Route::post('/supervisor/teams/meeting', [SupervisorController::class, 'notify']);
       Route::get('/supervisor/test', [SupervisorController::class, 'test']);
       Route::get('/supervisor/teams/{title}',[SupervisorController::class, 'application']);
 
@@ -61,7 +72,10 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::post('/supervisor', [SupervisorController::class, 'store']);
       Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
       Route::delete('/supervisor/{titleinfo}', [SupervisorController::class, 'destroy']);
-      Route::delete('/supervisor/teamManagement/{app}', [SupervisorController::class, 'reject']);
+      Route::delete('/supervisor/teamManagement1/{app}', [SupervisorController::class, 'reject1']);
+      Route::delete('/supervisor/teamManagement2/{app}', [SupervisorController::class, 'reject2']);
+      Route::delete('/supervisor/teamManagement3/{app}', [SupervisorController::class, 'reject3']);
+    //   Route::post('/supervisor/teamManagement', [SupervisorController::class, 'reject']);
       Route::get('/titleinfosv/{titleinfo}/edit', [SupervisorController::class, 'edit']);
       Route::patch('/supervisor/{titleinfo}', [SupervisorController::class, 'update']);
     });

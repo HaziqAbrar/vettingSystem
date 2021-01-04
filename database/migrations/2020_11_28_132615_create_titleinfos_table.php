@@ -20,6 +20,8 @@ class CreateTitleinfosTable extends Migration
           $table->string('title')->unique();
           $table->text('description');
           $table->text('tools');->nullable($value = true);
+          $table->string('major');
+          $table->string('numberStudent');
           $table->string('comment')->nullable($value = true);
           $table->enum('status',['Accepted','Rejected','Pending']);
           $table->enum('level',['Postgraduate','Undergraduate']);

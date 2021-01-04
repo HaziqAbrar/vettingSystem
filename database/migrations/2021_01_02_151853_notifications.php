@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class First extends Migration
+class Notifications extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class First extends Migration
      */
     public function up()
     {
-        Schema::create('Firsts', function (Blueprint $table) {
+        Schema::create('Notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('email')->unique();
-            $table->string('status');
+            $table->string('sender');
+            $table->string('receivers');
+            $table->string('platform');
+            $table->text('notice');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class First extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Firsts');
+        Schema::dropIfExists('Notifications');
     }
 }

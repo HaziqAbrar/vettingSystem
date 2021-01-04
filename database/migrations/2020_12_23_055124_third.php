@@ -17,6 +17,7 @@ class Third extends Migration
             $table->id();
             $table->string('title');
             $table->string('email')->unique();
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });
