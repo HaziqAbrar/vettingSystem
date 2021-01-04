@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
 
@@ -18,11 +18,16 @@ class RedirectController extends Controller
         $titleinfos = titleinfo::all();
         if ($role=='supervisor')
         {
-            return view ('supervisor.supervisorIndex',compact('titleinfos'));
+          $email = (Auth::user()->getAttribute('email'));
+          $titleinfos = titleinfo::all();
+          $mytitle = titleinfo::all()->where('email',$email);
+            return view ('supervisor.supervisorIndex',compact('mytitle'));
         }
         elseif ($role=='coordinator')
         {
-            return view ('coordinator.coordinatorIndex',compact('titleinfos'));
+          $titleinfos = titleinfo::all();
+          $user = user::all();
+          return view('coordinator.coordinatorIndex', compact('titleinfos'), compact('user'));
         }
         elseif ($role=='panel')
         {

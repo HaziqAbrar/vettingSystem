@@ -21,7 +21,8 @@ class CoordinatorController extends Controller
     public function index()
     {
       $titleinfos = titleinfo::all();
-      return view('coordinator.coordinatorIndex', compact('titleinfos'));
+      $user = user::all();
+      return view('coordinator.coordinatorIndex', compact('titleinfos'), compact('user'));
     }
 
     public function alltitle()

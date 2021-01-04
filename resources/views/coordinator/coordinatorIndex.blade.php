@@ -62,6 +62,7 @@
               </thead>
 
               <tbody>
+                <?php $id=0;?>
                 @foreach($titleinfos as $titleinfo)
       				    <tr class="w3-border">
 
@@ -109,13 +110,14 @@
     				     	   <!-- <form action="/info/{{ $titleinfo->id }}" method="get"> -->
     				    		 {{csrf_field()}}
   				    			<div >
-  						   			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Details</button>
-  				   				</div>
+  						   			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal{{$id}}" >Details</button>
+                      </div>
+
 
 
                     <!-- Modal starts here -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
+                    <div class="modal fade" id="myModal{{$id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" id="">
                           <div class="modal-content">
                               <div class="modal-header">
                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -123,8 +125,9 @@
                                   </div>
                               <div class="modal-body">
                                   <center>
-                                  <img src="" alt="gambar supervisor" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                                  <!-- <h3 class="media-heading"> {{ $titleinfo->session }} <small> {{ $titleinfo->name }} </small></h3> -->
+
+                                  <img src="/images/default-avatar.png" alt="gambar supervisor" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                                  <h3 class="media-heading"> {{ $titleinfo->session }} <small> {{ $titleinfo->name }} </small></h3>
                                   <span><strong>Tools needed: </strong></span>
                                       <span class="label label-warning">HTML5/CSS</span>
                                       <span class="label label-info">Adobe CS 5.5</span>
@@ -152,6 +155,44 @@
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                   </form>
+                                  <script>
+                                  $(document).ready(function(){
+
+                                    $.ajaxSetup({
+                                      headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                      }
+                                    });
+
+
+                                    $('.serviassignbtn').click(function(e){
+                                      e.preventDefault();
+
+                                      var assign_id = $(this).closest("tr").find(".assignservice").val();
+                                      // alert(delete_id);
+
+                                      var data={
+                                        "_token": $('input[name="csrf-token"]').val(),
+                                        "id": assign_id,
+                                      };
+
+
+
+                                      $.ajax({
+                                        type: "GET",
+                                        url: '/info/'+assign_id,
+                                        data: data,
+                                        success: function(response){
+                                          window.location.href = "/info/"+assign_id ;
+                                        }
+                                      });
+
+
+
+                                    });
+                                  });
+
+                                  </script>
                               </div>
                           </div>
                       </div>
@@ -160,6 +201,7 @@
 
       						</td>
       				   </tr>
+                 <?php $id+=1; ?>
       				 @endforeach
               </tbody>
             </table>
@@ -179,44 +221,6 @@
 </script>
 
 <!-- Assign button JS -->
-<script>
-  $(document).ready(function(){
-
-    $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-
-
-    $('.serviassignbtn').click(function(e){
-      e.preventDefault();
-
-      var assign_id = $(this).closest("tr").find(".assignservice").val();
-      // alert(delete_id);
-
-      var data={
-        "_token": $('input[name="csrf-token"]').val(),
-        "id": assign_id,
-      };
-
-
-
-          $.ajax({
-            type: "GET",
-            url: '/info/'+assign_id,
-            data: data,
-            success: function(response){
-                window.location.href = "/info/"+assign_id ;
-            }
-          });
-
-
-
-      });
-    });
-
-</script>
 
 
 </x-sidebarCoordinator>
