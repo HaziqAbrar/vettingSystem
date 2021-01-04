@@ -80,6 +80,15 @@
               @enderror
           </div>
 
+          <div class="form-group">
+            <label for="tools">Tools Recommended</label>
+            <textarea rows="5" class="form-control @error('tools') is-invalid @enderror" name="tools" placeholder="(Write down tools recommended here)" >{{old('tools')}}</textarea>
+            @error('tools')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+          </div>
+
+
 
           <div class="text-left mt-3">
             <button type="submit" class="btn btn-primary">Propose Title</button>

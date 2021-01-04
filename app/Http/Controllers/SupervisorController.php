@@ -21,8 +21,11 @@ class SupervisorController extends Controller
      public function index()
      {
          //
+         $email = (Auth::user()->getAttribute('email'));
          $titleinfos = titleinfo::all();
-         return view('supervisor.supervisorIndex', compact('titleinfos'));
+         $mytitle = titleinfo::all()->where('email',$email);
+         // dd($email);
+         return view('supervisor.supervisorIndex', compact('mytitle'));
      }
 
      public function teams()
@@ -36,22 +39,22 @@ class SupervisorController extends Controller
          return view('supervisor/teamManagement/teams', compact('myteam'),compact('titleinfos'));
      }
 
-     public function application(titleinfo $title) 
+     public function application(titleinfo $title)
      {
          $apps= application::all()->where('first choice',$title->id);
         $student=student::all();
-       
+
         // return view ('supervisor/teamManagement/application',compact('apps','title'));
         return view ('supervisor/teamManagement/test',compact('apps','title','student'));
      }
-     public function applicationindex(application $student) 
+     public function applicationindex(application $student)
      {
-         
+
         $email = $student->email;
         $first= application::where('email',$email)->first();
         // dd($first['first choice']);
         $student= student::where('email',$email)->first();
-      
+
         // dd($student->avatar);
         return view ('supervisor/teamManagement/student',compact('student','first'));
      }
@@ -164,7 +167,7 @@ class SupervisorController extends Controller
      public function destroy(titleinfo $titleinfo)
      {
          //
-         
+
          titleinfo::destroy($titleinfo->id);
          // return redirect('/supervisor')->with('status','Title Deleted!');
          return response()->json(['status'=>'Title Deleted!']);
@@ -173,7 +176,7 @@ class SupervisorController extends Controller
      public function reject(application $app)
      {
          //
-         
+
          application::destroy($app->id);
          // return redirect('/supervisor')->with('status','Title Deleted!');
          return response()->json(['status'=>'Student Rejected!']);

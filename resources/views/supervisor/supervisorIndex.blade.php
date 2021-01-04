@@ -27,7 +27,7 @@
   			        	<th>Details</th>
   			      	</tr>
   			    </thead>
-  			    @foreach($titleinfos as $titleinfo)
+  			    @foreach ($mytitle as $titleinfo)
   				    <tr class="w3-border">
   				    	<td class="counterCell"></td>
   				      	<td>{{ $titleinfo->title }}</td>
