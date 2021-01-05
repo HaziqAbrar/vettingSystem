@@ -82,7 +82,10 @@ class SupervisorController extends Controller
      public function create()
      {
          //
-         return view('supervisor.proposetitle');
+         $user = (Auth::user()->all());
+
+         // dd($user);
+         return view('supervisor.proposetitle', compact('user'));
      }
 
      /**
@@ -128,10 +131,15 @@ class SupervisorController extends Controller
 
         return "done";
      }
+
+
      public function store(Request $request)
      {
          //
-         // dd($request->level);
+         // dd($request);
+         $user = (Auth::user()->all());
+         // dd($user);
+
          $request->validate([
              'name' => 'required',
              'email' => 'email:rfc,dns',
@@ -149,10 +157,11 @@ class SupervisorController extends Controller
              'level' => $request->level,
              'session' => $request->session,
              'description' => $request->description,
+             'tools' => $request->tools,
+             'major' => Auth::user()->getAttribute('department'),
 
          ]);
-
-         return redirect('/supervisor')->with('status','Title Proposed!');
+         return redirect()->route('supervisor', compact('user'))->with('status','Title Proposed!');
      }
      public function test (){
         $titleinfos = titleinfo::all();

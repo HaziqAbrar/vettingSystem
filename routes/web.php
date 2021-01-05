@@ -60,7 +60,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
           return view('/supervisor/profileSupervisor');
       })->name('profile');
 
-      Route::get('/supervisor', [SupervisorController::class, 'index']);
+      Route::get('/supervisor', [SupervisorController::class, 'index'])->name('supervisor');
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
       Route::get('/supervisor/teams/meeting/{title}', [SupervisorController::class, 'meet']);
       Route::post('/supervisor/teams/meeting', [SupervisorController::class, 'notify']);
