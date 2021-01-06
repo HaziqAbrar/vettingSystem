@@ -8,7 +8,7 @@
         <h1 class="mt-5 text-center">
         PROPOSE A TITLE
         </h1>
-         @foreach ($user as $currentuser)
+         @foreach ($currentuser as $currentuser)
 
 
         <form method="post" action="/supervisor">
@@ -58,10 +58,11 @@
             </div>
 
 
+
             <div class="col">
               <div class="form-group">
                 <label for="level">Session</label>
-                <select v-model="selected" class="form-control @error('session') is-invalid @enderror" name='session'>
+                <select v-model="selected" class="form-control @error('session') is-invalid @enderror" name='session' required>
                   <!-- This slot appears above the options from 'options' prop -->
 
                   <option :value=null :disabled>-- Please select an option --</option>

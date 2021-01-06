@@ -82,11 +82,14 @@ class SupervisorController extends Controller
      public function create()
      {
          //
-         $user = (Auth::user()->all());
 
-         // dd($user);
-         return view('supervisor.proposetitle', compact('user'));
+         $email = Auth::user()->email;
+         $currentuser = user::all()->where('email',$email);
+
+         // dd($currentuser);
+         return view('supervisor.proposetitle', compact('currentuser'));
      }
+
 
      /**
       * Store a newly created resource in storage.
@@ -94,6 +97,38 @@ class SupervisorController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
+      public function store(Request $request)
+      {
+        //
+        // dd($request);
+        $user = (Auth::user()->all());
+        // dd($user);
+
+        $request->validate([
+          'name' => 'required',
+          'email' => 'email:rfc,dns',
+          'title' => 'required',
+          'level' => 'required',
+          'session' => 'required',
+          'description' => 'required'
+        ]);
+
+
+        titleinfo::create([
+          'name' => $request->name,
+          'email' => $request->email,
+          'title' => $request->title,
+          'level' => $request->level,
+          'session' => $request->session,
+          'description' => $request->description,
+          'tools' => $request->tools,
+          'major' => Auth::user()->getAttribute('department'),
+
+        ]);
+        return redirect()->route('supervisor', compact('user'))->with('status','Title Proposed!');
+      }
+
+
      public function notify(Request $request)
      {
 
@@ -133,36 +168,6 @@ class SupervisorController extends Controller
      }
 
 
-     public function store(Request $request)
-     {
-         //
-         // dd($request);
-         $user = (Auth::user()->all());
-         // dd($user);
-
-         $request->validate([
-             'name' => 'required',
-             'email' => 'email:rfc,dns',
-             'title' => 'required',
-             'level' => 'required',
-             'session' => 'required',
-             'description' => 'required'
-         ]);
-
-
-         titleinfo::create([
-             'name' => $request->name,
-             'email' => $request->email,
-             'title' => $request->title,
-             'level' => $request->level,
-             'session' => $request->session,
-             'description' => $request->description,
-             'tools' => $request->tools,
-             'major' => Auth::user()->getAttribute('department'),
-
-         ]);
-         return redirect()->route('supervisor', compact('user'))->with('status','Title Proposed!');
-     }
      public function test (){
         $titleinfos = titleinfo::all();
         return view('/supervisor/teamManagement/application', compact('titleinfos'));
