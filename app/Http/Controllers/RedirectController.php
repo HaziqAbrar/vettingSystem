@@ -25,9 +25,12 @@ class RedirectController extends Controller
         }
         elseif ($role=='coordinator')
         {
-          $titleinfos = titleinfo::all();
-          $user = user::all();
-          return view('coordinator.coordinatorIndex', compact('titleinfos'), compact('user'));
+          // $titleinfos = titleinfo::all();
+          // $user = user::all();
+          $department = (Auth::user()->getAttribute('department'));
+          // $titleinfos = titleinfo::all();
+          $assignto = titleinfo::all()->where('major',$department);
+          return view('coordinator.coordinatorIndex', compact('assignto'));
         }
         elseif ($role=='panel')
         {

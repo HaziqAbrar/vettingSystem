@@ -3,39 +3,9 @@
 
 <x-sidebarCoordinator>
 
-<!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">-->
 
-          <div class="container mt-5" style="border:solid; padding-bottom: 30px;">
 
-          	<div class="row d-flex justify-content-center">
-          		<div class="col-10">
-          			<h3 class="mt-5 text-center">
-          				UNDERGRADUATE TITLE LIST
-          			</h3> -->
-          			<!-- <div class="text-center mt-5">
-          				<a href="#"><button type="button" class="btn btn-primary">Full Title Proposal List</button></a>
-          			</div> -->
-
-                <!-- <ul class="list-group mt-5 ">
-          				@foreach($titleinfos as $titleinfo)
-          					@if($titleinfo->level=='Postgraduate')
-          						<li class="listinging list-group-item  align-items-center">
-          							<div class="w3-row-padding">
-          								<div class="w3-col m5 l6">{{ $titleinfo->title }}</div>
-          								<div class="w3-col m3 l3">{{ $titleinfo->name }}</div>
-          								<div class="w3-col m3 l2">{{ $titleinfo->created_at->format('d F Y') }}</div>
-
-          								<div class="w3-col m1 l1">
-          									<a href="#" class="w3-button w3-blue w3-round-large" style="padding: 5px;">Details</a>
-          								</div>
-                        </div>
-          						</li>
-          					@endif
-          				@endforeach
-            		</ul>
-              </div>
-            </div>
-          </div> -->
 
 
 <div class="container py-5">
@@ -63,7 +33,7 @@
 
               <tbody>
                 <?php $id=0;?>
-                @foreach($titleinfos as $titleinfo)
+                @foreach($assignto as $titleinfo)
       				    <tr class="w3-border">
 
                     <!-- Title ID -->
@@ -127,17 +97,13 @@
                                   <center>
 
                                   <img src="/images/default-avatar.png" alt="gambar supervisor" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                                  <h3 class="media-heading"> {{ $titleinfo->session }} <small> {{ $titleinfo->name }} </small></h3>
-                                  <span><strong>Tools needed: </strong></span>
-                                      <span class="label label-warning">HTML5/CSS</span>
-                                      <span class="label label-info">Adobe CS 5.5</span>
-                                      <span class="label label-info">Microsoft Office</span>
-                                      <span class="label label-success">Windows XP, Vista, 7</span>
+                                  <h3 class="media-heading"><small> {{ $titleinfo->name }} </small></h3>
+                                  <span class="text-uppercase"><strong>{{ $titleinfo->title }}</strong></span>
+
                                   </center>
                                   <hr>
                                   <center>
-                                  <p class="text-left"><strong>Bio: </strong><br>
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+                                  <p class="text-left"><strong>Description </strong><br>{{ $titleinfo->description }}</p>
                                   <br>
                                   </center>
                               </div>
