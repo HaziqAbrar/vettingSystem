@@ -32,9 +32,9 @@
                         <?php 
                     
                         // $count = DB::table('applications')->where('first choice',$ttl->id)->count('first choice');
-                        $count1 = DB::table('firsts')->where('title',$ttl->id)->count('title');
-                        $count2 = DB::table('seconds')->where('title',$ttl->id)->count('title');
-                        $count3 = DB::table('thirds')->where('title',$ttl->id)->count('title');
+                        $count1 = DB::table('firsts')->where('title',$ttl->id)->where('status','pending')->count('title');
+                        $count2 = DB::table('seconds')->where('title',$ttl->id)->where('status','pending')->count('title');
+                        $count3 = DB::table('thirds')->where('title',$ttl->id)->where('status','pending')->count('title');
                         $count=$count1+$count2+$count3;
                         ?>
                         <td class="text-center">{{$count}}</td>

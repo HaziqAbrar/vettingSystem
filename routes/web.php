@@ -62,6 +62,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/supervisor', [SupervisorController::class, 'index'])->name('supervisor');
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
+      Route::get('/supervisor/teams/teams', [SupervisorController::class, 'teamshow']);
       Route::get('/supervisor/teams/meeting/{title}', [SupervisorController::class, 'meet']);
       Route::post('/supervisor/teams/meeting', [SupervisorController::class, 'notify']);
       Route::get('/supervisor/test', [SupervisorController::class, 'test']);
@@ -75,6 +76,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::delete('/supervisor/teamManagement1/{app}', [SupervisorController::class, 'reject1']);
       Route::delete('/supervisor/teamManagement2/{app}', [SupervisorController::class, 'reject2']);
       Route::delete('/supervisor/teamManagement3/{app}', [SupervisorController::class, 'reject3']);
+      Route::delete('/supervisor/teamManagement1/accept/{app}', [SupervisorController::class, 'accept1']);
+      Route::delete('/supervisor/teamManagement2/accept/{app}', [SupervisorController::class, 'accept2']);
+      Route::delete('/supervisor/teamManagement3/accept/{app}', [SupervisorController::class, 'accept3']);
     //   Route::post('/supervisor/teamManagement', [SupervisorController::class, 'reject']);
       Route::get('/titleinfosv/{titleinfo}/edit', [SupervisorController::class, 'edit']);
       Route::patch('/supervisor/{titleinfo}', [SupervisorController::class, 'update']);
@@ -101,6 +105,8 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
+
+        Route::get('/interview','App\Http\Controllers\StudentController@iv');
         Route::get('/portfolio','App\Http\Controllers\StudentController@index');
         Route::post('/portfolio','App\Http\Controllers\StudentController@update');
 

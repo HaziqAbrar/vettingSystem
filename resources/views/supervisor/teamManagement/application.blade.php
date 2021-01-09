@@ -56,9 +56,9 @@
                              <form>
                               <div class="">
                                 {{csrf_field()}}
-                                <input type="hidden" class="deleteservice1" value="{{$app->id}}"></input>
+                                <input type="hidden" class="acceptservice1" value="{{$app->id}}"></input>
                                 <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                                <button type="button" class="btn btn-info servideletebtn1">Accept</button>
+                                <button type="button" class="btn btn-info serviacceptbtn1">Accept</button>
                             
 
                               </div>
@@ -66,7 +66,7 @@
                               <form>
                               <div class="mt-3">
                                 {{csrf_field()}}
-                                <input type="hidden" class="deleteservice" value="{{$app->id}}"></input>
+                                <input type="hidden" class="deleteservice1" value="{{$app->id}}"></input>
                                 <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
                                 <button type="button" class="btn btn-danger servideletebtn1">Reject</button>
                             
@@ -86,6 +86,45 @@
         }
       });
 
+      $('.serviacceptbtn1').click(function(e){
+        e.preventDefault();
+
+        var delete_id = $(this).closest("tr").find(".acceptservice1").val();
+        // alert(delete_id);
+
+        swal({
+          title: "Accept student?",
+          text: "Accepted student will appear under your team ",
+          type: "info",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+
+            var data={
+              "_token": $('input[name="csrf-token"]').val(),
+              "id": delete_id,
+            };
+
+            $.ajax({
+              type: "DELETE",
+              url: '/supervisor/teamManagement1/accept/'+delete_id,
+              data: data,
+              success: function(response){
+                swal(response.status, {
+                  icon: "success",
+                })
+                .then((result) => {
+                  location.reload();
+                });
+              }
+            });
+
+
+          }
+        });
+      });
       $('.servideletebtn1').click(function(e){
         e.preventDefault();
 
@@ -156,9 +195,9 @@
                              <form>
                               <div class="">
                                 {{csrf_field()}}
-                                <input type="hidden" class="deleteservice2" value="{{$app->id}}"></input>
+                                <input type="hidden" class="acceptservice2" value="{{$app->id}}"></input>
                                 <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                                <button type="button" class="btn btn-info servideletebtn2">Accept</button>
+                                <button type="button" class="btn btn-info serviacceptbtn2">Accept</button>
                             
 
                               </div>
@@ -186,6 +225,45 @@
         }
       });
 
+      $('.serviacceptbtn2').click(function(e){
+        e.preventDefault();
+
+        var delete_id = $(this).closest("tr").find(".acceptservice2").val();
+        // alert(delete_id);
+
+        swal({
+          title: "Accept student?",
+          text: "Accepted student will appear under your team",
+          type: "info",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+
+            var data={
+              "_token": $('input[name="csrf-token"]').val(),
+              "id": delete_id,
+            };
+
+            $.ajax({
+              type: "DELETE",
+              url: '/supervisor/teamManagement2/accept/'+delete_id,
+              data: data,
+              success: function(response){
+                swal(response.status, {
+                  icon: "success",
+                })
+                .then((result) => {
+                  location.reload();
+                });
+              }
+            });
+
+
+          }
+        });
+      });
       $('.servideletebtn2').click(function(e){
         e.preventDefault();
 
@@ -256,9 +334,9 @@
                              <form>
                               <div class="">
                                 {{csrf_field()}}
-                                <input type="hidden" class="deleteservice3" value="{{$app->id}}"></input>
+                                <input type="hidden" class="acceptservice3" value="{{$app->id}}"></input>
                                 <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                                <button type="button" class="btn btn-info servideletebtn3">Accept</button>
+                                <button type="button" class="btn btn-info serviacceptbtn3">Accept</button>
                             
 
                               </div>
@@ -285,6 +363,45 @@
         }
       });
 
+      $('.serviacceptbtn3').click(function(e){
+        e.preventDefault();
+
+        var delete_id = $(this).closest("tr").find(".acceptservice3").val();
+        // alert(delete_id);
+
+        swal({
+          title: "Reject student?",
+          text: "Accepted student will appear under your team",
+          type: "info",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+
+            var data={
+              "_token": $('input[name="csrf-token"]').val(),
+              "id": delete_id,
+            };
+
+            $.ajax({
+              type: "DELETE",
+              url: '/supervisor/teamManagement3/accept/'+delete_id,
+              data: data,
+              success: function(response){
+                swal(response.status, {
+                  icon: "success",
+                })
+                .then((result) => {
+                  location.reload();
+                });
+              }
+            });
+
+
+          }
+        });
+      });
       $('.servideletebtn3').click(function(e){
         e.preventDefault();
 
