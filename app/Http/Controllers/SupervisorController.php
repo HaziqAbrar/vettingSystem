@@ -166,7 +166,7 @@ class SupervisorController extends Controller
              'notice' => $request->notice,
              'sender' => $email,
              'receivers' => $data->email,
-             'title'=> $request->title
+             'title_code'=> $request->title
 
          ]);
         }

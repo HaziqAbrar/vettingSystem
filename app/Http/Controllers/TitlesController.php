@@ -70,6 +70,7 @@ class TitlesController extends Controller
             'email'=> auth()->user()->email,
             'title'=> $request->first_choice,
             'lecturer'=> $lecturer1,
+            'status'=> 'pending',
     
         ]);
         second::create([
@@ -77,6 +78,7 @@ class TitlesController extends Controller
             'email'=> auth()->user()->email,
             'title'=> $request->second_choice,
             'lecturer'=> $lecturer2,
+            'status'=> 'pending',
     
         ]);
         third::create([
@@ -84,6 +86,7 @@ class TitlesController extends Controller
             'email'=> auth()->user()->email,
             'title'=> $request->third_choice,
             'lecturer'=> $lecturer3,
+            'status'=> 'pending',
     
         ]);
 
