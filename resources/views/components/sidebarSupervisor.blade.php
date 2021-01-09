@@ -91,19 +91,19 @@
                     </ul>
                 </li> -->
                 <li>
-                    <a href="/supervisor/teams">Teams</a>
+                    <a href="#">Page</a>
                 </li>
                 <li>
                     <a href="#">About</a>
                 </li>
                 <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teams</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="/supervisor/test">Page 1</a>
+                        <a href="/supervisor/teams">Application</a>
                     </li>
                     <li>
-                        <a href="#">Page 2</a>
+                        <a href="/supervisor/teams/teams">Teams</a>
                     </li>
                     <li>
                         <a href="#">Page 3</a>

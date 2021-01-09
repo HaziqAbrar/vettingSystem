@@ -24,6 +24,16 @@ class StudentController extends Controller
         return view('/student/test',compact('student'));
         
     }
+    public function iv(){
+    
+        // $email = (Auth::user()->getAttribute('email'));
+        // dd ($role);
+        // $student= student::where('email',$email)->first();
+     
+
+        return view('/student/interview');
+        
+    }
 
     public function update(request $request){
         // dd($request->email);

@@ -41,6 +41,19 @@ class SupervisorController extends Controller
         // dd($myteam);
          return view('supervisor/teamManagement/teams', compact('myteam'),compact('titleinfos'));
      }
+     public function teamshow()
+     {
+         //
+         $email = (Auth::user()->getAttribute('email'));
+         $titleinfos = titleinfo::all()->where('email',$email);
+         $team1 = first::all()->where('lecturer',$email);
+         $team2 = second::all()->where('lecturer',$email);
+         $team3 = third::all()->where('lecturer',$email);
+         $teams= $team1->merge($team2)->merge($team3);
+        //  $myteam = titleinfo::all()->where('email',$email);
+        // dd($myteam);
+         return view('/supervisor/teamManagement/teamview', compact('teams'),compact('titleinfos'));
+     }
 
      public function application(titleinfo $title) 
      {
@@ -224,6 +237,42 @@ class SupervisorController extends Controller
          return response()->json(['status'=>'Title Deleted!']);
      }
 
+     public function accept1(first $app)
+     {
+    
+         first::where('title',$app->title)->where('email',$app->email)
+         ->update([
+             'status'=> 'accepted',
+         ]);
+        
+         return response()->json(['status'=>'Student Accepted!']);
+       
+       
+     }
+     public function accept2(second $app)
+     {
+    
+         second::where('title',$app->title)->where('email',$app->email)
+         ->update([
+             'status'=> 'accepted',
+         ]);
+        
+         return response()->json(['status'=>'Student Accepted!']);
+       
+       
+     }
+     public function accept3(third $app)
+     {
+    
+         third::where('title',$app->title)->where('email',$app->email)
+         ->update([
+             'status'=> 'accepted',
+         ]);
+        
+         return response()->json(['status'=>'Student Accepted!']);
+       
+       
+     }
      public function reject1(first $app)
      {
     

@@ -16,6 +16,7 @@ class Third extends Migration
         Schema::create('Thirds', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('lecturer');
             $table->string('email')->unique();
             $table->string('status');
             $table->rememberToken();

@@ -16,6 +16,7 @@ class First extends Migration
         Schema::create('Firsts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('lecturer');
             $table->string('email')->unique();
             $table->string('status');
             $table->rememberToken();

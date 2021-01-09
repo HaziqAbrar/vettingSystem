@@ -44,6 +44,9 @@ class TitlesController extends Controller
     {
        $email= auth()->user()->getAttribute('email');
        $test= DB::table('applications')->where('email',$email)->value('email');
+       $lecturer1 = titleinfo::where('id',$request->first_choice)->value('email');
+       $lecturer2 = titleinfo::where('id',$request->second_choice)->value('email');
+       $lecturer3 = titleinfo::where('id',$request->third_choice)->value('email');
     //    dd($test);
         if ($email==$test){
             return redirect('/title')->with('status','You have submitted already');
@@ -66,18 +69,21 @@ class TitlesController extends Controller
             
             'email'=> auth()->user()->email,
             'title'=> $request->first_choice,
+            'lecturer'=> $lecturer1,
     
         ]);
         second::create([
             
             'email'=> auth()->user()->email,
             'title'=> $request->second_choice,
+            'lecturer'=> $lecturer2,
     
         ]);
         third::create([
             
             'email'=> auth()->user()->email,
             'title'=> $request->third_choice,
+            'lecturer'=> $lecturer3,
     
         ]);
 
