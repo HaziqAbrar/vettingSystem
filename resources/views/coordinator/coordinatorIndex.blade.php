@@ -3,39 +3,9 @@
 
 <x-sidebarCoordinator>
 
-<!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">-->
 
-          <div class="container mt-5" style="border:solid; padding-bottom: 30px;">
 
-          	<div class="row d-flex justify-content-center">
-          		<div class="col-10">
-          			<h3 class="mt-5 text-center">
-          				UNDERGRADUATE TITLE LIST
-          			</h3> -->
-          			<!-- <div class="text-center mt-5">
-          				<a href="#"><button type="button" class="btn btn-primary">Full Title Proposal List</button></a>
-          			</div> -->
-
-                <!-- <ul class="list-group mt-5 ">
-          				@foreach($titleinfos as $titleinfo)
-          					@if($titleinfo->level=='Postgraduate')
-          						<li class="listinging list-group-item  align-items-center">
-          							<div class="w3-row-padding">
-          								<div class="w3-col m5 l6">{{ $titleinfo->title }}</div>
-          								<div class="w3-col m3 l3">{{ $titleinfo->name }}</div>
-          								<div class="w3-col m3 l2">{{ $titleinfo->created_at->format('d F Y') }}</div>
-
-          								<div class="w3-col m1 l1">
-          									<a href="#" class="w3-button w3-blue w3-round-large" style="padding: 5px;">Details</a>
-          								</div>
-                        </div>
-          						</li>
-          					@endif
-          				@endforeach
-            		</ul>
-              </div>
-            </div>
-          </div> -->
 
 
 <div class="container py-5">
@@ -62,7 +32,8 @@
               </thead>
 
               <tbody>
-                @foreach($titleinfos as $titleinfo)
+                <?php $id=0;?>
+                @foreach($assignto as $titleinfo)
       				    <tr class="w3-border">
 
                     <!-- Title ID -->
@@ -109,13 +80,14 @@
     				     	   <!-- <form action="/info/{{ $titleinfo->id }}" method="get"> -->
     				    		 {{csrf_field()}}
   				    			<div >
-  						   			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Details</button>
-  				   				</div>
+  						   			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal{{$id}}" >Details</button>
+                      </div>
+
 
 
                     <!-- Modal starts here -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
+                    <div class="modal fade" id="myModal{{$id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" id="">
                           <div class="modal-content">
                               <div class="modal-header">
                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -123,18 +95,15 @@
                                   </div>
                               <div class="modal-body">
                                   <center>
-                                  <img src="" alt="gambar supervisor" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                                  <!-- <h3 class="media-heading"> {{ $titleinfo->session }} <small> {{ $titleinfo->name }} </small></h3> -->
-                                  <span><strong>Tools needed: </strong></span>
-                                      <span class="label label-warning">HTML5/CSS</span>
-                                      <span class="label label-info">Adobe CS 5.5</span>
-                                      <span class="label label-info">Microsoft Office</span>
-                                      <span class="label label-success">Windows XP, Vista, 7</span>
+
+                                  <img src="/images/default-avatar.png" alt="gambar supervisor" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                                  <h3 class="media-heading"><small> {{ $titleinfo->name }} </small></h3>
+                                  <span class="text-uppercase"><strong>{{ $titleinfo->title }}</strong></span>
+
                                   </center>
                                   <hr>
                                   <center>
-                                  <p class="text-left"><strong>Bio: </strong><br>
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+                                  <p class="text-left"><strong>Description </strong><br>{{ $titleinfo->description }}</p>
                                   <br>
                                   </center>
                               </div>
@@ -152,6 +121,44 @@
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                   </form>
+                                  <script>
+                                  $(document).ready(function(){
+
+                                    $.ajaxSetup({
+                                      headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                      }
+                                    });
+
+
+                                    $('.serviassignbtn').click(function(e){
+                                      e.preventDefault();
+
+                                      var assign_id = $(this).closest("tr").find(".assignservice").val();
+                                      // alert(delete_id);
+
+                                      var data={
+                                        "_token": $('input[name="csrf-token"]').val(),
+                                        "id": assign_id,
+                                      };
+
+
+
+                                      $.ajax({
+                                        type: "GET",
+                                        url: '/info/'+assign_id,
+                                        data: data,
+                                        success: function(response){
+                                          window.location.href = "/info/"+assign_id ;
+                                        }
+                                      });
+
+
+
+                                    });
+                                  });
+
+                                  </script>
                               </div>
                           </div>
                       </div>
@@ -160,6 +167,7 @@
 
       						</td>
       				   </tr>
+                 <?php $id+=1; ?>
       				 @endforeach
               </tbody>
             </table>
@@ -179,44 +187,6 @@
 </script>
 
 <!-- Assign button JS -->
-<script>
-  $(document).ready(function(){
-
-    $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-
-
-    $('.serviassignbtn').click(function(e){
-      e.preventDefault();
-
-      var assign_id = $(this).closest("tr").find(".assignservice").val();
-      // alert(delete_id);
-
-      var data={
-        "_token": $('input[name="csrf-token"]').val(),
-        "id": assign_id,
-      };
-
-
-
-          $.ajax({
-            type: "GET",
-            url: '/info/'+assign_id,
-            data: data,
-            success: function(response){
-                window.location.href = "/info/"+assign_id ;
-            }
-          });
-
-
-
-      });
-    });
-
-</script>
 
 
 </x-sidebarCoordinator>

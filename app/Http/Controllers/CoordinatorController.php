@@ -20,8 +20,14 @@ class CoordinatorController extends Controller
      */
     public function index()
     {
-      $titleinfos = titleinfo::all();
-      return view('coordinator.coordinatorIndex', compact('titleinfos'));
+      // $titleinfos = titleinfo::all();
+      // $user = user::all();
+
+      $department = (Auth::user()->getAttribute('department'));
+      // $titleinfos = titleinfo::all();
+      $assignto = titleinfo::all()->where('major',$department);
+
+      return view('coordinator.coordinatorIndex', compact('assignto'));
     }
 
     public function alltitle()

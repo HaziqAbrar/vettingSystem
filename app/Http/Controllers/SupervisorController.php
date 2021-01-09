@@ -27,8 +27,11 @@ class SupervisorController extends Controller
      public function index()
      {
          //
+         $email = (Auth::user()->getAttribute('email'));
          $titleinfos = titleinfo::all();
-         return view('supervisor.supervisorIndex', compact('titleinfos'));
+         $mytitle = titleinfo::all()->where('email',$email);
+         // dd($email);
+         return view('supervisor.supervisorIndex', compact('mytitle'));
      }
 
      public function teams()
@@ -55,7 +58,7 @@ class SupervisorController extends Controller
          return view('/supervisor/teamManagement/teamview', compact('teams'),compact('titleinfos'));
      }
 
-     public function application(titleinfo $title) 
+     public function application(titleinfo $title)
      {
         //  dd($title);
         //  $apps1= application::all()->where('first choice',$title->id)->where('status1','pending');
@@ -68,18 +71,18 @@ class SupervisorController extends Controller
         //  $apps=$test->where('status','pending');
         //  dd($test);
         $student=student::all();
-       
+
         // return view ('supervisor/teamManagement/application',compact('apps','title'));
         return view ('supervisor/teamManagement/application',compact('apps1','apps2','apps3','title','student'));
      }
-     public function applicationindex(application $student) 
+     public function applicationindex(application $student)
      {
-        //  dd($student);
+
         $email = $student->email;
         $first= application::where('email',$email)->first();
         // dd($first['first choice']);
         $student= student::where('email',$email)->first();
-      
+
         // dd($student->avatar);
         return view ('supervisor/teamManagement/student',compact('student','first'));
      }
@@ -92,8 +95,14 @@ class SupervisorController extends Controller
      public function create()
      {
          //
-         return view('supervisor.proposetitle');
+
+         $email = Auth::user()->email;
+         $currentuser = user::all()->where('email',$email);
+
+         // dd($currentuser);
+         return view('supervisor.proposetitle', compact('currentuser'));
      }
+
 
      /**
       * Store a newly created resource in storage.
@@ -101,14 +110,46 @@ class SupervisorController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
+      public function store(Request $request)
+      {
+        //
+        // dd($request);
+        $user = (Auth::user()->all());
+        // dd($user);
+
+        $request->validate([
+          'name' => 'required',
+          'email' => 'email:rfc,dns',
+          'title' => 'required',
+          'level' => 'required',
+          'session' => 'required',
+          'description' => 'required'
+        ]);
+
+
+        titleinfo::create([
+          'name' => $request->name,
+          'email' => $request->email,
+          'title' => $request->title,
+          'level' => $request->level,
+          'session' => $request->session,
+          'description' => $request->description,
+          'tools' => $request->tools,
+          'major' => Auth::user()->getAttribute('department'),
+
+        ]);
+        return redirect()->route('supervisor', compact('user'))->with('status','Title Proposed!');
+      }
+
+
      public function notify(Request $request)
      {
-      
+
         $email = (Auth::user()->getAttribute('email'));
          $request->validate([
              'platform' => 'required',
              'notice' => 'required',
-        
+
          ]);
          $receivers=application::where('first choice',$request->title)->get('email');
          $data = [];
@@ -138,32 +179,8 @@ class SupervisorController extends Controller
 
         return "done";
      }
-     public function store(Request $request)
-     {
-         //
-         // dd($request->level);
-         $request->validate([
-             'name' => 'required',
-             'email' => 'email:rfc,dns',
-             'title' => 'required',
-             'level' => 'required',
-             'session' => 'required',
-             'description' => 'required'
-         ]);
 
 
-         titleinfo::create([
-             'name' => $request->name,
-             'email' => $request->email,
-             'title' => $request->title,
-             'level' => $request->level,
-             'session' => $request->session,
-             'description' => $request->description,
-
-         ]);
-
-         return redirect('/supervisor')->with('status','Title Proposed!');
-     }
      public function test (){
         $titleinfos = titleinfo::all();
         return view('/supervisor/teamManagement/application', compact('titleinfos'));
@@ -171,7 +188,7 @@ class SupervisorController extends Controller
      public function meet (titleinfo $title){
         // $titleinfos = titleinfo::all();
         // dd($title);
-        
+
         return view('/supervisor/teamManagement/meet', compact('title'));
      }
 
@@ -231,7 +248,7 @@ class SupervisorController extends Controller
      public function destroy(titleinfo $titleinfo)
      {
          //
-         
+
          titleinfo::destroy($titleinfo->id);
          // return redirect('/supervisor')->with('status','Title Deleted!');
          return response()->json(['status'=>'Title Deleted!']);
@@ -275,38 +292,38 @@ class SupervisorController extends Controller
      }
      public function reject1(first $app)
      {
-    
+
          first::where('title',$app->title)->where('email',$app->email)
          ->update([
              'status'=> 'rejected',
          ]);
-        
+
          return response()->json(['status'=>'Student Rejected!']);
-       
-       
+
+
      }
      public function reject2(second $app)
      {
-    
+
          second::where('title',$app->title)->where('email',$app->email)
          ->update([
              'status'=> 'rejected',
          ]);
-        
+
          return response()->json(['status'=>'Student Rejected!']);
-       
-       
+
+
      }
      public function reject3(third $app)
      {
-    
+
          third::where('title',$app->title)->where('email',$app->email)
          ->update([
              'status'=> 'rejected',
          ]);
-        
+
          return response()->json(['status'=>'Student Rejected!']);
-       
-       
+
+
      }
 }
