@@ -29,6 +29,9 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php $id1 = 0;
+                    $id2=0;
+                    $id3=0;?>
                       @foreach($apps1 as $app)
             				    <tr class="w3-border">
             				    	<td class="counterCell"></td>
@@ -57,9 +60,10 @@
                               <div class="">
                                 {{csrf_field()}}
                                 <input type="hidden" class="acceptservice1" value="{{$app->id}}"></input>
-                                <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                                <button type="button" class="btn btn-info serviacceptbtn1">Accept</button>
-                            
+                                <input type="hidden"  id="{{$id1}} {{$app->id}}" value="{{$app->agree}}"></input>
+                              
+                                <button type="button" id="{{$id1}}" class="btn btn-info serviacceptbtn1" disabled>Accept</button>
+                                <!-- <button type="button" disabled>Click Me!</button> -->
 
                               </div>
                             </form>
@@ -76,7 +80,13 @@
                              </td>
             				    </tr>
                         <script>
-       
+      
+      var agree = document.getElementById("{{$id1}} {{$app->id}}").value;
+      if ( agree=="yes"){
+      var e = document.getElementById("{{$id1}}");
+      e.removeAttribute("disabled");
+      }
+      
       
     $(document).ready(function(){
 
@@ -167,6 +177,7 @@
     });
   
       </script>
+       <?php $id1+=1; ?>
             				@endforeach
                       @foreach($apps2 as $app)
             				    <tr class="w3-border">
@@ -196,8 +207,8 @@
                               <div class="">
                                 {{csrf_field()}}
                                 <input type="hidden" class="acceptservice2" value="{{$app->id}}"></input>
-                                <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                                <button type="button" class="btn btn-info serviacceptbtn2">Accept</button>
+                                <input type="hidden"  id="{{$id2}} {{$app->id}}" value="{{$app->agree}}"></input>
+                                <button type="button" id="{{$id2}}"class="btn btn-info serviacceptbtn2" disabled>Accept</button>
                             
 
                               </div>
@@ -216,7 +227,11 @@
             				    </tr>
                         <script>
 
-      
+      var agree = document.getElementById("{{$id2}} {{$app->id}}").value;
+      if ( agree=="yes"){
+      var e = document.getElementById("{{$id2}}");
+      e.removeAttribute("disabled");
+      }  
     $(document).ready(function(){
 
       $.ajaxSetup({
@@ -306,6 +321,7 @@
     });
   
       </script>
+       <?php $id2+=1; ?>
             				@endforeach
                       @foreach($apps3 as $app)
             				    <tr class="w3-border">
@@ -335,8 +351,8 @@
                               <div class="">
                                 {{csrf_field()}}
                                 <input type="hidden" class="acceptservice3" value="{{$app->id}}"></input>
-                                <!-- <input type="hidden" name="Delete" value="Delete"></input> -->
-                                <button type="button" class="btn btn-info serviacceptbtn3">Accept</button>
+                                <input type="hidden"  id="{{$id3}} {{$app->id}}" value="{{$app->agree}}"></input>
+                                <button type="button" id= "{{$id3}}"class="btn btn-info serviacceptbtn3" disabled>Accept</button>
                             
 
                               </div>
@@ -354,7 +370,11 @@
                              </td>
             				    </tr>
                         <script>
-      
+      var agree = document.getElementById("{{$id3}} {{$app->id}}").value;
+      if ( agree=="yes"){
+      var e = document.getElementById("{{$id3}}");
+      e.removeAttribute("disabled");
+      }
     $(document).ready(function(){
 
       $.ajaxSetup({
@@ -444,6 +464,7 @@
     });
   
       </script>
+       <?php $id3+=1; ?>
             				@endforeach
                     </tbody>
                   </table>
