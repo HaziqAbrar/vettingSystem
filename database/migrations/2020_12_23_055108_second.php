@@ -18,6 +18,7 @@ class Second extends Migration
             $table->string('title');
             $table->string('lecturer');
             $table->string('email')->unique();
+            $table->string('agree');
             $table->string('status');
             $table->rememberToken();
             $table->timestamps();
