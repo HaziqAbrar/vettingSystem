@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
+use App\Models\notification;
 
 
 
@@ -38,7 +39,9 @@ class RedirectController extends Controller
         }
         elseif ($role=='student')
         {
-            return view ('student\dashboard');
+            $email = (Auth::user()->getAttribute('email'));
+            $noti = notification::all()->where('receivers',$email)->first();
+            return view ('student\dashboard',compact('email','noti'));
         }
     }
 

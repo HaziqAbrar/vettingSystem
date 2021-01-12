@@ -1,7 +1,11 @@
 <?php 
 use App\Models\notification;
-$notification = notification::first();
-$message = $notification->notice;?>
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+$email = (Auth::user()->getAttribute('email'));
+$noti = notification::where('receivers',$email)->first();?>
+
 @component('mail::message')
 # Oi apply meeting skang {{$noti->receivers}}
 

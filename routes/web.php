@@ -6,6 +6,8 @@ use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\SupervisorController;
 use App\Mail\notify;
+use App\Mail\dashy;
+use App\Models\notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +23,7 @@ use App\Mail\notify;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/email', function () {
-    // Mail::to('email@email.com')->send(new notify());
 
-
-
-
-    return new notify();
-});
 
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
@@ -102,6 +97,13 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
     //Student
     Route::group(['middleware'=>['checkrole:student']], function()
     {
+        Route::get('/email', function () {
+            // Mail::to('email@email.com')->send(new notify());
+
+            // return new notify($noti);
+            return new dashy();
+        });
+
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
