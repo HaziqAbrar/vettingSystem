@@ -118,7 +118,10 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
         //display title details
         Route::get('/title/{title}','App\Http\Controllers\TitlesController@show');
-
+        
+        Route::get('/title/agree1/{first}','App\Http\Controllers\TitlesController@agree1');
+        Route::get('/title/agree2/{second}','App\Http\Controllers\TitlesController@agree2');
+        Route::get('/title/agree3/{third}','App\Http\Controllers\TitlesController@agree3');
         //apply title
         Route::post('/title','App\Http\Controllers\TitlesController@store');
 

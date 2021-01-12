@@ -39,6 +39,42 @@ class TitlesController extends Controller
         
         return view ('student/titleindex',compact('title'));
     }
+    public function agree1(first $first)
+    {
+        
+        // dd($first);
+
+        first::where('id', $first->id)
+                    ->update([
+                        'agree'=> 'yes',
+                    ]);
+
+        return redirect('/dashboard')->with('status','Title Agreed');
+    }
+    public function agree2(second $second)
+    {
+        
+        // dd($second);
+
+        second::where('id', $second->id)
+                    ->update([
+                        'agree'=> 'yes',
+                    ]);
+
+        return redirect('/dashboard')->with('status','Title Agreed');
+    }
+    public function agree3(third $third)
+    {
+        
+        // dd($third);
+
+        third::where('id', $third->id)
+                    ->update([
+                        'agree'=> 'yes',
+                    ]);
+
+        return redirect('/dashboard')->with('status','Title Agreed');
+    }
 
     public function store(Request $request)
     {
@@ -88,13 +124,10 @@ class TitlesController extends Controller
             'email'=> auth()->user()->email,
             'title'=> $request->third_choice,
             'lecturer'=> $lecturer3,
+            'status'=> 'pending',
             'agree'=> 'no',
     
         ]);
-
-       // tak boleh all sbb first array request ialah token
-       // first array application ialah first choice
-        // Application::create($request->all());
 
         return redirect('/title')->with ('status','Application Success!');
 
