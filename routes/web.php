@@ -108,7 +108,8 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
             return view('/student/profile');
         })->name('profile');
 
-        Route::get('/interview','App\Http\Controllers\StudentController@iv');
+        Route::post('/propose','App\Http\Controllers\StudentController@sendpropose');
+        Route::get('/propose/{noti}','App\Http\Controllers\StudentController@propose');
         Route::get('/portfolio','App\Http\Controllers\StudentController@index');
         Route::post('/portfolio','App\Http\Controllers\StudentController@update');
 

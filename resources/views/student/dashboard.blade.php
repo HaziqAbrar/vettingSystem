@@ -12,7 +12,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                  @foreach ($notis as $noti)
                  <?php $sv = $users->where('email',$noti->sender)->first()?>
-                <a class="dropdown-item" href="#"><p><b> {{$sv->name}} </b></p>
+                <a class="dropdown-item" href="/propose/{{$noti->id}}"><p><b> {{$sv->name}} </b></p>
                 <p> {{$noti->notice}} </p>
                 </a>
                 @endforeach
