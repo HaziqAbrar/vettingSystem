@@ -12,6 +12,7 @@ use App\Models\Application;
 use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
 use App\Models\notification;
+use App\Models\meet;
 
 
 
@@ -51,18 +52,22 @@ class RedirectController extends Controller
             $apply= application::where('email',$email);
             $titles= titleinfo::all();
             $noti = notification::where('receivers',$email)->first();
-            $notis = notification::all()->where('receivers',$email);
+            $notis = notification::all()->where('receivers',$email)->where('status','not read');
+            $meets = meet::all();
             $data=false;
             $check=false;
+
+            // dd($notis);
             // $user = User::where('email', '=', Input::get('email'))->first();
             if ($apply) {
                 $check=true;
             }
-            if ($noti) {
+            if ($notis) {
                 $data=true;
+                // dd($notis);
             }
             return view ('student\dashboard',compact('email','notis','data','users',
-            'first','second','third','titles','check'));
+            'first','second','third','titles','check','meets'));
             // return view ('student\dashboard');
         }
     }

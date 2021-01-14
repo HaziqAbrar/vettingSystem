@@ -11,10 +11,15 @@
             <button class="bx bx-envelope bx-md bx-tada" style="position: absolute; top: 8px; right: 40px" type="button" id="dropdownMenuButton" data-toggle="dropdown" ></button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                  @foreach ($notis as $noti)
+                 <?php $sent = false;
+                 $meet = $meets->where('code_title',$noti->code_title)->where('student',$email)->first();
+                 ?>
+
                  <?php $sv = $users->where('email',$noti->sender)->first()?>
                 <a class="dropdown-item" href="/propose/{{$noti->id}}"><p><b> {{$sv->name}} </b></p>
                 <p> {{$noti->notice}} </p>
                 </a>
+          
                 @endforeach
             @else
             <button class="bx bx-envelope bx-md " style="position: absolute; top: 8px; right: 40px" type="button" id="dropdownMenuButton" data-toggle="dropdown" ></button>

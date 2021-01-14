@@ -20,6 +20,7 @@ class Notifications extends Migration
             $table->string('title_code');
             $table->string('platform');
             $table->text('notice');
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });

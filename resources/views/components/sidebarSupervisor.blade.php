@@ -103,10 +103,10 @@
                         <a href="/supervisor/teams">Application</a>
                     </li>
                     <li>
-                        <a href="/supervisor/teams/teams">Teams</a>
+                        <a href="/supervisor/meeting">Meeting</a>
                     </li>
                     <li>
-                        <a href="#">Page 3</a>
+                        <a href="/supervisor/teams/teams">Teams</a>
                     </li>
                 </ul>
                 </li>

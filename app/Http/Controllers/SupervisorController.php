@@ -166,7 +166,8 @@ class SupervisorController extends Controller
              'notice' => $request->notice,
              'sender' => $email,
              'receivers' => $data->email,
-             'title_code'=> $request->title
+             'title_code'=> $request->title,
+             'status'=> 'not read',
 
          ]);
         }
@@ -182,6 +183,10 @@ class SupervisorController extends Controller
      }
 
 
+     public function viewmeet (){
+        // $titleinfos = titleinfo::all();
+        return view('/supervisor/teamManagement/meeting');
+     }
      public function test (){
         $titleinfos = titleinfo::all();
         return view('/supervisor/teamManagement/application', compact('titleinfos'));

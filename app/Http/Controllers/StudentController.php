@@ -47,7 +47,7 @@ class StudentController extends Controller
             'student' => $request->student,
             'title_code' => $request->title_code,
             'platform' => $request->platform,
-            'comment'=> 'null',
+            // 'comment'=> 'null',
             'link'=> $request->link,
             'time'=> $request->time,
 
