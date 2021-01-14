@@ -20,6 +20,7 @@ class Meetings extends Migration
             $table->string('title_code');
             $table->string('platform');
             $table->text('comment')->nullable();
+            $table->string('status');
             $table->string('link');
             $table->datetime('time');
             $table->rememberToken();

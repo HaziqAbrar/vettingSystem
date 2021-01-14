@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class meet extends Model
 {
     protected $table = 'meetings';
-    protected $fillable =['supervisor','student','title_code','platform','comment','link','time'];
+    protected $fillable =['supervisor','student','title_code','platform','comment','link','time','status'];
 }

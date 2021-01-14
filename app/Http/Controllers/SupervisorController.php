@@ -10,6 +10,7 @@ use App\Models\student;
 use App\Models\first;
 use App\Models\second;
 use App\Models\third;
+use App\Models\meet;
 use App\Mail\notify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -153,12 +154,7 @@ class SupervisorController extends Controller
          ]);
          $receivers=application::where('first choice',$request->title)->get('email');
          $data = [];
-        //  foreach($receivers as $receivers){
-        //      $data []= [
-        //          'email'=>$receivers->email
-        //      ];
-        //  }
-        //  dd($data);
+
         foreach($receivers as $data){
         //    dd($data->email);
          notification::create([
@@ -184,18 +180,39 @@ class SupervisorController extends Controller
 
 
      public function viewmeet (){
-        // $titleinfos = titleinfo::all();
-        return view('/supervisor/teamManagement/meeting');
+         $titles = titleinfo::all();
+        $meets = meet::all()->where('status','pending');
+        $settle = meet::all()->where('status','accept');
+        $students = student::all();
+        return view('/supervisor/teamManagement/meeting',compact('meets','titles','students','settle'));
      }
      public function test (){
         $titleinfos = titleinfo::all();
         return view('/supervisor/teamManagement/application', compact('titleinfos'));
      }
      public function meet (titleinfo $title){
-        // $titleinfos = titleinfo::all();
-        // dd($title);
 
         return view('/supervisor/teamManagement/meet', compact('title'));
+     }
+     public function meetupdate (request $request){
+
+        // dd($request);
+        if($request->button1){
+            meet::where('id', $request->id)
+            ->update([
+                'comment'=> $request->comment,
+                'status'=> $request->button1,
+            ]);
+        }
+        if($request->button2){
+            meet::where('id', $request->id)
+            ->update([
+                'comment'=> $request->comment,
+                'status'=> $request->button2,
+            ]);
+        }
+        
+        return redirect('/supervisor/meeting');
      }
 
      /**
