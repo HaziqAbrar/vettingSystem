@@ -6,6 +6,8 @@ use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\SupervisorController;
 use App\Mail\notify;
+use App\Mail\dashy;
+use App\Models\notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +22,9 @@ use App\Mail\notify;
 
 Route::get('/', function () {
     return view('welcome');
+    // return "hello";
 });
-Route::get('/email', function () {
-    // Mail::to('email@email.com')->send(new notify());
 
-
-
-
-    return new notify();
-});
 
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
@@ -63,6 +59,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
       Route::get('/supervisor', [SupervisorController::class, 'index'])->name('supervisor');
       Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
+      Route::get('/supervisor/meeting', [SupervisorController::class, 'viewmeet']);
       Route::get('/supervisor/teams/teams', [SupervisorController::class, 'teamshow']);
       Route::get('/supervisor/teams/meeting/{title}', [SupervisorController::class, 'meet']);
       Route::post('/supervisor/teams/meeting', [SupervisorController::class, 'notify']);
@@ -72,6 +69,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::get('/supervisor/teams/title/{student}',[SupervisorController::class, 'applicationindex']);
       Route::get('/supervisor/create', [SupervisorController::class, 'create']);
       Route::post('/supervisor', [SupervisorController::class, 'store']);
+      Route::post('/meetupdate', [SupervisorController::class, 'meetupdate']);
       Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
       Route::delete('/supervisor/{titleinfo}', [SupervisorController::class, 'destroy']);
       Route::delete('/supervisor/teamManagement1/{app}', [SupervisorController::class, 'reject1']);
@@ -103,11 +101,19 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
     //Student
     Route::group(['middleware'=>['checkrole:student']], function()
     {
+        Route::get('/email', function () {
+            // Mail::to('email@email.com')->send(new notify());
+
+            // return new notify($noti);
+            return new dashy();
+        });
+
         Route::get('/profile',function() {
             return view('/student/profile');
         })->name('profile');
 
-        Route::get('/interview','App\Http\Controllers\StudentController@iv');
+        Route::post('/propose','App\Http\Controllers\StudentController@sendpropose');
+        Route::get('/propose/{noti}','App\Http\Controllers\StudentController@propose');
         Route::get('/portfolio','App\Http\Controllers\StudentController@index');
         Route::post('/portfolio','App\Http\Controllers\StudentController@update');
 
@@ -117,7 +123,10 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
         //display title details
         Route::get('/title/{title}','App\Http\Controllers\TitlesController@show');
-
+        
+        Route::get('/title/agree1/{first}','App\Http\Controllers\TitlesController@agree1');
+        Route::get('/title/agree2/{second}','App\Http\Controllers\TitlesController@agree2');
+        Route::get('/title/agree3/{third}','App\Http\Controllers\TitlesController@agree3');
         //apply title
         Route::post('/title','App\Http\Controllers\TitlesController@store');
 

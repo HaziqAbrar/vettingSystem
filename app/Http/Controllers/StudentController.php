@@ -10,6 +10,8 @@ use App\Models\student;
 use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
 use App\Models\application;
+use App\Models\notification;
+use App\Models\meet;
 
 
 
@@ -24,14 +26,35 @@ class StudentController extends Controller
         return view('/student/test',compact('student'));
         
     }
-    public function iv(){
+    public function propose(notification $noti){
     
-        // $email = (Auth::user()->getAttribute('email'));
-        // dd ($role);
+        $email = (Auth::user()->getAttribute('email'));
+        // dd ($noti);
         // $student= student::where('email',$email)->first();
+
+        $users=user::all();
      
 
-        return view('/student/interview');
+        return view('/student/propose',compact('noti','users','email'));
+        
+    }
+    public function sendpropose(request $request){
+    
+        // supervisor','student','title_code','platform','notice','link','time'
+        // dd ($request);
+        meet::create([
+            'supervisor' => $request->sv,
+            'student' => $request->student,
+            'title_code' => $request->title_code,
+            'platform' => $request->platform,
+            'status'=> 'pending',
+            'link'=> $request->link,
+            'time'=> $request->time,
+
+        ]);
+            return "sucess";
+
+        // return view('/student/propose',compact('noti'));
         
     }
 

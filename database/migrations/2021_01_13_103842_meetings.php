@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Third extends Migration
+class Meetings extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class Third extends Migration
      */
     public function up()
     {
-        Schema::create('Thirds', function (Blueprint $table) {
+        Schema::create('Meetings', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('lecturer');
-            $table->string('email')->unique();
-            $table->string('agree');
+            $table->string('supervisor');
+            $table->string('student');
+            $table->string('title_code');
+            $table->string('platform');
+            $table->text('comment')->nullable();
             $table->string('status');
+            $table->string('link');
+            $table->datetime('time');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -32,6 +35,6 @@ class Third extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Thirds');
+        Schema::dropIfExists('Meetings');
     }
 }

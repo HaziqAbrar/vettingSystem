@@ -6,9 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\notification;
 
-class notify extends Mailable
+class dashy extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +16,9 @@ class notify extends Mailable
      *
      * @return void
      */
-    public $noti;
-    public function __construct(Notification $noti)
+    public function __construct()
     {
-        $this->noti=$noti;
+        //
     }
 
     /**
@@ -30,8 +28,6 @@ class notify extends Mailable
      */
     public function build()
     {
-        
-        // return $this->markdown('emails.notify');
-        return $this->markdown('student.dashboard');
+        return $this->markdown('emails.dashy');
     }
 }

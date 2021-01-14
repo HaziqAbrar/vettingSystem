@@ -4661,7 +4661,8 @@ a.close.disabled {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   opacity: 0;
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem; 
+  }
   .toast:not(:last-child) {
     margin-bottom: 0.75rem; }
   .toast.showing {

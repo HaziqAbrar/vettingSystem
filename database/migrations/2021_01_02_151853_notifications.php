@@ -17,8 +17,10 @@ class Notifications extends Migration
             $table->id();
             $table->string('sender');
             $table->string('receivers');
+            $table->string('title_code');
             $table->string('platform');
             $table->text('notice');
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });

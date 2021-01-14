@@ -42,46 +42,49 @@
   ======================================================== -->
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
 
- 
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/table/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/table/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/table/css/main.css">
-<!--===============================================================================================-->
+
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="/table/images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/table/vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/table/vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/table/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/table/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/table/css/main.css">
+  <!--===============================================================================================-->
 
 </head>
 <style type="text/css">
-      		table {
-          		counter-reset: tableCount;
-      		}
-      		.counterCell:before {
-          		content: counter(tableCount);
-          		counter-increment: tableCount;
-      		}
+  table {
+    counter-reset: tableCount;
+  }
+
+  .counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+  }
 
 
-      		.btnstyle a{
-      			padding: 10px;
-      			margin: 5px;"
-      		}
+  .btnstyle a {
+    padding: 10px;
+    margin: 5px;
+    "
 
-      		.box{
-      			border: solid;
-      			padding: 0 5px;
-      		}
+  }
 
-        </style>
+  .box {
+    border: solid;
+    padding: 0 5px;
+  }
+</style>
+
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
@@ -92,11 +95,11 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-      <?php $filename=auth()->user()->getAttribute('avatar');
-                    $name=auth()->user()->getAttribute('name');?>
+        <?php $filename = auth()->user()->getAttribute('avatar');
+        $name = auth()->user()->getAttribute('name'); ?>
         <img src="/images/{{$filename}}" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">{{$name}}</a></h1>
-      
+
       </div>
 
       <nav class="nav-menu">
@@ -108,13 +111,12 @@
           <li><a href="/interview"><i class="bx bx-book-content"></i>Interview</a></li>
           <!-- <li><a href="#services"><i class="bx bx-server"></i> Services</a></li> -->
           <!-- <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li> -->
-          <form method="POST" action="{{ route('logout') }}" >
+          <form method="POST" action="{{ route('logout') }}">
             @csrf
 
-            <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
               this.closest('form').submit();">
-                {{ __('Logout') }}
+              {{ __('Logout') }}
             </a>
 
           </form>
@@ -126,10 +128,10 @@
     </div>
   </header><!-- End Header -->
   <main id="main">
- 
-  {{ $slot }}
- 
-        </main>
+
+    {{ $slot }}
+
+  </main>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -167,7 +169,7 @@
   <script src="/assets/js/main.js"></script>
   @stack('modals')
 
-@livewireScripts
+  @livewireScripts
 </body>
 
 </html>
