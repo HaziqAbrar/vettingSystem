@@ -50,30 +50,25 @@ class SupervisorController extends Controller
          //
          $email = (Auth::user()->getAttribute('email'));
          $titleinfos = titleinfo::all()->where('email',$email);
-         $team1 = first::all()->where('lecturer',$email);
-         $team2 = second::all()->where('lecturer',$email);
-         $team3 = third::all()->where('lecturer',$email);
+         $team1 = first::all()->where('lecturer',$email)->where('status','accepted');
+         $team2 = second::all()->where('lecturer',$email)->where('status','accepted');
+         $team3 = third::all()->where('lecturer',$email)->where('status','accepted');
          $teams= $team1->merge($team2)->merge($team3);
-        //  $myteam = titleinfo::all()->where('email',$email);
-        // dd($myteam);
-         return view('/supervisor/teamManagement/teamview', compact('teams'),compact('titleinfos'));
+         $students = student::all();
+        // dd($team1);
+         return view('/supervisor/teamManagement/teamview', compact('teams','titleinfos','students'));
      }
 
      public function application(titleinfo $title)
      {
-        //  dd($title);
-        //  $apps1= application::all()->where('first choice',$title->id)->where('status1','pending');
-        //  $apps2= application::all()->where('second choice',$title->id)->where('status2','pending');
-        //  $apps3= application::all()->where('third choice',$title->id)->where('status3','pending');
+
          $apps1= first::all()->where('title',$title->id)->where('status','pending');
          $apps2= second::all()->where('title',$title->id)->where('status','pending');
          $apps3= third::all()->where('title',$title->id)->where('status','pending');
-        //  $apps = $apps1->merge($apps2)->merge($apps3);
-        //  $apps=$test->where('status','pending');
-        //  dd($test);
+
         $student=student::all();
 
-        // return view ('supervisor/teamManagement/application',compact('apps','title'));
+      
         return view ('supervisor/teamManagement/application',compact('apps1','apps2','apps3','title','student'));
      }
      public function applicationindex(application $student)
@@ -284,6 +279,14 @@ class SupervisorController extends Controller
          ->update([
              'status'=> 'accepted',
          ]);
+         second::where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
+         third::where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
         
          return response()->json(['status'=>'Student Accepted!']);
        
@@ -295,6 +298,14 @@ class SupervisorController extends Controller
          second::where('title',$app->title)->where('email',$app->email)
          ->update([
              'status'=> 'accepted',
+         ]);
+         first::where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
+         third::where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
          ]);
         
          return response()->json(['status'=>'Student Accepted!']);
@@ -308,7 +319,14 @@ class SupervisorController extends Controller
          ->update([
              'status'=> 'accepted',
          ]);
-        
+         second::where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
+         first::where('email',$app->email)
+         ->update([
+             'status'=> 'rejected',
+         ]);
          return response()->json(['status'=>'Student Accepted!']);
        
        
