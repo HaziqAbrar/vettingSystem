@@ -104,7 +104,7 @@
 
       <nav class="nav-menu">
         <ul>
-          <li class="active"><a href="dashboard"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li class="active"><a href="/dashboard"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="/portfolio"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="/profile"><i class="bx bx-file-blank"></i> <span>Account</span></a></li>
           <li><a href="/title"><i class="bx bx-book-content"></i>Title</a></li>

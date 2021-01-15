@@ -10,7 +10,7 @@
             My Titles
             </h1>
           
-            
+
             <table class="w3-table w3-hoverable mt-3">
                 <thead>
                       <tr class="w3-grey w3-border">

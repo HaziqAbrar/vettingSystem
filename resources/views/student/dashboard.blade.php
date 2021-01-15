@@ -17,7 +17,7 @@
 
                  <?php $sv = $users->where('email',$noti->sender)->first()?>
                 <a class="dropdown-item" href="/propose/{{$noti->id}}"><p><b> {{$sv->name}} </b></p>
-                <p> {{$noti->notice}} </p>
+                <p style="width:50px"> {{$noti->notice}} </p>
                 </a>
           
                 @endforeach

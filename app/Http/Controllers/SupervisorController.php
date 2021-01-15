@@ -148,7 +148,7 @@ class SupervisorController extends Controller
 
          ]);
          $receivers=application::where('first choice',$request->title)->get('email');
-         $data = [];
+        //  $data = [];
 
         foreach($receivers as $data){
         //    dd($data->email);
@@ -163,15 +163,15 @@ class SupervisorController extends Controller
          ]);
         }
         $notification = notification::all()->where('title_code',$request->title);
-        // dd($request->title);
         foreach ($notification as $noti){
         $email=$noti->receivers;
         
         Mail::to($email)->send(new notify($noti));
-        }
-
-        return "done";
+    }
+    return redirect('/supervisor/teams/'.$request->title)->with('status','Students Notified');
      }
+
+     
 
 
      public function viewmeet (){

@@ -31,7 +31,7 @@ class notify extends Mailable
     public function build()
     {
         
-        // return $this->markdown('emails.notify');
-        return $this->markdown('student.dashboard');
+        return $this->markdown('emails.notify');
+        // return $this->markdown('student.dashboard');
     }
 }
