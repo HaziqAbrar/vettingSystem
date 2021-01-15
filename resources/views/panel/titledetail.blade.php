@@ -49,32 +49,24 @@
     <div class="container d-flex justify-content-end mt-5">
 
 
-      <form class="form-inline">
-          <form action="#" method="POST">
-          {{csrf_field()}}
-            <div style="margin: 0 3px;">
-              <input type="hidden" name="_method" value="PUT"></input>
-              <input type="hidden" name="status1" value="Accepted"></input>
-              <button type="submit" class="btn btn-primary">Send</button>
-            </div>
-        </form>
-         <form action="/coordinatoraccept/{{$titleinfo->id}}" method="POST">
-          {{csrf_field()}}
-            <div style="margin: 0 3px;">
-              <input type="hidden" name="_method" value="PUT"></input>
-              <input type="hidden" name="status1" value="Accepted"></input>
-              <button type="submit" class="btn btn-success">Accept</button>
-            </div>
-        </form>
-        <form action="/coordinatorreject/{{$titleinfo->id}}" method="POST">
-          {{csrf_field()}}
-            <div style="margin: 0 3px;">
-              <input type="hidden" name="_method" value="PUT"></input>
-              <input type="hidden" name="status2" value="Rejected"></input>
-              <button type="submit" class="btn btn-danger">Reject</button>
-            </div>
-        </form>
+
+      <form action="/panelaccept/{{$titleinfo->id}}" method="POST">
+        {{csrf_field()}}
+        <div style="margin: 0 3px;">
+          <input type="hidden" name="_method" value="PUT"></input>
+          <input type="hidden" name="status1" value="Accepted"></input>
+          <button type="submit" class="btn btn-success">Accept</button>
+        </div>
       </form>
+      <form action="/panelreject/{{$titleinfo->id}}" method="POST">
+        {{csrf_field()}}
+        <div style="margin: 0 3px;">
+          <input type="hidden" name="_method" value="PUT"></input>
+          <input type="hidden" name="status2" value="Rejected"></input>
+          <button type="submit" class="btn btn-danger">Reject</button>
+        </div>
+      </form>
+
     </div>
   </div>
 </div>
