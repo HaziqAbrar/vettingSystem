@@ -6,6 +6,11 @@
     <h1 class="mt-5 text-center">
           Code {{$title->id}} : {{$title->title}}
     </h1>
+    @if (session('status'))
+      			<div class="alert alert-success text-center">
+          			{{ session('status') }}
+      			</div>
+  			@endif
     <div class="text-center mt-3">
   				<a href="/supervisor/teams/meeting/{{$title->id}}"><button type="submit" class="btn btn-primary">Notify Meeting</button></a>
   			</div>
