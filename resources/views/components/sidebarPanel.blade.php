@@ -19,14 +19,32 @@
 	    <link rel="stylesheet" href="/css/style.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" >
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
 
-        <style type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" defer></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js" defer></script>
+
+        <style type="text/css">
+        table {
+          counter-reset: tableCount;
+        }
+        .counterCell:before {
+            content: counter(tableCount);
+            counter-increment: tableCount;
+        }
 
       	</style>
     </head>
@@ -44,7 +62,7 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/logo.jpg);"></a>
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image:  url(/images/default-avatar.png);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
                     <a href="/panel">Home</a>
@@ -64,9 +82,9 @@
                     </ul>
                 </li> -->
                 <li>
-                    <a href="#">About</a>
+                    <a href="/panel/alltitle">All Title</a>
                 </li>
-                <li>
+                <!-- <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
@@ -79,7 +97,7 @@
                         <a href="#">Page 3</a>
                     </li>
                 </ul>
-                </li>
+                </li> -->
                 <li>
                 <a href="/profilePanel">Profile</a>
                 </li>
@@ -87,9 +105,7 @@
                 </ul>
 
                 <div class="footer">
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+
                 </div>
 
             </div>
@@ -220,10 +236,13 @@
 
             </div>
 
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/popper.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/main.js"></script>
+            <script src="/js/jquery.min.js"></script>
+            <!-- <script src="/js/dataTables.bootstrap4.min.js"></script> -->
+            <script src="/js/jquery-3.5.1.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 
             </main>
         </div>

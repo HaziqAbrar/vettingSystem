@@ -94,8 +94,9 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::get('/panel/alltitle', [PanelController::class, 'alltitle']);
       Route::get('/titleinfos/{titleinfo}', [PanelController::class, 'show']);
       Route::patch('/titleinfos/{titleinfo}', [PanelController::class, 'update']);
-      Route::put('/coordinatoraccept/{titleinfo}', [PanelController::class, 'acceptbtn']);
-      Route::put('/coordinatorreject/{titleinfo}', [PanelController::class, 'rejectbtn']);
+
+      Route::put('/panelaccept/{titleinfo}', [PanelController::class, 'acceptbtn']);
+      Route::put('/panelreject/{titleinfo}', [PanelController::class, 'rejectbtn']);
     });
 
     //Student
@@ -123,7 +124,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
         //display title details
         Route::get('/title/{title}','App\Http\Controllers\TitlesController@show');
-        
+
         Route::get('/title/agree1/{first}','App\Http\Controllers\TitlesController@agree1');
         Route::get('/title/agree2/{second}','App\Http\Controllers\TitlesController@agree2');
         Route::get('/title/agree3/{third}','App\Http\Controllers\TitlesController@agree3');

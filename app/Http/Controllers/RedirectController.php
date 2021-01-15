@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\titleinfo;
 use App\Models\notification;
 use App\Models\meet;
+use App\Models\Panel;
 
 
 
@@ -40,7 +41,10 @@ class RedirectController extends Controller
         }
         elseif ($role=='panel')
         {
-            return view ('panel.panelIndex',compact('titleinfos'));
+          $emailpanel = Auth::user()->getAttribute('email');
+          $panelform = Panel::all()->where('email',$emailpanel);
+          $titleinfos = titleinfo::all();
+          return view('panel.panelIndex', compact('panelform'), compact('titleinfos'));
         }
         elseif ($role=='student')
         {

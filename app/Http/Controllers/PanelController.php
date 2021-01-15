@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\titleinfo;
+use App\Models\Panel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\titleinfo;
+use App\Models\user;
 
 class PanelController extends Controller
 {
@@ -14,23 +18,22 @@ class PanelController extends Controller
      */
     public function index()
     {
-
       //
-
-
+      $emailpanel = Auth::user()->getAttribute('email');
+      $panelform = Panel::all()->where('email',$emailpanel);
       $titleinfos = titleinfo::all();
-    //   return view('panel.panelIndex', compact('titleinfos'));
-      return view('panel.panelIndex', compact('titleinfos'));
 
+      return view('panel.panelIndex', compact('panelform'), compact('titleinfos'));
 
       // dd($titleinfos);
-
     }
 
     public function alltitle()
     {
       //
-      $titleinfos = titleinfo::all();
+      $postgraduate = (Auth::user()->getAttribute('level'));
+      // $titleinfos = titleinfo::all();
+      $titleinfos = titleinfo::all()->where('level',$postgraduate);
       return view('panel.alltitle', compact('titleinfos'));
     }
 
@@ -99,25 +102,25 @@ class PanelController extends Controller
     public function acceptbtn(Request $request, titleinfo $titleinfo)
     {
         //
-
+        // echo "string";
         // dd($request->status1);
-
+        //
         titleinfo::where('id', $titleinfo->id)
             ->update(['status'=> $request->status1]);
 
-        return redirect('/panel');
+        return redirect('/panel')->with('status',"Title is Accepted!");
     }
 
     public function rejectbtn(Request $request, titleinfo $titleinfo)
     {
         //
-
-        // dd($request->titleid);
+        //
+        // dd($request->status2);
 
         titleinfo::where('id', $titleinfo->id)
             ->update(['status'=> $request->status2]);
 
-        return redirect('/panel');
+        return redirect('/panel')->with('status',"Title is Accepted!");
     }
 
     /**
