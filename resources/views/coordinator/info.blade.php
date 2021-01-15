@@ -1,15 +1,16 @@
 <x-sidebarCoordinator>
 
+
   @if(session()->has('message'))
-    <div class="alert alert-success">
+    <div class="alert alert-success text-center">
         {{ session()->get('message') }}
     </div>
   @endif
 
   <h1 class="text-center mt-5">Assign Title to Panel</h1>
 
-  <div class="container mt-5 border">
-    <h4>Title Details</h4>
+  <div class="container mt-5 " style="border: solid;">
+    <h4 class="border-bottom pb-2">Title Details</h4>
     <div class="row">
       <div class=".col-md-6 .offset-md-3  m-3">
         <p>{{$titleinfo->name}}</p>
@@ -40,7 +41,7 @@
           <input type="hidden" name="panol" value="{{$ayam->email}}">
           <input type="hidden" name="titid" value="{{$titleinfo->id}}">
           <!-- <button type="button" class="btn btn-secondary">Send</button> -->
-          <button type="submit" class=" btn-success btn-sm" id="save" >simpan</button>
+          <button type="submit" class=" btn-success btn-lg" id="save" >Assign</button>
         </form>
       </div>
       @endforeach

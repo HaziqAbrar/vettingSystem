@@ -7,7 +7,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Supervisor') }}</title>
+    <title>Supervisor</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -93,11 +93,11 @@
                     </li>
                     </ul>
                 </li> -->
-                            <li>
+                            <!-- <li>
                                 <a href="#">Page</a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="#">About</a>
+                              <a href="/profileSupervisor">My Profile</a>
                             </li>
                             <li>
                                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teams</a>
@@ -114,13 +114,13 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="/profileSupervisor">Profile</a>
+                              <a href="#">About Us</a>
                             </li>
 
                         </ul>
 
                         <div class="footer">
-                            
+
                         </div>
 
                     </div>

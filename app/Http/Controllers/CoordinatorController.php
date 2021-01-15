@@ -74,10 +74,7 @@ class CoordinatorController extends Controller
           'titleid' => $request->titid,
 
         ]);
-        return redirect()->back()->with('message',"success");
-        // return Redirect('/info/$manok')->with('message',"success");
-        // return Redirect::refresh('coordinator.info', compact('titleinfo'), compact('panel'));
-        // return view('coordinator.info', compact('titleinfo'), compact('panel'));
+        return redirect()->back()->with('message',"Title Assigned to the panel. Choose more panel to assign or go back to Home to view title.");
     }
 
     /**

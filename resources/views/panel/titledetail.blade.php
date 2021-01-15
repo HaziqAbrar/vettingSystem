@@ -12,12 +12,19 @@
       <h3 class="mt-3" style="text-transform: uppercase;"> Session: Sesion 2 of 2019/2020</h3>
 
       <div class=" mt-5" style="border: solid; padding: 0 5px;">
-        <h5>Description</h5>
+        <h5 class="border-bottom">Description</h5>
         <p>{{ $titleinfo->description}}</p>
       </div>
-
+      <div class="mt-3" style="border: solid; padding: 0 5px;">
+        <h5 class="border-bottom">Tools Suggestion</h5>
+        @if(empty($titleinfo->tools))
+          <p>This proposal have no tools suggested.</p>
+        @else
+          <p>{{ $titleinfo->tools}}</p>
+        @endif
+      </div>
     <div class="mt-3" style="border: solid; padding: 0 5px;">
-      <h5>Comments</h5>
+      <h5 class="border-bottom">Comments</h5>
       @if(empty($titleinfo->comment))
         <p>This proposal have no comment.</p>
       @else
