@@ -1,4 +1,12 @@
 <x-sidebarStudent>
+<style>
+
+  #container span {
+  display: block;
+  /* width: 5em; */
+  border: 1px solid black;
+}
+</style>
 <div class="container-table101">
 
     <div class="row">
@@ -17,7 +25,7 @@
 
                  <?php $sv = $users->where('email',$noti->sender)->first()?>
                 <a class="dropdown-item" href="/propose/{{$noti->id}}"><p><b> {{$sv->name}} </b></p>
-                <p style="width:50px"> {{$noti->notice}} </p>
+                <p style="width:40px display:block"> {{$noti->notice}} </p>
                 </a>
           
                 @endforeach

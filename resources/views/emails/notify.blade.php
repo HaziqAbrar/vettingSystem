@@ -3,13 +3,13 @@ use App\Models\notification;
 $notification = notification::first();
 $message = $notification->notice;?>
 @component('mail::message')
-# Oi apply meeting skang {{$noti->receivers}}
+# {{$noti->sender}}
 
 
-ye skanggg
+{{$noti->notice}}
 
 
 
 Thanks,<br>
-{{ config('app.name') }}
+
 @endcomponent

@@ -52,7 +52,7 @@ class StudentController extends Controller
             'time'=> $request->time,
 
         ]);
-            return "sucess";
+            return redirect("/dashboard");
 
         // return view('/student/propose',compact('noti'));
         
