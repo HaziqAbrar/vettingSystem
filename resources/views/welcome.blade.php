@@ -58,7 +58,7 @@
     @if (Route::has('login'))
         <!-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> -->
             @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                <a href="/dashboard" class="text-sm text-gray-700 underline">Dashboard</a>
             @else
                 <!-- <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a> -->
 
@@ -67,6 +67,7 @@
                 @if (session('status'))
                     <div class="mb-4 font-medium text-sm text-green-600">
                         {{ session('status') }}
+                        Go to Welcome Page to <a href="/">Login</a>
                     </div>
                 @endif
                 <div class="container">
@@ -161,7 +162,7 @@
                         <div class="input-field">
                             <!-- <x-jet-label for="role" value="{{ __('Status') }}" /> -->
                             <i class="fas fa-user-plus"></i>
-                            <select id="role" class="form-select rounded-md shadow-sm mt-1 block w-full" type="role" name="role"  required >
+                            <select id="role" class="form-select" type="role" name="role"  required >
                                 <option value="">Select status</option>
                                 <option value="supervisor">Supervisor</option>
                                 <option value="coordinator">Coordinator</option>
@@ -262,10 +263,9 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3>New here ?</h3>
+            <h3>Welcome to FSKTM UM DIssertation</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
+              Are you new here? Sign up by filling in these few information and you are good to go!
             </p>
             <button class="btn transparent" id="sign-up-btn">
               Sign up
@@ -275,10 +275,9 @@
         </div>
         <div class="panel right-panel">
           <div class="content">
-            <h3>One of us ?</h3>
+            <h3>Already registered ?</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
+              Login and start your dissertation project now!
             </p>
             <button class="btn transparent" id="sign-in-btn">
               Sign in

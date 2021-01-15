@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\titleinfo;
 use App\Models\user;
+use App\Models\Panel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -42,9 +43,15 @@ class CoordinatorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(titleinfo $titleinfo)
     {
         //
+        // $panel = Panel::all();
+        // $sama = "panel";
+        $panel = user::all()->where('role','panel');
+        // dd($panel);
+
+        return view('coordinator.info', compact('titleinfo'), compact('panel'));
     }
 
     /**
@@ -53,9 +60,24 @@ class CoordinatorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, titleinfo $titleinfo)
     {
         //
+        // dd($request);
+
+        $panel = user::all()->where('role','panel');
+
+        $manok = $request->titid;
+
+        Panel::create([
+          'email' => $request->panol,
+          'titleid' => $request->titid,
+
+        ]);
+        return redirect()->back()->with('message',"success");
+        // return Redirect('/info/$manok')->with('message',"success");
+        // return Redirect::refresh('coordinator.info', compact('titleinfo'), compact('panel'));
+        // return view('coordinator.info', compact('titleinfo'), compact('panel'));
     }
 
     /**
@@ -67,8 +89,7 @@ class CoordinatorController extends Controller
     public function show(titleinfo $titleinfo)
     {
       // dd($titleinfo);
-        //
-        return view('coordinator.info', compact('titleinfo'));
+
     }
 
     /**
