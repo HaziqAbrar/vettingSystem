@@ -1,2 +1,2 @@
 
-<img src="{{ asset('images/try.jpg') }}"  viewbox="0 0 48 48">
+<img src="{{ asset('images/try.png') }}"  viewbox="0 0 48 48">
