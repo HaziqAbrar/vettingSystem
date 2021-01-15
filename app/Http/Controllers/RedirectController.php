@@ -53,7 +53,7 @@ class RedirectController extends Controller
             $first = first::all();
             $second = second::all();
             $third= third::all();
-            $apply= application::where('email',$email);
+            $apply= first::where('email',$email)->first();
             $titles= titleinfo::all();
             $noti = notification::where('receivers',$email)->first();
             $notis = notification::all()->where('receivers',$email)->where('status','not read');
@@ -66,7 +66,7 @@ class RedirectController extends Controller
             if ($apply) {
                 $check=true;
             }
-            if ($notis) {
+            if ($noti) {
                 $data=true;
                 // dd($notis);
             }
