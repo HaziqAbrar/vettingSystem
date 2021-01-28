@@ -64,7 +64,7 @@ class StudentController extends Controller
         student::where('email', Auth::user()->getAttribute('email'))
         ->update([
             'name'=> $request->name,
-            'department'=> $request->department,
+            'matrix'=> $request->matrix,
             'year'=> $request->year,
             'cgpa'=> $request->cgpa,
             'level'=> $request->level,

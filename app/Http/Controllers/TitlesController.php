@@ -20,7 +20,9 @@ class TitlesController extends Controller
 {
     public function index(){
         $email = (Auth::user()->getAttribute('email'));
-        // dd ($role);
+        $level = (Auth::user()->getAttribute('level'));
+        $department = (Auth::user()->getAttribute('department'));
+        // dd ($department);
         $test= DB::table('applications')->where('email',$email)->value('email');
         
         if($test==null){
@@ -29,7 +31,7 @@ class TitlesController extends Controller
                 $data=true;
             }
             // dd($data);
-         $titleinfos = titleinfo::all();
+         $titleinfos = titleinfo::all()->where('level',$level)->where('major',$department)->where('status','Accepted');
         // dd($titleinfos);
             return view ('student/title',compact('titleinfos','email','data'));
     }
@@ -46,7 +48,7 @@ class TitlesController extends Controller
 
         first::where('id', $first->id)
                     ->update([
-                        'agree'=> 'yes',
+                        'agree'=> 'agreed',
                     ]);
 
         return redirect('/dashboard')->with('status','Title Agreed');
@@ -58,7 +60,7 @@ class TitlesController extends Controller
 
         second::where('id', $second->id)
                     ->update([
-                        'agree'=> 'yes',
+                        'agree'=> 'agreed',
                     ]);
 
         return redirect('/dashboard')->with('status','Title Agreed');
@@ -70,7 +72,7 @@ class TitlesController extends Controller
 
         third::where('id', $third->id)
                     ->update([
-                        'agree'=> 'yes',
+                        'agree'=> 'agreed',
                     ]);
 
         return redirect('/dashboard')->with('status','Title Agreed');
@@ -92,44 +94,56 @@ class TitlesController extends Controller
             'second_choice'=>'required|numeric|different:third_choice,first_choice',
             'third_choice'=>'required|numeric|different:first_choice,second_choice'
         ]);
+        if($lecturer1){
+            if($lecturer2){
+                if($lecturer3){
+                    application::create([
+            
+                        'email'=> auth()->user()->email,
+                        'first choice'=> $request->first_choice,
+                        'second choice'=> $request->second_choice,
+                        'third choice'=> $request->third_choice
+
+                    ]);
+                    first::create([
+                        
+                        'email'=> auth()->user()->email,
+                        'title'=> $request->first_choice,
+                        'lecturer'=> $lecturer1,
+                        'status'=> 'pending',
+                        'agree'=> 'no',
+                
+                    ]);
+                    second::create([
+                        
+                        'email'=> auth()->user()->email,
+                        'title'=> $request->second_choice,
+                        'lecturer'=> $lecturer2,
+                        'status'=> 'pending',
+                        'agree'=> 'no',
+                
+                    ]);
+                    third::create([
+                        
+                        'email'=> auth()->user()->email,
+                        'title'=> $request->third_choice,
+                        'lecturer'=> $lecturer3,
+                        'status'=> 'pending',
+                        'agree'=> 'no',
+                
+                    ]);
+            
+                    return redirect('/title')->with ('status','Application Success!');
+                }
+                return redirect('/title')->with ('status','Title Code in field 1 does not exist');
+            }
+            return redirect('/title')->with ('status','Title Code in field 2 does not exist');
+        }
+        
+        return redirect('/title')->with ('status','Title Code in field 1 does not exist');
 
         // auth()->user()->email->validate()   
-        application::create([
-            
-            'email'=> auth()->user()->email,
-            'first choice'=> $request->first_choice,
-            'second choice'=> $request->second_choice,
-            'third choice'=> $request->third_choice
-        ]);
-        first::create([
-            
-            'email'=> auth()->user()->email,
-            'title'=> $request->first_choice,
-            'lecturer'=> $lecturer1,
-            'status'=> 'pending',
-            'agree'=> 'no',
-    
-        ]);
-        second::create([
-            
-            'email'=> auth()->user()->email,
-            'title'=> $request->second_choice,
-            'lecturer'=> $lecturer2,
-            'status'=> 'pending',
-            'agree'=> 'no',
-    
-        ]);
-        third::create([
-            
-            'email'=> auth()->user()->email,
-            'title'=> $request->third_choice,
-            'lecturer'=> $lecturer3,
-            'status'=> 'pending',
-            'agree'=> 'no',
-    
-        ]);
 
-        return redirect('/title')->with ('status','Application Success!');
 
     }
 }

@@ -18,8 +18,9 @@
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>{{$student->name}}</h3>
-            <p class="font-italic">
-            
+            <p ><b>
+            Matrix Number: {{$student->matrix}}
+            </b>
             </p>
             <div class="row mt-2"> 
               <div class="col-lg-5">
@@ -90,8 +91,8 @@
             </div>
               <div class="form-row">
                 <div class="form-group col-md-3">
-                  <label for="department">Department</label>
-                  <input type="text" name="department" class="form-control" id="department" value="{{$student->department}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <label for="matrix">Matrix No</label>
+                  <input type="text" name="matrix" class="form-control" id="matrix" value="{{$student->matrix}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="form-group col-md-3">

@@ -33,6 +33,7 @@
             <br>
             <h6 class="card-subtitle mb-3"><b>Supervisor</b>: {{$title->name}}</h6>
             <p class="card-text"><b>Description</b>: {{$title->description}}</p>
+            <p class="card-text"><b>Tools</b>: {{$title->tools}}</p>
             
             <!-- <a href="#" class="card-link">Card link</a>
             <a href="#" class="card-link">Another link</a> -->
