@@ -3,6 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+
+    .pakstail {
+      border-top-style: hidden;
+      border-right-style: hidden;
+      border-left-style: hidden;
+      border-bottom-style: hidden;
+      background:none;
+
+    }
+
+    .single {
+      font-weight: 500;
+      font-size: 1.1rem;
+
+    }
+
+    .no-outline:focus {
+      outline: none;
+    }
+    select option {
+      color: black;
+    }
+    </style>
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -65,40 +89,6 @@
                           </x-jet-button>
                       </form>
 
-                <!-- <div class="container">
-                  <div class="forms-container">
-                    <div class="signin-signup">
-                      <form action="#" class="sign-in-form">
-                        <h2 class="title">Sign in</h2>
-                        <div class="input-field">
-                          <i class="fas fa-user"></i>
-                          <input type="text" placeholder="Username" />
-                        </div>
-                        <div class="input-field">
-                          <i class="fas fa-lock"></i>
-                          <input type="password" placeholder="Password" />
-                        </div>
-                        <input type="submit" value="Login" class="btn solid" />
-                        <p class="social-text">Or Sign in with social platforms</p>
-                        <div class="social-media">
-                          <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                          </a>
-                          <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                          </a>
-                          <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                          </a>
-                          <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                          </a>
-                        </div>
-                      </form> -->
-
-                      <!-- @if (Route::has('register')) -->
-                    <!-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a> -->
-
                     <form class="sign-up-form" method="POST" action="{{ route('register') }}">
                       <h2 class="title">Sign up</h2>
                         @csrf
@@ -112,15 +102,15 @@
                         <div class="input-field">
                             <!-- <x-jet-label for="email" value="{{ __('Email') }}" /> -->
                             <i class="fas fa-envelope"></i>
-                            <x-jet-input id="email" type="email" name="email" :value="old('email')" placeholder="Email" required />
+                            <x-jet-input id="email"  type="email" name="email" :value="old('email')" placeholder="Email" required />
                         </div>
 
                         <div class="input-field">
                             <!-- <x-jet-label for="role" value="{{ __('Status') }}" /> -->
                             <i class="fas fa-user-plus"></i>
-                            <select id="role" class="form-select" type="role" name="role"  required >
+                            <select id="role" class="form-select no-outline pakstail single " type="role" name="role"  required >
                                 <option value="">Select status</option>
-                                <option value="supervisor">Supervisor</option>
+                                <option value="supervisor" style="color:black;">Supervisor</option>
                                 <option value="coordinator">Coordinator</option>
                                 <option value="panel">Panel</option>
                                 <option value="student">Student</option>
@@ -132,20 +122,20 @@
                         <div class="input-field">
                             <!-- <x-jet-label for="department" value="{{ __('Department') }}" /> -->
                             <i class="fas fa-building"></i>
-                            <select id="department" class="form-select rounded-md shadow-sm mt-1 block w-full" type="department" name="department"  required >
+                            <select id="department" class="form-select no-outline pakstail single" type="department" name="department"  required >
                                 <option value="">Select Department</option>
-                                <option value="SE">SE</option>
-                                <option value="IS">IS</option>
-                                <option value="AI">AI</option>
-                                <option value="MM">MM</option>
-                                <option value="STK">STK</option>
+                                <option value="SE">Software Engineering</option>
+                                <option value="IS">Information System</option>
+                                <option value="AI">Artificial Intelligence</option>
+                                <option value="MM">Multimedia</option>
+                                <option value="STK">Computer System and Network</option>
                             </select>
                         </div>
 
                         <div class="input-field">
                             <!-- <x-jet-label for="level" value="{{ __('Level') }}" /> -->
                             <i class="fas fa-scroll"></i>
-                            <select id="level" class="form-select rounded-md shadow-sm mt-1 block w-full" type="level" name="level"  required >
+                            <select id="level" class="form-select no-outline pakstail single" type="level" name="level"  required >
                                 <option value="">Select Level</option>
                                 <option value="Postgraduate">Postgraduate</option>
                                 <option value="Undergraduate">Undergraduate</option>
@@ -177,44 +167,13 @@
                     </form>
 
 
-                        <!-- <form action="#" class="sign-up-form">
-                          <h2 class="title">Sign up</h2>
-                          <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username" />
-                          </div>
-                          <div class="input-field">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="Email" />
-                          </div>
-                          <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" />
-                          </div>
-                          <input type="submit" class="btn" value="Sign up" />
-                          <p class="social-text">Or Sign up with social platforms</p>
-                          <div class="social-media">
-                            <a href="#" class="social-icon">
-                              <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                              <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                              <i class="fab fa-google"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                              <i class="fab fa-linkedin-in"></i>
-                            </a>
-                          </div>
-                        </form> -->
+
 
                     <!-- @endif -->
                   </div>
                 </div>
             @endif
         <!-- </div> -->
-    @endif
 
       <div class="panels-container">
         <div class="panel left-panel">
