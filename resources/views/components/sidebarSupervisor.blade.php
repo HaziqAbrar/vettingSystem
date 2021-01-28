@@ -74,7 +74,9 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/default-avatar.png);"></a>
+                        <?php $filename = auth()->user()->getAttribute('avatar');
+                        ?>
+                        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/{{$filename}});"></a>
                         <ul class="list-unstyled components mb-5">
                             <li>
                                 <a href="/supervisor">Home</a>
@@ -97,7 +99,7 @@
                                 <a href="#">Page</a>
                             </li> -->
                             <li>
-                              <a href="/profileSupervisor">My Profile</a>
+                                <a href="/profileSupervisor">My Profile</a>
                             </li>
                             <li>
                                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teams</a>
@@ -114,7 +116,7 @@
                                 </ul>
                             </li>
                             <li>
-                              <a href="#">About Us</a>
+                                <a href="#">About Us</a>
                             </li>
 
                         </ul>
