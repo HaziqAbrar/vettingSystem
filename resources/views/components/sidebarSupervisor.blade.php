@@ -111,7 +111,7 @@
                                         <a href="/supervisor/meeting">Meeting</a>
                                     </li>
                                     <li>
-                                        <a href="/supervisor/teams/teams">Teams</a>
+                                        <a href="/supervisor/teamslist">Teams</a>
                                     </li>
                                 </ul>
                             </li>
