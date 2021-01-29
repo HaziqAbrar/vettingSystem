@@ -127,13 +127,7 @@
                                 </div>
                                 <div class="modal-footer">
 
-                                      <form>
-                                        <div class="mt-3">
-                                          {{csrf_field()}}
-                                          <input type="hidden" class="assignservice" value="{{  $titleinfo->id }}"></input>
-                                          <button type="button" class="btn btn-danger serviassignbtn">Assign</button>
-                                        </div>
-                                      </form>
+                                      
                                       <form>
                                       <div class="mt-3">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
