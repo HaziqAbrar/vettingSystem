@@ -52,6 +52,7 @@
                 <tbody>
                   <?php $id=0;?>
                   @foreach($titleinfos as $titleinfo)
+                  @if($titleinfo->level == 'Undergraduate')
         				    <tr class="w3-border">
 
                       <!-- Title ID -->
@@ -139,6 +140,9 @@
                                     <p class="text-left"><strong>Description </strong><br>{{ $titleinfo->description }}</p>
                                     <br>
                                     </center>
+                                    <center>
+                                      <p class="bold">{{ $titleinfo->status }}</p>
+                                    </center>
                                 </div>
                                 <div class="modal-footer">
 
@@ -194,6 +198,7 @@
 
         						</td>
         				   </tr>
+                   @endif
                    <?php $id+=1; ?>
         				 @endforeach
                 </tbody>

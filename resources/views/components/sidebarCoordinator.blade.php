@@ -58,7 +58,7 @@
             <!-- Page Content -->
             <main>
 
-                    <div class="wrapper d-flex align-items-stretch" style="background:#fffbfc" >
+                    <div class="wrapper d-flex align-items-stretch" style="background:#fff8f0" >
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
@@ -87,24 +87,9 @@
                   <a href="/profileCoordinator">My Profile</a>
                 </li>
 
-                <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Lecturer's Contact Info</a>
-                    </li>
-                    <li>
-                        <a href="#">Student's Contact Info</a>
-                    </li>
-                    <li>
-                        <a href="#">Calendar</a>
-                    </li>
-                </ul>
-                </li>
 
-                <li>
-                  <a href="#">About Us</a>
-                </li>
+
+
                 </ul>
 
                 <div class="footer">
