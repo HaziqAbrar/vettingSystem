@@ -26,7 +26,6 @@ Route::get('/', function () {
 });
 
 
-<<<<<<< HEAD
 Route::group(['middleware'=>['auth:sanctum','verified']], function()
 {
     Route::get('/dashboard','App\Http\Controllers\RedirectController@index')->name('dashboard');
@@ -71,6 +70,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::get('/supervisor/create', [SupervisorController::class, 'create']);
       Route::post('/supervisor', [SupervisorController::class, 'store']);
       Route::post('/meetupdate', [SupervisorController::class, 'meetupdate']);
+      Route::post('/done', [SupervisorController::class, 'meetdone']);
       Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
       Route::delete('/supervisor/{titleinfo}', [SupervisorController::class, 'destroy']);
       Route::delete('/supervisor/teamManagement1/{app}', [SupervisorController::class, 'reject1']);
@@ -79,58 +79,6 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
       Route::delete('/supervisor/teamManagement1/accept/{app}', [SupervisorController::class, 'accept1']);
       Route::delete('/supervisor/teamManagement2/accept/{app}', [SupervisorController::class, 'accept2']);
       Route::delete('/supervisor/teamManagement3/accept/{app}', [SupervisorController::class, 'accept3']);
-=======
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-  Route::get('/dashboard', 'App\Http\Controllers\RedirectController@index')->name('dashboard');
-
-  Route::post('/upload', 'App\Http\Controllers\UploadController@index');
-
-  //Coordinators
-  Route::group(['middleware' => ['checkrole:coordinator']], function () {
-    Route::get('/profileCoordinator', function () {
-      return view('/coordinator/profileCoordinator');
-    })->name('profile');
-
-
-    Route::get('/coordinator', [CoordinatorController::class, 'index']);
-    // Route::get('/coordinator/alltitle', [CoordinatorController::class, 'alltitle']);
-    Route::get('/info/{titleinfo}', [CoordinatorController::class, 'create']);
-    Route::post('/assignpanel', [CoordinatorController::class, 'store']);
-    // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
-    // Route::patch('/titleinfos/{titleinfo}', 'coordinatorController@update');
-    // Route::put('/coordinatoraccept/{titleinfo}', 'coordinatorController@acceptbtn');
-    // Route::put('/coordinatorreject/{titleinfo}', 'coordinatorController@rejectbtn');
-  });
-
-  // Supervisors
-  Route::group(['middleware' => ['checkrole:supervisor']], function () {
-    Route::get('/profileSupervisor', function () {
-      return view('/supervisor/profileSupervisor');
-    })->name('profile');
-
-    Route::get('/supervisor', [SupervisorController::class, 'index'])->name('supervisor');
-    Route::get('/supervisor/teams', [SupervisorController::class, 'teams']);
-    Route::get('/supervisor/meeting', [SupervisorController::class, 'viewmeet']);
-    Route::get('/supervisor/teamslist', [SupervisorController::class, 'teamshow']);
-    Route::get('/supervisor/teams/meeting/{title}', [SupervisorController::class, 'meet']);
-    Route::post('/supervisor/teams/meeting', [SupervisorController::class, 'notify']);
-    Route::get('/supervisor/test', [SupervisorController::class, 'test']);
-    Route::get('/supervisor/teams/{title}', [SupervisorController::class, 'application']);
-
-    Route::get('/supervisor/teams/title/{student}', [SupervisorController::class, 'applicationindex']);
-    Route::get('/supervisor/create', [SupervisorController::class, 'create']);
-    Route::post('/supervisor', [SupervisorController::class, 'store']);
-    Route::post('/meetupdate', [SupervisorController::class, 'meetupdate']);
-    Route::post('/done', [SupervisorController::class, 'meetdone']);
-    Route::get('/titleinfosv/{titleinfo}', [SupervisorController::class, 'show']);
-    Route::delete('/supervisor/{titleinfo}', [SupervisorController::class, 'destroy']);
-    Route::delete('/supervisor/teamManagement1/{app}', [SupervisorController::class, 'reject1']);
-    Route::delete('/supervisor/teamManagement2/{app}', [SupervisorController::class, 'reject2']);
-    Route::delete('/supervisor/teamManagement3/{app}', [SupervisorController::class, 'reject3']);
-    Route::delete('/supervisor/teamManagement1/accept/{app}', [SupervisorController::class, 'accept1']);
-    Route::delete('/supervisor/teamManagement2/accept/{app}', [SupervisorController::class, 'accept2']);
-    Route::delete('/supervisor/teamManagement3/accept/{app}', [SupervisorController::class, 'accept3']);
->>>>>>> 8e14f27b8b5835c7fec024c2b9310ec112c9b1b9
     //   Route::post('/supervisor/teamManagement', [SupervisorController::class, 'reject']);
     Route::get('/titleinfosv/{titleinfo}/edit', [SupervisorController::class, 'edit']);
     Route::patch('/supervisor/{titleinfo}', [SupervisorController::class, 'update']);
