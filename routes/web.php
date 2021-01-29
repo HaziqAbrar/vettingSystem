@@ -41,13 +41,13 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function()
 
 
       Route::get('/coordinator', [CoordinatorController::class, 'index']);
-      // Route::get('/coordinator/alltitle', [CoordinatorController::class, 'alltitle']);
+      Route::get('/coordinator/alltitle', [CoordinatorController::class, 'alltitle']);
       Route::get('/info/{titleinfo}', [CoordinatorController::class, 'create']);
       Route::post('/assignpanel', [CoordinatorController::class, 'store']);
-      // Route::post('/titleinfos/{titleinfo}', 'coordinatorController@show');
-      // Route::patch('/titleinfos/{titleinfo}', 'coordinatorController@update');
-      // Route::put('/coordinatoraccept/{titleinfo}', 'coordinatorController@acceptbtn');
-      // Route::put('/coordinatorreject/{titleinfo}', 'coordinatorController@rejectbtn');
+      Route::get('/titledetail/{titleinfo}', [CoordinatorController::class, 'show']);
+      Route::patch('/comment/{titleinfo}', [CoordinatorController::class, 'update']);
+      Route::put('/accepted/{titleinfo}', [CoordinatorController::class, 'acceptbtn']);
+      Route::put('/coordinatorreject/{titleinfo}', [CoordinatorController::class, 'rejectbtn']);
     });
 
     // Supervisors

@@ -1,7 +1,29 @@
+<style>
+  table {
+      counter-reset: tableCount;
+  }
+  .counterCell:before {
+      content: counter(tableCount);
+      counter-increment: tableCount;
+  }
+
+
+  .btnstyle a{
+    padding: 10px;
+    margin: 5px;"
+  }
+
+  .box{
+    border: solid;
+    padding: 0 5px;
+  }
+</style>
 
 
 
 <x-sidebarCoordinator>
+
+
 
 
   <div class="container py-5">
@@ -22,15 +44,14 @@
                     <th>Title</th>
                     <th>Proposal by</th>
                     <th>Session</th>
-                    <!-- <th>Comment</th> -->
-                    <th>Assign</th>
+                    <th>Department</th>
+                    <th>Details</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   <?php $id=0;?>
-                  @foreach($assignto as $titleinfo)
-                  @if($titleinfo->level == 'Postgraduate' && $titleinfo->status == 'Pending')
+                  @foreach($titleinfos as $titleinfo)
         				    <tr class="w3-border">
 
                       <!-- Title ID -->
@@ -62,8 +83,34 @@
                       </script>
 
 
+                      <!-- Comment availability -->
+      				      	<!-- <td>
+      				      		@if (empty($titleinfo->comment))
+      				      			<p>Not Available</p>
+      							    @else
+      								    <p>Available</p>
+      				      		@endif
+      				      	</td> -->
+
+											<!-- Department -->
+											<td>
+												@if($titleinfo-> major == 'SE')
+													<p>Software Engineering</p>
+												@elseif($titleinfo-> major == 'IS')
+													<p>Information System</p>
+												@elseif($titleinfo-> major == 'AI')
+													<p>Artificial Intelligence</p>
+												@elseif($titleinfo-> major == 'MM')
+													<p>Multimedia</p>
+												@elseif($titleinfo-> major == 'STK')
+													<p>Computer System and Network</p>
+												@endif
+											</td>
+
+
                       <!-- Detail assign button -->
       				     	  <td class="text-center">
+      				     	   <!-- <form action="/info/{{ $titleinfo->id }}" method="get"> -->
       				    		 {{csrf_field()}}
     				    			<div >
     						   			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal{{$id}}" >Details</button>
@@ -95,13 +142,7 @@
                                 </div>
                                 <div class="modal-footer">
 
-                                      <form>
-                                        <div class="mt-3">
-                                          {{csrf_field()}}
-                                          <input type="hidden" class="assignservice" value="{{  $titleinfo->id }}"></input>
-                                          <button type="button" class="btn btn-danger serviassignbtn">Assign</button>
-                                        </div>
-                                      </form>
+
                                       <form>
                                       <div class="mt-3">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,7 +194,6 @@
 
         						</td>
         				   </tr>
-                   @endif
                    <?php $id+=1; ?>
         				 @endforeach
                 </tbody>
@@ -166,14 +206,12 @@
   </div>
 
 
-<!-- Datatable JS -->
+  <!-- Datatable JS -->
   <script>
       $(document).ready(function() {
         $('#example').DataTable();
       });
   </script>
-
-<!-- Assign button JS -->
 
 
 </x-sidebarCoordinator>

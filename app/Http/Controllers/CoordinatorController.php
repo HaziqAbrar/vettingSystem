@@ -21,14 +21,16 @@ class CoordinatorController extends Controller
      */
     public function index()
     {
-      // $titleinfos = titleinfo::all();
-      // $user = user::all();
-
       $department = (Auth::user()->getAttribute('department'));
-      // $titleinfos = titleinfo::all();
-      $assignto = titleinfo::all()->where('major',$department);
+      $levels = Auth::user()->getAttribute('level');
 
-      return view('coordinator.coordinatorIndex', compact('assignto'));
+      if ($levels == 'Postgraduate') {
+        $assignto = titleinfo::all()->where('major',$department);
+        return view('coordinator.coordinatorIndex', compact('assignto'));
+      }else {
+        $assignto = titleinfo::all()->where('major',$department);
+        return view('coordinator.coordinatorUIndex', compact('assignto'));
+      }
     }
 
     public function alltitle()
@@ -86,6 +88,7 @@ class CoordinatorController extends Controller
     public function show(titleinfo $titleinfo)
     {
       // dd($titleinfo);
+      return view('/coordinator.titledetail', compact('titleinfo'));
 
     }
 
@@ -115,7 +118,7 @@ class CoordinatorController extends Controller
       titleinfo::where('id', $titleinfo->id)
           ->update(['comment'=> $request->comment]);
 
-      return redirect('/titleinfos/'.$titleinfo->id)->with('status','comment updated');
+      return redirect('/titledetail/'.$titleinfo->id)->with('status','Comment updated!');
     }
 
     public function acceptbtn(Request $request, titleinfo $titleinfo)
@@ -127,7 +130,7 @@ class CoordinatorController extends Controller
         titleinfo::where('id', $titleinfo->id)
             ->update(['status'=> $request->status1]);
 
-        return redirect('/coordinator');
+        return redirect('/coordinator')->with('status','Title Accepted');
     }
 
     public function rejectbtn(Request $request, titleinfo $titleinfo)
