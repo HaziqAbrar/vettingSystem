@@ -7,7 +7,35 @@
     </x-slot>
 
     <div>
+    
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        
+        <div>
+            <div class="row">
+                <div class="col">
+
+                    <x-jet-section-title>
+                        <x-slot name="title">Update Profile Photo</x-slot>
+                        <x-slot name="description">Update your account\'s profile photo.</x-slot>
+                    </x-jet-section-title>
+
+                    <!-- <h5> Update Profile Photo </h5> -->
+                </div>
+                <div class="col">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="image">
+                        <input class="w3-margin btn btn-dark" type="submit" value="Upload" />
+                        <!-- <a class="w3-margin btn btn-dark" type="submit" role="button">Upload</a> -->
+                    </form>
+                    @if (session('status'))
+                    <div class=" alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+                </div>
+            </div>
+            <x-jet-section-border />
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
                 @livewire('profile.update-profile-information-form')
 

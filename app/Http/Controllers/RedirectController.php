@@ -59,7 +59,7 @@ class RedirectController extends Controller
             $third= third::all();
             $apply= first::where('email',$email)->first();
             $titles= titleinfo::all();
-            $noti = notification::where('receivers',$email)->first();
+            $noti = notification::where('receivers',$email)->where('status','not read')->first();
             $notis = notification::all()->where('receivers',$email)->where('status','not read');
             $meets = meet::all();
             $data=false;

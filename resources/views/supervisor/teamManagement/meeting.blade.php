@@ -16,7 +16,7 @@
                                 <th>Student Name</th>
                                 <th>Title</th>
                                 <th>Time</th>
-                                <th>Comment</th>
+                                <th>Notice</th>
                                 <th class="text-center">Action</th>
 
 
@@ -24,11 +24,13 @@
                             </tr>
                         </thead>
                         @foreach ($meets as $meet)
+
                         <tr class="w3-border">
 
                             <td class="counterCell"></td>
                             <?php $title = $titles->where('id', $meet->title_code)->first();
-                            $student = $students->where('email', $meet->student)->first(); ?>
+                            $student = $students->where('email', $meet->student)->first();
+                            $noti =$notis->where('receivers',$meet->student)->first(); ?>
                             <td> {{$student->name}}</td>
 
                             <td>{{$title->title}}</td>
@@ -37,8 +39,9 @@
                                 <form method="post" action="/meetupdate">
                                     @csrf
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" name="comment" id="comment" rows="2" value="{{$student->about}}" data-msg="Please write something for us">{{$meet->comment}}</textarea>
+                                        <textarea type="text" class="form-control" name="notice" id="notice" rows="2" value="{{$noti->notice}}" data-msg="Please write something for us">{{$noti->notice}}</textarea>
                                         <input type="hidden" id="id" name="id" value="{{$meet->id}}">
+                                        <input type="hidden" id="notiid" name="notiid" value="{{$noti->id}}">
                                     </div>
                             </td>
 
@@ -102,8 +105,11 @@
 
                             <td class="text-center">
 
-                                <form method="post" action="/meet/done">
-                                    <button type="submit" class="btn btn-info" name="button1" value="accept">Done</button>
+                                <form method="post" action="/done">
+                                @csrf
+                                <input type="hidden" id="id" name="id" value="{{$meet->id}}">
+                                <input type="hidden" id="status" name="status" value="done">
+                                    <button type="submit" class="btn btn-info" name="button" value="done">Done</button>
 
                                 </form>
 

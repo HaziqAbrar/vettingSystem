@@ -7,13 +7,13 @@ $email = (Auth::user()->getAttribute('email'));
 $noti = notification::where('receivers',$email)->first();?>
 
 @component('mail::message')
-# Oi apply meeting skang {{$noti->receivers}}
+#  {{$noti->sender}}
 
 
-ye skanggg
+{{$noti->notice}}
 
 
 
 Thanks,<br>
-{{ config('app.name') }}
+
 @endcomponent

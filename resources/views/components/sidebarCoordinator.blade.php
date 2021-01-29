@@ -62,7 +62,9 @@
 
                 <nav id="sidebar">
                     <div class="p-4 pt-5">
-                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/default-avatar.png);"></a>
+                    <?php $filename = auth()->user()->getAttribute('avatar');
+                        ?>
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(/images/{{$filename}});"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
                     <a href="/coordinator">Home</a>

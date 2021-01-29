@@ -16,6 +16,7 @@ class Students extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('matrix')->nullable();
             $table->string('department');
             $table->string('year');
             $table->string('cgpa');

@@ -20,6 +20,8 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        $email = $input['email'];
+        $student = student::where('email', $email)->first();
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required'],
@@ -27,19 +29,21 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
         ])->validate();
-        if ($input['role']=='student'){
-        student::create([
-            'name' => 'Your Full Name',
-            'department' => $input['department'],
-            'level' => $input['level'],
-            'year' => '3',
-            'cgpa' => 'Your CGPA',
-            'skills' => 'Your Skills',
-            'about' => 'About Yourself',
-            'email' => $input['email'],
-            'avatar'=>'default-avatar.png',
+        if ($input['role'] == 'student') {
+            if ($student == null) {
+                student::create([
+                    'name' => 'Your Full Name',
+                    'department' => $input['department'],
+                    'level' => $input['level'],
+                    'year' => '3',
+                    'cgpa' => 'Your CGPA',
+                    'skills' => 'Your Skills',
+                    'about' => 'About Yourself',
+                    'email' => $input['email'],
+                    'avatar' => 'default-avatar.png',
 
-        ]);
+                ]);
+            }
         }
         return User::create([
             'name' => $input['name'],
@@ -48,7 +52,7 @@ class CreateNewUser implements CreatesNewUsers
             'level' => $input['level'],
             'department' => $input['department'],
             'password' => Hash::make($input['password']),
-            'avatar'=>'default-avatar.png',
+            'avatar' => 'default-avatar.png',
         ]);
     }
 }
